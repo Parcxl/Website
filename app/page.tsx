@@ -8,7 +8,7 @@ export default function Home() {
   const [showSend, setShowSend] = useState(false);
   const [showBrain, setShowBrain] = useState(false);
   const [hideBrain, setHideBrain] = useState(false);
-  const [showWiseIcon, setShowWiseIcon] = useState(false);
+  const [showKite, setShowKite] = useState(false);
 
   useEffect(() => {
     // "Send" slides in first
@@ -21,16 +21,16 @@ export default function Home() {
       setShowBrain(true);
     }, 800);
 
-    // Brain fades out and Wise icon flies in
-    const hideBrainTimer = setTimeout(() => {
+    // Brain flies out and Kite flies in
+    const kiteTimer = setTimeout(() => {
       setHideBrain(true);
-      setShowWiseIcon(true);
+      setShowKite(true);
     }, 2000);
 
     return () => {
       clearTimeout(sendTimer);
       clearTimeout(brainTimer);
-      clearTimeout(hideBrainTimer);
+      clearTimeout(kiteTimer);
     };
   }, []);
 
@@ -59,22 +59,28 @@ export default function Home() {
           }
         }
 
-        @keyframes fadeOut {
+        @keyframes flyOutUp {
           0% {
+            transform: translate(0, 0);
             opacity: 1;
           }
           100% {
+            transform: translate(80px, -400px);
             opacity: 0;
           }
         }
 
-        @keyframes flyInFromBottomLeft {
+        @keyframes kiteFlightIn {
           0% {
-            transform: translate(-150%, 150%);
+            transform: translate(-250px, 250px) rotate(-15deg);
             opacity: 0;
           }
+          50% {
+            transform: translate(-80px, 80px) rotate(5deg);
+            opacity: 1;
+          }
           100% {
-            transform: translate(0, 0);
+            transform: translate(0, 0) rotate(0deg);
             opacity: 1;
           }
         }
@@ -87,12 +93,12 @@ export default function Home() {
           animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .fade-out {
-          animation: fadeOut 0.6s ease-out forwards;
+        .fly-out-up {
+          animation: flyOutUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .fly-in-bottom-left {
-          animation: flyInFromBottomLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .kite-flight-in {
+          animation: kiteFlightIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
 
@@ -135,9 +141,9 @@ export default function Home() {
               </h1>
             </div>
 
-            {/* Brain icon - slides from right, then fades out */}
+            {/* Brain icon - slides from right, then flies out */}
             <div className="relative ml-8">
-              <div className={`relative ${showBrain && !hideBrain ? 'slide-in-right' : ''} ${hideBrain ? 'fade-out' : ''} ${!showBrain ? 'opacity-0' : ''}`}>
+              <div className={`relative ${!showBrain ? 'opacity-0' : ''} ${showBrain && !hideBrain ? 'slide-in-right' : ''} ${hideBrain ? 'fly-out-up' : ''}`}>
                 <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl scale-150"></div>
                 <Brain 
                   className="relative text-white drop-shadow-2xl" 
@@ -146,14 +152,14 @@ export default function Home() {
                 />
               </div>
 
-              {/* Wise icon - flies in from bottom left */}
-              <div className={`absolute inset-0 ${showWiseIcon ? 'fly-in-bottom-left' : 'opacity-0'}`}>
+              {/* Kite icon - flies in from bottom left */}
+              <div className={`absolute inset-0 ${showKite ? 'kite-flight-in' : 'opacity-0'}`}>
                 <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl scale-150"></div>
                 <Image
-                  src="/wise-icon.png"
-                  alt="Wise"
-                  width={200}
-                  height={200}
+                  src="/kite-icon.png"
+                  alt="Kite"
+                  width={240}
+                  height={240}
                   className="relative drop-shadow-2xl"
                 />
               </div>
