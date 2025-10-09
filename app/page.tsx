@@ -113,23 +113,49 @@ export default function Home() {
         </div>
 
         {/* Conveyor Belt with Packages */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-4 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 border-t border-gray-200">
-          <div className="flex gap-6 animate-[scroll-left_40s_linear_infinite]">
-            {[...Array(2)].map((_, groupIndex) => (
-              <div key={groupIndex} className="flex gap-6 flex-shrink-0">
-                {[...Array(15)].map((_, i) => (
-                  <div key={i} className="flex items-center gap-6 flex-shrink-0">
-                    <div className="bg-white border-2 border-gray-300 rounded-lg p-2.5 shadow-sm">
-                      <Package className="text-[#0066ff]" size={20} />
-                    </div>
-                    <div className="bg-white border-2 border-gray-300 rounded-lg p-2.5 shadow-sm">
-                      <Box className="text-indigo-500" size={20} />
-                    </div>
-                    <div className="bg-white border-2 border-gray-300 rounded-lg p-2.5 shadow-sm">
-                      <Truck className="text-cyan-500" size={20} />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-700 to-gray-800 border-t-4 border-gray-600 overflow-hidden z-10">
+          {/* Belt Surface */}
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 opacity-30"></div>
+          
+          {/* Belt Lines */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gray-900 opacity-40"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-900 opacity-60"></div>
+          
+          {/* Packages */}
+          <div className="relative h-full">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className={`package-box package-box-delay-${i} absolute top-1/2 -translate-y-1/2`}>
+                <div className="relative" style={{ width: '60px', height: '50px' }}>
+                  {/* Box Front Face */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-700 to-amber-800 rounded-sm border-2 border-amber-900 shadow-lg">
+                    {/* Tape */}
+                    <div className="absolute top-1/2 left-0 right-0 h-2 bg-amber-400/40 -translate-y-1/2"></div>
+                    <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-amber-400/40 -translate-x-1/2"></div>
+                    
+                    {/* Fragile Icon */}
+                    <div className="absolute bottom-1 right-1 text-[8px] text-red-600 font-bold bg-white/80 px-1 rounded">
+                      ⚠
                     </div>
                   </div>
-                ))}
+                  
+                  {/* Box Top Face (3D effect) */}
+                  <div className="absolute -top-3 left-0 right-0 h-3 bg-gradient-to-b from-amber-600 to-amber-700 border-l-2 border-r-2 border-amber-900" 
+                       style={{ 
+                         clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)',
+                         transform: 'perspective(100px) rotateX(-45deg)',
+                         transformOrigin: 'bottom'
+                       }}>
+                  </div>
+                  
+                  {/* Box Right Face (3D effect) */}
+                  <div className="absolute top-0 -right-3 w-3 h-full bg-gradient-to-l from-amber-900 to-amber-800"
+                       style={{
+                         clipPath: 'polygon(0% 10%, 100% 0%, 100% 90%, 0% 100%)',
+                         transform: 'perspective(100px) rotateY(45deg)',
+                         transformOrigin: 'left'
+                       }}>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

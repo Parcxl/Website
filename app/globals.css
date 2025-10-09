@@ -94,15 +94,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @layer utilities {
   .animation-delay-200 {
     animation-delay: 0.2s;
@@ -131,7 +122,26 @@ h1, h2, h3, h4, h5, h6 {
   .animate-slide-in-right {
     animation: slide-in-right 0.8s ease-out forwards;
   }
-  .animate-scroll-left {
-    animation: scroll-left 30s linear infinite;
+}
+
+/* Conveyor Belt Animation */
+@keyframes conveyor-move {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
   }
 }
+
+.package-box {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: conveyor-move 15s linear infinite;
+}
+
+.package-box-delay-1 { animation-delay: 0s; }
+.package-box-delay-2 { animation-delay: 3s; }
+.package-box-delay-3 { animation-delay: 6s; }
+.package-box-delay-4 { animation-delay: 9s; }
+.package-box-delay-5 { animation-delay: 12s; }
