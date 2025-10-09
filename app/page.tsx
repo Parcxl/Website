@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [showSend, setShowSend] = useState(false);
   const [showBrain, setShowBrain] = useState(false);
-  const [hideBrain, setHideBrain] = useState(false);
-  const [showKite, setShowKite] = useState(false);
 
   useEffect(() => {
     // "Send" slides in first
@@ -21,16 +19,18 @@ export default function Home() {
       setShowBrain(true);
     }, 800);
 
-    // Brain flies out and Kite flies in
-    const kiteTimer = setTimeout(() => {
-      setHideBrain(true);
-      setShowKite(true);
-    }, 2000);
+    // Auto-scroll to next section after animation completes
+    const scrollTimer = setTimeout(() => {
+      const nextSection = document.getElementById('next-section');
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 2500); // After both animations complete (800ms + some delay)
 
     return () => {
       clearTimeout(sendTimer);
       clearTimeout(brainTimer);
-      clearTimeout(kiteTimer);
+      clearTimeout(scrollTimer);
     };
   }, []);
 
@@ -59,50 +59,12 @@ export default function Home() {
           }
         }
 
-        @keyframes flyOutUp {
-          0% {
-            transform: translate(0, 0);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(80px, -400px);
-            opacity: 0;
-          }
-        }
-
-        @keyframes kiteFlightIn {
-          0% {
-            transform: translate(-500px, 500px) rotate(-25deg) scale(0.8);
-            opacity: 1;
-          }
-          30% {
-            transform: translate(-300px, 200px) rotate(-10deg) scale(0.9);
-            opacity: 1;
-          }
-          60% {
-            transform: translate(-120px, 40px) rotate(3deg) scale(1);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(0, 0) rotate(0deg) scale(1);
-            opacity: 1;
-          }
-        }
-
         .slide-in-left {
           animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .slide-in-right {
           animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .fly-out-up {
-          animation: flyOutUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .kite-flight-in {
-          animation: kiteFlightIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       `}</style>
 
@@ -145,9 +107,9 @@ export default function Home() {
               </h1>
             </div>
 
-            {/* Brain icon - slides from right, then flies out */}
+            {/* Brain icon - slides from right */}
             <div className="relative ml-8">
-              <div className={`relative ${!showBrain ? 'opacity-0' : ''} ${showBrain && !hideBrain ? 'slide-in-right' : ''} ${hideBrain ? 'fly-out-up' : ''}`}>
+              <div className={`relative ${showBrain ? 'slide-in-right' : 'opacity-0'}`}>
                 <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl scale-150"></div>
                 <Brain 
                   className="relative text-white drop-shadow-2xl" 
@@ -155,18 +117,39 @@ export default function Home() {
                   strokeWidth={1.5}
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {/* Kite icon - flies in from bottom left */}
-              <div className={`absolute inset-0 flex items-center justify-center ${showKite ? 'kite-flight-in' : 'opacity-0'}`}>
-                <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl scale-150"></div>
-                <Image
-                  src="/kite-icon.png"
-                  alt="Kite"
-                  width={350}
-                  height={350}
-                  className="relative drop-shadow-2xl"
-                />
-              </div>
+      {/* Next Section - White with content */}
+      <section id="next-section" className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text content */}
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+                Verzenden is nog nooit zo <span className="text-[#0066ff]">slim</span> geweest
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Met Sendwise automatiseer je je hele verzendproces. Van label printen tot track & trace, 
+                alles in één platform. Bespaar tijd en geld met slimme integraties.
+              </p>
+              <button className="bg-[#0066ff] text-white px-8 py-4 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-xl text-lg font-medium">
+                Ontdek Sendwise
+              </button>
+            </div>
+
+            {/* Right side - Image */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0066ff]/10 to-transparent rounded-3xl blur-3xl"></div>
+              <Image 
+                src="/sendwise-photo.png" 
+                alt="Sendwise Platform" 
+                width={600} 
+                height={400}
+                className="relative rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
