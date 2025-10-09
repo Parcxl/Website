@@ -43,7 +43,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Animated Background */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-100/60 via-cyan-50/60 to-indigo-100/60">
+      <section className="relative pt-32 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-100/60 via-cyan-50/60 to-indigo-100/60">
         {/* Animated Background Blobs */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300/50 rounded-full blur-3xl animate-float"></div>
@@ -108,6 +108,34 @@ export default function Home() {
                   className="rounded-2xl shadow-lg"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bewegende Pakketjes Band */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-8 bg-white/30 backdrop-blur-sm border-t border-white/40">
+          <div className="flex animate-[scroll-left_20s_linear_infinite]">
+            {/* Eerste set pakketjes */}
+            <div className="flex gap-12 px-6 whitespace-nowrap">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="flex flex-col items-center gap-2">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+                    <Package className="text-white" size={32} />
+                  </div>
+                  <span className="text-xs text-gray-600 font-medium">Pakket #{i + 1}</span>
+                </div>
+              ))}
+            </div>
+            {/* Duplicate set voor naadloze loop */}
+            <div className="flex gap-12 px-6 whitespace-nowrap">
+              {[...Array(8)].map((_, i) => (
+                <div key={i + 8} className="flex flex-col items-center gap-2">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+                    <Package className="text-white" size={32} />
+                  </div>
+                  <span className="text-xs text-gray-600 font-medium">Pakket #{i + 1}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
