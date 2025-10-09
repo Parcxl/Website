@@ -59,3 +59,29 @@ h1, h2, h3, h4, h5, h6 {
 .animate-blob {
   animation: blob 7s infinite;
 }
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 20s linear infinite;
+}
