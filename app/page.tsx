@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 import { 
   ArrowRight, Package, Zap, Shield, BarChart3, 
   CheckCircle2, ChevronDown, Truck, Globe, 
@@ -11,9 +11,28 @@ import {
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [packages, setPackages] = useState(250);
+  const [isSubscriptionVisible, setIsSubscriptionVisible] = useState(false);
 
-  const savings = Math.round(packages * 1.2 * 12);
+  // Scroll observer for subscription section
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsSubscriptionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const section = document.getElementById('subscription-section');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -123,96 +142,339 @@ export default function Home() {
           
           {/* Packages */}
           <div className="relative h-full">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-              <div key={i} className={`package-box package-box-delay-${i} absolute -bottom-8`}>
-                <div className="relative" style={{ width: '40px', height: '32px' }}>
-                  {/* Box Front Face */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-700 to-amber-800 rounded-sm border-2 border-amber-900 shadow-lg">
-                    {/* Tape */}
-                    <div className="absolute top-1/2 left-0 right-0 h-2 bg-amber-400/40 -translate-y-1/2"></div>
-                    <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-amber-400/40 -translate-x-1/2"></div>
-                    
-                    {/* Fragile Icon */}
-                    <div className="absolute bottom-1 right-1 text-[8px] text-red-600 font-bold bg-white/80 px-1 rounded">
-                      ⚠
-                    </div>
-                  </div>
-                  
-                  {/* Box Top Face (3D effect) */}
-                  <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-amber-600 to-amber-700 border-l border-r border-amber-900" 
-                       style={{ 
-                         clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)',
-                         transform: 'perspective(100px) rotateX(-45deg)',
-                         transformOrigin: 'bottom'
-                       }}>
-                  </div>
-                  
-                  {/* Box Right Face (3D effect) */}
-                  <div className="absolute top-0 -right-2 w-2 h-full bg-gradient-to-l from-amber-900 to-amber-800"
-                       style={{
-                         clipPath: 'polygon(0% 10%, 100% 0%, 100% 90%, 0% 100%)',
-                         transform: 'perspective(100px) rotateY(45deg)',
-                         transformOrigin: 'left'
-                       }}>
-                  </div>
+            {/* Package 1 - Small brown box */}
+            <div className="package-box package-box-delay-1 absolute bottom-2 -left-20">
+              <div className="relative" style={{ width: '35px', height: '28px' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-700 to-amber-800 rounded-sm border-2 border-amber-900 shadow-lg">
+                  <div className="absolute top-1/2 left-0 right-0 h-1.5 bg-amber-400/40 -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-1.5 bg-amber-400/40 -translate-x-1/2"></div>
+                </div>
+                <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-amber-600 to-amber-700 border-l border-r border-amber-900" 
+                     style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', transform: 'perspective(100px) rotateX(-45deg)', transformOrigin: 'bottom' }}>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Package 2 - Medium orange box */}
+            <div className="package-box package-box-delay-2 absolute bottom-2 -left-20">
+              <div className="relative" style={{ width: '45px', height: '36px' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-600 to-orange-700 rounded-sm border-2 border-orange-900 shadow-lg">
+                  <div className="absolute top-1/2 left-0 right-0 h-2 bg-yellow-400/40 -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-yellow-400/40 -translate-x-1/2"></div>
+                  <div className="absolute bottom-1 right-1 text-[7px] text-red-600 font-bold bg-white/80 px-0.5 rounded">⚠</div>
+                </div>
+                <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-orange-500 to-orange-600 border-l border-r border-orange-900" 
+                     style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', transform: 'perspective(100px) rotateX(-45deg)', transformOrigin: 'bottom' }}>
+                </div>
+              </div>
+            </div>
+
+            {/* Package 3 - Large dark brown box */}
+            <div className="package-box package-box-delay-3 absolute bottom-2 -left-20">
+              <div className="relative" style={{ width: '50px', height: '38px' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-800 to-amber-900 rounded-sm border-2 border-amber-950 shadow-lg">
+                  <div className="absolute top-1/2 left-0 right-0 h-2 bg-amber-500/30 -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-amber-500/30 -translate-x-1/2"></div>
+                </div>
+                <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-amber-700 to-amber-800 border-l border-r border-amber-950" 
+                     style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', transform: 'perspective(100px) rotateX(-45deg)', transformOrigin: 'bottom' }}>
+                </div>
+              </div>
+            </div>
+
+            {/* Package 4 - Tiny beige box */}
+            <div className="package-box package-box-delay-4 absolute bottom-2 -left-20">
+              <div className="relative" style={{ width: '30px', height: '24px' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-700 to-yellow-800 rounded-sm border-2 border-yellow-900 shadow-lg">
+                  <div className="absolute top-1/2 left-0 right-0 h-1 bg-yellow-400/50 -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-1 bg-yellow-400/50 -translate-x-1/2"></div>
+                </div>
+                <div className="absolute -top-1.5 left-0 right-0 h-1.5 bg-gradient-to-b from-yellow-600 to-yellow-700 border-l border-r border-yellow-900" 
+                     style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', transform: 'perspective(100px) rotateX(-45deg)', transformOrigin: 'bottom' }}>
+                </div>
+              </div>
+            </div>
+
+            {/* Package 5 - Medium brown-orange box */}
+            <div className="package-box package-box-delay-5 absolute bottom-2 -left-20">
+              <div className="relative" style={{ width: '42px', height: '34px' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-700 to-amber-800 rounded-sm border-2 border-orange-900 shadow-lg">
+                  <div className="absolute top-1/2 left-0 right-0 h-2 bg-orange-400/40 -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-orange-400/40 -translate-x-1/2"></div>
+                  <div className="absolute top-1 left-1 text-[6px] text-black/60 font-bold">📦</div>
+                </div>
+                <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-orange-600 to-amber-700 border-l border-r border-orange-900" 
+                     style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', transform: 'perspective(100px) rotateX(-45deg)', transformOrigin: 'bottom' }}>
+                </div>
+              </div>
+            </div>
+
+            {/* Package 6 - Small cardboard box */}
+            <div className="package-box package-box-delay-6 absolute bottom-2 -left-20">
+              <div className="relative" style={{ width: '38px', height: '30px' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-amber-700 rounded-sm border-2 border-amber-800 shadow-lg">
+                  <div className="absolute top-1/2 left-0 right-0 h-1.5 bg-amber-300/40 -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-1.5 bg-amber-300/40 -translate-x-1/2"></div>
+                  <div className="absolute bottom-1 left-1 text-[7px] text-green-700 font-bold bg-white/80 px-0.5 rounded">✓</div>
+                </div>
+                <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-amber-500 to-amber-600 border-l border-r border-amber-800" 
+                     style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)', transform: 'perspective(100px) rotateX(-45deg)', transformOrigin: 'bottom' }}>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Interactive Savings Calculator */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
+      {/* No Subscription Costs Section */}
+      <section id="subscription-section" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Bereken jouw <span className="text-gradient">besparing</span>
-              </h2>
-              <p className="text-xl text-gray-600">Zie direct hoeveel je kan besparen met Sendwise</p>
+          {/* Section Title */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Hoe wij helpen <span className="text-gradient">besparen</span>
+            </h2>
+            <p className="text-xl text-gray-600">Bij Sendwise verzend je als nooit tevoren</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Left Side - Platforms */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-md border border-blue-100">
+                <div className="w-10 h-10 bg-[#0066ff] text-white rounded-full flex items-center justify-center font-bold text-xl">
+                  1
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold">
+                  <span className="text-gradient">Abonnementskosten</span>
+                </h3>
+              </div>
+
+              <div className="space-y-4 mt-8">
+                {/* Sendcloud */}
+                <div className={`relative rounded-2xl p-6 shadow-lg border border-gray-200 overflow-hidden transition-all duration-1000 ${isSubscriptionVisible ? 'animate-fade-in-up' : 'opacity-0'}`} 
+                     style={{ animationDelay: isSubscriptionVisible ? '0.5s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
+                  <div className="absolute inset-0 bg-white"></div>
+                  <div className={`absolute inset-0 bg-red-600/90 transition-opacity duration-[3000ms] ${isSubscriptionVisible ? 'opacity-100' : 'opacity-0'}`}
+                       style={{ transitionDelay: isSubscriptionVisible ? '2s' : '0s' }}></div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-400">
+                        SC
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">Sendcloud</div>
+                        <div className="text-sm text-gray-500">Verzendplatform</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-gray-700">€3.600</div>
+                      <div className="text-sm text-gray-500">per jaar</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* MyParcel */}
+                <div className={`relative rounded-2xl p-6 shadow-lg border border-gray-200 overflow-hidden transition-all duration-1000 ${isSubscriptionVisible ? 'animate-fade-in-up' : 'opacity-0'}`} 
+                     style={{ animationDelay: isSubscriptionVisible ? '1s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
+                  <div className="absolute inset-0 bg-white"></div>
+                  <div className={`absolute inset-0 bg-red-600/90 transition-opacity duration-[3000ms] ${isSubscriptionVisible ? 'opacity-100' : 'opacity-0'}`}
+                       style={{ transitionDelay: isSubscriptionVisible ? '2.5s' : '0s' }}></div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-400">
+                        MP
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">MyParcel</div>
+                        <div className="text-sm text-gray-500">Verzendplatform</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-gray-700">€4.800</div>
+                      <div className="text-sm text-gray-500">per jaar</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Innosend */}
+                <div className={`relative rounded-2xl p-6 shadow-lg border border-gray-200 overflow-hidden transition-all duration-1000 ${isSubscriptionVisible ? 'animate-fade-in-up' : 'opacity-0'}`} 
+                     style={{ animationDelay: isSubscriptionVisible ? '1.5s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
+                  <div className="absolute inset-0 bg-white"></div>
+                  <div className={`absolute inset-0 bg-red-600/90 transition-opacity duration-[3000ms] ${isSubscriptionVisible ? 'opacity-100' : 'opacity-0'}`}
+                       style={{ transitionDelay: isSubscriptionVisible ? '3s' : '0s' }}></div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-400">
+                        IN
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">Innosend</div>
+                        <div className="text-sm text-gray-500">Verzendplatform</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-gray-700">€4.800</div>
+                      <div className="text-sm text-gray-500">per jaar</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sendwise - Winner */}
+                <div className={`relative rounded-2xl p-6 shadow-2xl border-2 border-blue-200 overflow-hidden transition-all duration-1000 ${isSubscriptionVisible ? 'animate-slide-in-left' : 'opacity-0'}`} 
+                     style={{ animationDelay: isSubscriptionVisible ? '4s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50"></div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-[#0066ff]/10 rounded-lg flex items-center justify-center">
+                        <Sparkles className="text-[#0066ff]" size={24} />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-900">Sendwise</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-5xl font-bold text-[#0066ff]">€0</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
-              <div className="space-y-8">
-                <div>
-                  <label className="text-lg font-semibold text-gray-700 mb-4 block">
-                    Hoeveel pakketten verstuur je per maand?
-                  </label>
-                  <input 
-                    type="range" 
-                    min="50" 
-                    max="5000" 
-                    step="50"
-                    value={packages}
-                    onChange={(e) => setPackages(Number(e.target.value))}
-                    className="w-full h-3 bg-blue-100 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#0066ff] [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-lg"
-                  />
-                  <div className="flex justify-between mt-2 text-sm text-gray-500">
-                    <span>50</span>
-                    <span className="text-2xl font-bold text-[#0066ff]">{packages}</span>
-                    <span>5000</span>
+            {/* Right Side - Empty */}
+            <div></div>
+          </div>
+
+          {/* Shipping Rates Section - Right Side */}
+          <div className="grid md:grid-cols-2 gap-12 mt-20">
+            {/* Left Side - Empty */}
+            <div></div>
+
+            {/* Right Side - Shipping Rates */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-md border border-blue-100">
+                <div className="w-10 h-10 bg-[#0066ff] text-white rounded-full flex items-center justify-center font-bold text-xl">
+                  2
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold">
+                  <span className="text-gradient">Verzendtarieven</span>
+                </h3>
+              </div>
+
+              <div className="space-y-4 mt-8">
+                {/* PostNL */}
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center font-bold text-orange-600 text-xs">
+                        PN
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">PostNL</div>
+                        <div className="text-sm text-gray-500">Nederland & België</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Brievenbuspakje</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€4,25</div>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Pakket</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€6,75</div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6 pt-6">
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 text-center border border-blue-100">
-                    <div className="text-sm text-gray-600 mb-2">Besparing per maand</div>
-                    <div className="text-4xl font-bold text-[#0066ff]">€{Math.round(packages * 1.2)}</div>
+                {/* DHL */}
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center font-bold text-yellow-600 text-xs">
+                        DHL
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">DHL</div>
+                        <div className="text-sm text-gray-500">Voor Jou & For You</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 text-center border border-indigo-100">
-                    <div className="text-sm text-gray-600 mb-2">Besparing per jaar</div>
-                    <div className="text-4xl font-bold text-[#0066ff]">€{savings.toLocaleString()}</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 text-center border border-green-100">
-                    <div className="text-sm text-gray-600 mb-2">Tijd bespaard</div>
-                    <div className="text-4xl font-bold text-green-600">{Math.round(packages / 10)}u</div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Voor Jou</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€4,95</div>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">For You</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€5,95</div>
+                    </div>
                   </div>
                 </div>
 
-                <button className="w-full bg-[#0066ff] text-white py-5 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-xl hover:shadow-blue-500/50 font-bold text-lg">
-                  Start Nu en Bespaar €{savings.toLocaleString()} Per Jaar
-                </button>
+                {/* DPD */}
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center font-bold text-red-600 text-xs">
+                        DPD
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">DPD</div>
+                        <div className="text-sm text-gray-500">Classic</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Tot 31,5kg</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€7,25</div>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Predict</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€7,95</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* GLS */}
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center font-bold text-blue-600 text-xs">
+                        GLS
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">GLS</div>
+                        <div className="text-sm text-gray-500">Business Parcel</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Standaard</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€6,95</div>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-3">
+                      <div className="text-xs text-gray-500 mb-1">Express</div>
+                      <div className="text-lg font-bold text-[#0066ff]">€9,50</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Info Box */}
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-[#0066ff]/20">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-[#0066ff] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="text-white" size={20} />
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-900 mb-2">Altijd de scherpste tarieven</div>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        Profiteer van onze zakelijke tarieven bij alle vervoerders. Geen verborgen kosten, wat je ziet is wat je betaalt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
