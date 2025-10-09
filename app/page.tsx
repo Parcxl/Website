@@ -124,7 +124,7 @@ export default function Home() {
           {/* Packages */}
           <div className="relative h-full">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-              <div key={i} className={`package-box package-box-delay-${i} absolute -bottom-4`}>
+              <div key={i} className={`package-box package-box-delay-${i} absolute -bottom-8`}>
                 <div className="relative" style={{ width: '40px', height: '32px' }}>
                   {/* Box Front Face */}
                   <div className="absolute inset-0 bg-gradient-to-br from-amber-700 to-amber-800 rounded-sm border-2 border-amber-900 shadow-lg">
