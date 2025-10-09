@@ -1,75 +1,10 @@
-"use client";
-
 import Image from "next/image";
-import { Brain } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [showSend, setShowSend] = useState(false);
-  const [showBrain, setShowBrain] = useState(false);
-
-  useEffect(() => {
-    // "Send" slides in first
-    const sendTimer = setTimeout(() => {
-      setShowSend(true);
-    }, 200);
-
-    // Brain slides in after Send
-    const brainTimer = setTimeout(() => {
-      setShowBrain(true);
-    }, 800);
-
-    // Auto-scroll to next section after animation completes
-    const scrollTimer = setTimeout(() => {
-      const nextSection = document.getElementById('next-section');
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 2500); // After both animations complete (800ms + some delay)
-
-    return () => {
-      clearTimeout(sendTimer);
-      clearTimeout(brainTimer);
-      clearTimeout(scrollTimer);
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0066ff] via-[#0052cc] to-[#003d99] overflow-hidden">
-      <style jsx global>{`
-        @keyframes slideInLeft {
-          0% {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes slideInRight {
-          0% {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        .slide-in-left {
-          animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .slide-in-right {
-          animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-      `}</style>
-
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/10 backdrop-blur-md z-50 border-b border-white/20">
+      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -78,11 +13,14 @@ export default function Home() {
                 alt="Sendwise" 
                 width={140} 
                 height={40}
-                className="h-10 w-auto brightness-0 invert"
+                className="h-10 w-auto"
               />
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <button className="bg-white text-[#0066ff] px-6 py-2 rounded-full hover:bg-gray-100 transition-all font-medium">
+              <a href="#features" className="text-gray-600 hover:text-[#0066ff] transition-colors">Features</a>
+              <a href="#prijzen" className="text-gray-600 hover:text-[#0066ff] transition-colors">Prijzen</a>
+              <a href="#contact" className="text-gray-600 hover:text-[#0066ff] transition-colors">Contact</a>
+              <button className="bg-[#0066ff] text-white px-6 py-2 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-lg hover:shadow-blue-500/50">
                 Start Nu
               </button>
             </div>
@@ -90,66 +28,77 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section with Animation */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-300/10 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+          {/* Animated Blobs */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#0066ff]/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-200"></div>
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[#0066ff]/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-400"></div>
+          
+          {/* Backdrop Blur Overlay */}
+          <div className="absolute inset-0 backdrop-blur-[100px]"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto w-full">
-          <div className="flex items-center justify-center min-h-[60vh]">
-            {/* Send text - slides from left */}
-            <div className="relative">
-              <h1 className={`text-8xl md:text-[12rem] lg:text-[16rem] font-bold text-white leading-none ${showSend ? 'slide-in-left' : 'opacity-0'}`}>
-                Send
-              </h1>
-            </div>
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-6xl md:text-7xl font-bold leading-tight">
+                  Verzenden,<br />
+                  <span className="text-gradient">maar dan slim</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-600 font-light max-w-lg">
+                  Bespaar tot 40% op verzendkosten en verstuur sneller dan ooit. 
+                  Perfect voor groeiende webshops in Nederland.
+                </p>
+              </div>
 
-            {/* Brain icon - slides from right */}
-            <div className="relative ml-8">
-              <div className={`relative ${showBrain ? 'slide-in-right' : 'opacity-0'}`}>
-                <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl scale-150"></div>
-                <Brain 
-                  className="relative text-white drop-shadow-2xl" 
-                  size={200}
-                  strokeWidth={1.5}
-                />
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-[#0066ff] text-white px-8 py-4 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-xl hover:shadow-blue-500/50 text-lg font-medium">
+                  Start Gratis
+                </button>
+                <button className="border-2 border-[#0066ff] text-[#0066ff] px-8 py-4 rounded-full hover:bg-blue-50 transition-all text-lg font-medium">
+                  Bekijk Demo
+                </button>
+              </div>
+
+              {/* Stats */}
+              <div className="flex items-center gap-8 pt-8">
+                <div>
+                  <div className="text-4xl font-bold text-[#0066ff]">500+</div>
+                  <div className="text-sm text-gray-600 font-light">Bedrijven</div>
+                </div>
+                <div className="h-12 w-px bg-gray-300"></div>
+                <div>
+                  <div className="text-4xl font-bold text-[#0066ff]">100K+</div>
+                  <div className="text-sm text-gray-600 font-light">Pakketten/maand</div>
+                </div>
+                <div className="h-12 w-px bg-gray-300"></div>
+                <div>
+                  <div className="text-4xl font-bold text-[#0066ff]">40%</div>
+                  <div className="text-sm text-gray-600 font-light">Besparing</div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Next Section - White with content */}
-      <section id="next-section" className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left side - Text content */}
-            <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-                Verzenden is nog nooit zo <span className="text-[#0066ff]">slim</span> geweest
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Met Sendwise automatiseer je je hele verzendproces. Van label printen tot track & trace, 
-                alles in één platform. Bespaar tijd en geld met slimme integraties.
-              </p>
-              <button className="bg-[#0066ff] text-white px-8 py-4 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-xl text-lg font-medium">
-                Ontdek Sendwise
-              </button>
-            </div>
-
-            {/* Right side - Image */}
+            {/* Right: Image */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0066ff]/10 to-transparent rounded-3xl blur-3xl"></div>
-              <Image 
-                src="/sendwise-photo.png" 
-                alt="Sendwise Platform" 
-                width={600} 
-                height={400}
-                className="relative rounded-2xl shadow-2xl"
-              />
+              <div className="relative">
+                <Image 
+                  src="/hero-image.png" 
+                  alt="Sendwise Dashboard" 
+                  width={600} 
+                  height={600}
+                  className="w-full h-auto rounded-3xl shadow-2xl"
+                  priority
+                />
+                {/* Glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-400/20 rounded-3xl blur-2xl -z-10"></div>
+              </div>
             </div>
           </div>
         </div>
