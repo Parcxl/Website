@@ -66,18 +66,17 @@ export default function Home() {
                 Verzenden was nog nooit zo <span className="text-gradient">goedkoop</span>
               </h1>
               
-              <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
-                Automatiseer je verzendproces, bespaar tot 40% op kosten en verstuur binnen enkele clicks. 
-                Het verzendplatform waar MKB Nederland op vertrouwt.
+              <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
+                Besparen op verzenden zonder vaste kosten
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-[#0066ff] text-white px-8 py-4 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-xl hover:shadow-blue-500/50 flex items-center justify-center group font-semibold text-lg">
-                  Probeer 30 Dagen Gratis
+                  Direct starten
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </button>
                 <button className="bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-full hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold text-lg backdrop-blur-sm">
-                  Bekijk Demo
+                  Neem contact op
                 </button>
               </div>
 
