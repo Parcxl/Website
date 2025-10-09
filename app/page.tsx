@@ -113,7 +113,7 @@ export default function Home() {
         </div>
 
         {/* Conveyor Belt with Packages */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-700 to-gray-800 border-t-4 border-gray-600 overflow-hidden z-10">
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-gray-700 to-gray-800 border-t-2 border-gray-600 overflow-hidden z-10">
           {/* Belt Surface */}
           <div className="absolute inset-0 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 opacity-30"></div>
           
@@ -125,7 +125,7 @@ export default function Home() {
           <div className="relative h-full">
             {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} className={`package-box package-box-delay-${i} absolute top-1/2 -translate-y-1/2`}>
-                <div className="relative" style={{ width: '60px', height: '50px' }}>
+                <div className="relative" style={{ width: '40px', height: '32px' }}>
                   {/* Box Front Face */}
                   <div className="absolute inset-0 bg-gradient-to-br from-amber-700 to-amber-800 rounded-sm border-2 border-amber-900 shadow-lg">
                     {/* Tape */}
@@ -139,7 +139,7 @@ export default function Home() {
                   </div>
                   
                   {/* Box Top Face (3D effect) */}
-                  <div className="absolute -top-3 left-0 right-0 h-3 bg-gradient-to-b from-amber-600 to-amber-700 border-l-2 border-r-2 border-amber-900" 
+                  <div className="absolute -top-2 left-0 right-0 h-2 bg-gradient-to-b from-amber-600 to-amber-700 border-l border-r border-amber-900" 
                        style={{ 
                          clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)',
                          transform: 'perspective(100px) rotateX(-45deg)',
@@ -148,7 +148,7 @@ export default function Home() {
                   </div>
                   
                   {/* Box Right Face (3D effect) */}
-                  <div className="absolute top-0 -right-3 w-3 h-full bg-gradient-to-l from-amber-900 to-amber-800"
+                  <div className="absolute top-0 -right-2 w-2 h-full bg-gradient-to-l from-amber-900 to-amber-800"
                        style={{
                          clipPath: 'polygon(0% 10%, 100% 0%, 100% 90%, 0% 100%)',
                          transform: 'perspective(100px) rotateY(45deg)',
