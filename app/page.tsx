@@ -63,8 +63,7 @@ export default function Home() {
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                <span className="text-gradient">Verzend</span> pakketten.<br />
-                Simpel. <span className="text-gradient">Wise</span>.
+                Verzenden was nog nooit zo <span className="text-gradient">goedkoop</span>
               </h1>
               
               <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
