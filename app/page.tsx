@@ -113,7 +113,7 @@ export default function Home() {
         </div>
 
         {/* Conveyor Belt with Packages */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-gray-700 to-gray-800 border-t-2 border-gray-600 overflow-hidden z-10">
+        <div className="absolute bottom-0 left-0 right-0 h-3 bg-gradient-to-b from-gray-700 to-gray-800 border-t border-gray-600 overflow-visible z-10">
           {/* Belt Surface */}
           <div className="absolute inset-0 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 opacity-30"></div>
           
