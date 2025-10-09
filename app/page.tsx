@@ -72,15 +72,19 @@ export default function Home() {
 
         @keyframes kiteFlightIn {
           0% {
-            transform: translate(-250px, 250px) rotate(-15deg);
-            opacity: 0;
+            transform: translate(-500px, 500px) rotate(-25deg) scale(0.8);
+            opacity: 1;
           }
-          50% {
-            transform: translate(-80px, 80px) rotate(5deg);
+          30% {
+            transform: translate(-300px, 200px) rotate(-10deg) scale(0.9);
+            opacity: 1;
+          }
+          60% {
+            transform: translate(-120px, 40px) rotate(3deg) scale(1);
             opacity: 1;
           }
           100% {
-            transform: translate(0, 0) rotate(0deg);
+            transform: translate(0, 0) rotate(0deg) scale(1);
             opacity: 1;
           }
         }
@@ -98,7 +102,7 @@ export default function Home() {
         }
 
         .kite-flight-in {
-          animation: kiteFlightIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: kiteFlightIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       `}</style>
 
@@ -153,13 +157,13 @@ export default function Home() {
               </div>
 
               {/* Kite icon - flies in from bottom left */}
-              <div className={`absolute inset-0 ${showKite ? 'kite-flight-in' : 'opacity-0'}`}>
-                <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl scale-150"></div>
+              <div className={`absolute inset-0 flex items-center justify-center ${showKite ? 'kite-flight-in' : 'opacity-0'}`}>
+                <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl scale-150"></div>
                 <Image
                   src="/kite-icon.png"
                   alt="Kite"
-                  width={240}
-                  height={240}
+                  width={350}
+                  height={350}
                   className="relative drop-shadow-2xl"
                 />
               </div>
