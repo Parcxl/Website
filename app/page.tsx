@@ -22,7 +22,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Image 
+        <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
                 width={140} 
@@ -43,7 +43,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Animated Background */}
-      <section className="relative pt-32 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-100/60 via-cyan-50/60 to-indigo-100/60">
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-100/60 via-cyan-50/60 to-indigo-100/60">
         {/* Animated Background Blobs */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300/50 rounded-full blur-3xl animate-float"></div>
@@ -100,7 +100,7 @@ export default function Home() {
             <div className="relative animate-slide-in-right">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-3xl blur-2xl"></div>
               <div className="relative bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-2xl">
-                <Image 
+            <Image
                   src="/hero-image.png" 
                   alt="Sendwise Dashboard" 
                   width={600} 
@@ -112,31 +112,26 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bewegende Pakketjes Band */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-8 bg-white/30 backdrop-blur-sm border-t border-white/40">
-          <div className="flex animate-[scroll-left_20s_linear_infinite]">
-            {/* Eerste set pakketjes */}
-            <div className="flex gap-12 px-6 whitespace-nowrap">
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className="flex flex-col items-center gap-2">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
-                    <Package className="text-white" size={32} />
+        {/* Conveyor Belt with Packages */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-4 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 border-t border-gray-200">
+          <div className="flex gap-6 animate-[scroll-left_40s_linear_infinite]">
+            {[...Array(2)].map((_, groupIndex) => (
+              <div key={groupIndex} className="flex gap-6 flex-shrink-0">
+                {[...Array(15)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-6 flex-shrink-0">
+                    <div className="bg-white border-2 border-gray-300 rounded-lg p-2.5 shadow-sm">
+                      <Package className="text-[#0066ff]" size={20} />
+                    </div>
+                    <div className="bg-white border-2 border-gray-300 rounded-lg p-2.5 shadow-sm">
+                      <Box className="text-indigo-500" size={20} />
+                    </div>
+                    <div className="bg-white border-2 border-gray-300 rounded-lg p-2.5 shadow-sm">
+                      <Truck className="text-cyan-500" size={20} />
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-600 font-medium">Pakket #{i + 1}</span>
-                </div>
-              ))}
-            </div>
-            {/* Duplicate set voor naadloze loop */}
-            <div className="flex gap-12 px-6 whitespace-nowrap">
-              {[...Array(8)].map((_, i) => (
-                <div key={i + 8} className="flex flex-col items-center gap-2">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
-                    <Package className="text-white" size={32} />
-                  </div>
-                  <span className="text-xs text-gray-600 font-medium">Pakket #{i + 1}</span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -563,7 +558,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
-              <Image 
+          <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
                 width={140} 

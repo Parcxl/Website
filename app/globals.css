@@ -95,10 +95,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes scroll-left {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
@@ -130,5 +130,8 @@ h1, h2, h3, h4, h5, h6 {
   }
   .animate-slide-in-right {
     animation: slide-in-right 0.8s ease-out forwards;
+  }
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
   }
 }
