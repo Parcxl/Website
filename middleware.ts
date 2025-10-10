@@ -10,6 +10,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL('/helpcenter', request.url))
   }
   
+  // Redirect non-www to www for main domain (SSL certificate issue)
+  if (hostname === 'sendwise.nl') {
+    return NextResponse.redirect(new URL(`https://www.sendwise.nl${request.nextUrl.pathname}`, request.url), 301)
+  }
+  
   // For all other domains, continue normally
   return NextResponse.next()
 }
