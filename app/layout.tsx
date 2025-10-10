@@ -15,10 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sendwise - Slimmer verzenden voor webshops",
   description: "Het slimste verzendplatform voor webshops in Nederland. Bespaar tijd, geld en verhoog de klanttevredenheid. Geen abonnementskosten, altijd de beste tarieven.",
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
 };
 
 export default function RootLayout({
