@@ -16,6 +16,7 @@ export default function Home() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showContactModal, setShowContactModal] = useState(false);
+  const [footerMousePosition, setFooterMousePosition] = useState({ x: 50, y: 50 });
 
   // Header scroll effect with smooth transition
   React.useEffect(() => {
@@ -47,6 +48,22 @@ export default function Home() {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Mouse tracking for footer gradient
+  React.useEffect(() => {
+    const handleFooterMouseMove = (e: MouseEvent) => {
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const rect = footer.getBoundingClientRect();
+        setFooterMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100
+        });
+      }
+    };
+    window.addEventListener('mousemove', handleFooterMouseMove);
+    return () => window.removeEventListener('mousemove', handleFooterMouseMove);
   }, []);
 
   // Scroll observer for subscription section
@@ -285,8 +302,11 @@ export default function Home() {
                 paddingRight: headerScrolled ? '3rem' : '1.5rem',
               }}
             >
-              <div className="flex justify-between items-center h-full max-w-7xl mx-auto">
-                <div className="flex items-center group">
+              <div className="flex justify-between md:justify-between items-center h-full max-w-7xl mx-auto w-full">
+                {/* Empty div for spacing on mobile */}
+                <div className="md:hidden w-14"></div>
+                
+                <div className="flex items-center group md:flex-initial flex-1 md:flex-none justify-center md:justify-start">
                   <div className="relative">
                     {/* Glow effect behind logo */}
                     <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -304,7 +324,9 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="hidden md:flex items-center">
+                <div className="flex items-center">
+                  {/* Button hidden on mobile, shown on desktop */}
+                  <div className="hidden md:flex items-center">
                   <button 
                     className="relative bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-6 py-2.5 rounded-full font-medium overflow-hidden group/btn transition-all duration-300 hover:scale-105"
                     onMouseEnter={(e) => {
@@ -343,6 +365,7 @@ export default function Home() {
                       <ArrowRight className="group-hover/btn:translate-x-1 transition-transform" size={16} />
                     </span>
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1877,42 +1900,66 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-2">
+      <footer className="relative py-16 overflow-hidden">
+        {/* Base gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950"></div>
+
+        {/* Mouse-tracking radial gradient */}
+        <div 
+          className="absolute inset-0 opacity-40 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(circle 600px at ${footerMousePosition.x}% ${footerMousePosition.y}%, rgba(0, 102, 255, 0.3) 0%, transparent 80%)`
+          }}
+        ></div>
+
+        {/* Animated background blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-float-slow"></div>
+          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-cyan-500/15 rounded-full blur-3xl animate-float-reverse"></div>
+        </div>
+
+        {/* Glassmorphic overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent backdrop-blur-sm"></div>
+
+        {/* Content */}
+        <div className="relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-4 gap-12 mb-12">
+              <div className="col-span-2">
           <Image
-                src="/sendwise-logo.png" 
-                alt="Sendwise" 
-                width={140} 
-                height={40}
-                className="h-10 w-auto mb-6 brightness-0 invert"
-              />
-              <p className="text-gray-400 max-w-md leading-relaxed mb-6">
-                Het slimste verzendplatform voor webshops in Nederland. Bespaar tijd, geld en verhoog de klanttevredenheid.
+                  src="/sendwise-logo.png" 
+                  alt="Sendwise" 
+                  width={140} 
+                  height={40}
+                  className="h-10 w-auto mb-6 brightness-0 invert"
+                />
+                <p className="text-gray-300 max-w-md leading-relaxed mb-6">
+                  Het slimste verzendplatform voor webshops in Nederland. Bespaar tijd, geld en verhoog de klanttevredenheid.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-white mb-4 text-lg">Informatie</h4>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="https://api.sendwise.nl/docs/sendwise-orders" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-[#0066ff] transition-colors">Orders API</a>
+                  </li>
+                  <li>
+                    <a href="https://helpcenter.sendwise.nl" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-[#0066ff] transition-colors">Helpcenter</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-gray-400 text-sm">
+                © 2025 Sendwise. All rights reserved.
               </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4 text-lg">Informatie</h4>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">Orders API</a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">Helpcenter</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
-              © 2025 Sendwise. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Algemene Voorwaarden</a>
+              <div className="flex gap-6 text-sm">
+                <a href="#" className="text-gray-300 hover:text-[#0066ff] transition-colors">Privacy Policy</a>
+                <a href="#" className="text-gray-300 hover:text-[#0066ff] transition-colors">Algemene Voorwaarden</a>
+              </div>
             </div>
           </div>
         </div>
