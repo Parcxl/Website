@@ -64,8 +64,77 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-15px) translateX(10px);
+  }
+  66% {
+    transform: translateY(-8px) translateX(-10px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-10px) translateX(-15px);
+  }
+  66% {
+    transform: translateY(-20px) translateX(8px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 10s ease-in-out infinite;
+}
+
 .animate-spin-slow {
   animation: spin-slow 8s linear infinite;
+}
+
+/* Custom smooth transitions */
+.transition-morph {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, width, height, border-radius;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-morph {
+    transition: none;
+  }
+}
+
+/* Contact page slide animations */
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
 }
 
 

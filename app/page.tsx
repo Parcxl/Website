@@ -6,13 +6,48 @@ import {
   ArrowRight, Package, Zap, Shield, BarChart3, 
   CheckCircle2, ChevronDown, Truck, Globe, 
   TrendingUp, Users, Clock, CreditCard, Sparkles,
-  Box, Layers, Target, RefreshCw
+  Box, Layers, Target, RefreshCw, X, Mail, Phone, MapPin
 } from "lucide-react";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isSubscriptionVisible, setIsSubscriptionVisible] = useState(false);
   const [isBeltVisible, setIsBeltVisible] = useState(true);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showContactModal, setShowContactModal] = useState(false);
+
+  // Header scroll effect with smooth transition
+  React.useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setHeaderScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Mouse tracking for header gradient
+  React.useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const header = document.querySelector('nav');
+      if (header) {
+        const rect = header.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100
+        });
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   // Scroll observer for subscription section
   React.useEffect(() => {
@@ -202,26 +237,114 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-        <Image
-                src="/sendwise-logo.png" 
-                alt="Sendwise" 
-                width={140} 
-                height={40}
-                className="h-10 w-auto"
-              />
+      {/* Liquid Glass Navigation */}
+      <nav className="fixed top-0 w-full z-50">
+        <div 
+          className="transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+          style={{
+            marginTop: headerScrolled ? '1rem' : '0',
+            marginLeft: headerScrolled ? '3rem' : '0',
+            marginRight: headerScrolled ? '3rem' : '0',
+          }}
+        >
+          <div 
+            className="relative overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+            style={{
+              borderRadius: headerScrolled ? '9999px' : '0',
+              boxShadow: headerScrolled 
+                ? '0 25px 50px -12px rgba(0, 102, 255, 0.25), 0 0 0 1px rgba(0, 102, 255, 0.1)' 
+                : 'none',
+              borderBottom: headerScrolled ? 'none' : '1px solid rgb(243 244 246)',
+              background: headerScrolled 
+                ? `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0, 102, 255, 0.15) 0%, rgba(255, 255, 255, 0.95) 50%)`
+                : `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0, 102, 255, 0.08) 0%, rgba(255, 255, 255, 0.8) 50%)`,
+            }}
+          >
+            {/* Animated particles background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute w-2 h-2 bg-blue-400/30 rounded-full animate-float" style={{ top: '20%', left: '10%' }}></div>
+              <div className="absolute w-1.5 h-1.5 bg-indigo-400/30 rounded-full animate-float-slow" style={{ top: '60%', left: '30%' }}></div>
+              <div className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-float-reverse" style={{ top: '40%', right: '20%' }}></div>
+              <div className="absolute w-1 h-1 bg-blue-500/40 rounded-full animate-float" style={{ top: '70%', right: '40%' }}></div>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium">Features</a>
-              <a href="#pricing" className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium">Prijzen</a>
-              <a href="#integraties" className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium">Integraties</a>
-              <button className="bg-[#0066ff] text-white px-6 py-2.5 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-lg hover:shadow-blue-500/50 font-medium">
-                Start Gratis
-              </button>
+
+            {/* Glassmorphic backdrop */}
+            <div 
+              className="absolute inset-0 transition-all duration-[400ms]"
+              style={{
+                backdropFilter: `blur(${headerScrolled ? '40px' : '32px'})`,
+              }}
+            ></div>
+
+            {/* Content */}
+            <div 
+              className="relative transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+              style={{
+                height: headerScrolled ? '3.5rem' : '4rem',
+                paddingLeft: headerScrolled ? '3rem' : '1.5rem',
+                paddingRight: headerScrolled ? '3rem' : '1.5rem',
+              }}
+            >
+              <div className="flex justify-between items-center h-full max-w-7xl mx-auto">
+                <div className="flex items-center group">
+                  <div className="relative">
+                    {/* Glow effect behind logo */}
+                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <Image
+                      src="/sendwise-logo.png" 
+                      alt="Sendwise" 
+                      width={140} 
+                      height={40}
+                      className="relative transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+                      style={{
+                        height: headerScrolled ? '2rem' : '2.5rem',
+                        width: 'auto',
+                      }}
+                    />
+                  </div>
+                </div>
+                
+                <div className="hidden md:flex items-center">
+                  <button 
+                    className="relative bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-6 py-2.5 rounded-full font-medium overflow-hidden group/btn transition-all duration-300 hover:scale-105"
+                    onMouseEnter={(e) => {
+                      const btn = e.currentTarget;
+                      const rect = btn.getBoundingClientRect();
+                      btn.style.transform = `scale(1.05) translateY(-2px)`;
+                    }}
+                    onMouseMove={(e) => {
+                      const btn = e.currentTarget;
+                      const rect = btn.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      btn.style.setProperty('--mouse-x', `${x}px`);
+                      btn.style.setProperty('--mouse-y', `${y}px`);
+                    }}
+                    onMouseLeave={(e) => {
+                      const btn = e.currentTarget;
+                      btn.style.transform = 'scale(1) translateY(0)';
+                    }}
+                  >
+                    {/* Magnetic glow effect */}
+                    <div 
+                      className="absolute w-32 h-32 bg-white/30 rounded-full blur-2xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        left: 'var(--mouse-x, 50%)',
+                        top: 'var(--mouse-y, 50%)',
+                        transform: 'translate(-50%, -50%)'
+                      }}
+                    ></div>
+                    
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                    
+                    <span className="relative flex items-center gap-2">
+                      Direct starten
+                      <ArrowRight className="group-hover/btn:translate-x-1 transition-transform" size={16} />
+                    </span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -244,7 +367,7 @@ export default function Home() {
             <div className="space-y-8 animate-fade-in-up">
               <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200/50 shadow-sm">
                 <Sparkles className="text-[#0066ff]" size={18} />
-                <span className="text-[#0066ff] text-sm font-semibold">Slimmer verzenden voor MKB</span>
+                <span className="text-[#0066ff] text-sm font-semibold">Slimmer verzenden voor webshops</span>
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
@@ -255,12 +378,15 @@ export default function Home() {
                 Voordelig verzenden zonder maandlasten
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-[#0066ff] text-white px-8 py-4 rounded-full hover:bg-[#0052cc] transition-all hover:shadow-xl hover:shadow-blue-500/50 flex items-center justify-center group font-semibold text-lg">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold">
                   Direct starten
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                 </button>
-                <button className="bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-full hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold text-lg backdrop-blur-sm">
+                <button 
+                  onClick={() => setShowContactModal(true)}
+                  className="bg-white/80 backdrop-blur-xl border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-full hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold shadow-lg"
+                >
                   Neem contact op
                 </button>
               </div>
@@ -1553,38 +1679,202 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-gradient-to-br from-[#0066ff] via-indigo-600 to-purple-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float-slow"></div>
+      <section className="py-32 relative overflow-hidden">
+        {/* Light gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-purple-50/70"></div>
+        
+        {/* Moving background blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-[#0066ff]/20 to-blue-400/20 rounded-full blur-3xl animate-float" style={{animationDuration: '25s'}}></div>
+          <div className="absolute top-1/3 right-10 w-80 h-80 bg-gradient-to-br from-purple-400/15 to-pink-400/15 rounded-full blur-3xl animate-float" style={{animationDuration: '30s', animationDelay: '2s'}}></div>
+          <div className="absolute bottom-20 left-1/4 w-72 h-72 bg-gradient-to-br from-indigo-400/20 to-cyan-400/15 rounded-full blur-3xl animate-float" style={{animationDuration: '28s', animationDelay: '4s'}}></div>
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-br from-pink-400/15 to-purple-500/15 rounded-full blur-3xl animate-float" style={{animationDuration: '22s', animationDelay: '1s'}}></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
-            <Target className="text-white" size={18} />
-            <span className="text-white text-sm font-semibold">Sluit je aan bij 500+ bedrijven</span>
+        {/* Backdrop blur overlay */}
+        <div className="absolute inset-0 backdrop-blur-[3px] pointer-events-none"></div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl px-6 py-3 rounded-full mb-8 border border-[#0066ff]/20 shadow-lg">
+            <Target className="text-[#0066ff]" size={18} />
+            <span className="text-gray-700 text-sm font-semibold">Altijd gratis • Geen abonnementskosten</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Klaar om <span className="text-blue-200">wise</span> te verzenden?
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
+            Klaar om <span className="text-gradient">wise</span> te verzenden?
           </h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Start vandaag nog gratis en ontdek waarom bedrijven overstappen naar Sendwise
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            Bespaar duizenden euro's per jaar met Sendwise
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-[#0066ff] px-10 py-5 rounded-full hover:bg-gray-100 transition-all shadow-2xl hover:shadow-white/50 flex items-center justify-center group font-bold text-lg">
-              Start 30 Dagen Gratis
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold">
+              Direct starten
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </button>
-            <button className="border-2 border-white text-white px-10 py-5 rounded-full hover:bg-white/10 transition-all font-bold text-lg backdrop-blur-sm">
-              Plan een Demo
+            <button 
+              onClick={() => setShowContactModal(true)}
+              className="bg-white/80 backdrop-blur-xl border-2 border-[#0066ff]/30 text-gray-700 px-8 py-3.5 rounded-full hover:border-[#0066ff] hover:bg-white transition-all font-semibold shadow-lg"
+            >
+              Neem contact op
             </button>
           </div>
 
-          <p className="mt-8 text-blue-200 text-sm">Geen creditcard nodig • Gratis support • Opzeggen wanneer je wilt</p>
+          <p className="mt-8 text-gray-500 text-sm">Geen verplichtingen • Persoonlijke ondersteuning • Direct aan de slag</p>
+
+          {/* Contact info */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a href="mailto:info@sendwise.nl" className="flex items-center gap-2 text-gray-700 hover:text-[#0066ff] transition-colors group">
+              <div className="w-10 h-10 bg-white/80 backdrop-blur-xl rounded-full flex items-center justify-center border border-[#0066ff]/20 group-hover:border-[#0066ff]/40 transition-all shadow-sm">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="font-medium">info@sendwise.nl</span>
+            </a>
+
+            <a href="tel:+31619156123" className="flex items-center gap-2 text-gray-700 hover:text-[#0066ff] transition-colors group">
+              <div className="w-10 h-10 bg-white/80 backdrop-blur-xl rounded-full flex items-center justify-center border border-[#0066ff]/20 group-hover:border-[#0066ff]/40 transition-all shadow-sm">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <span className="font-medium">+31 6 19156123</span>
+            </a>
+          </div>
         </div>
       </section>
+
+      {/* Contact Page */}
+      <div 
+        className={`fixed inset-0 z-[100] bg-gradient-to-br from-blue-50 via-white to-indigo-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          showContactModal ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        }`}
+      >
+        {/* Animated background blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-300/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-300/20 rounded-full blur-3xl animate-float-slow"></div>
+          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-cyan-300/20 rounded-full blur-3xl animate-float-reverse"></div>
+        </div>
+
+        {/* Close button - Fixed top left */}
+        <button
+          onClick={() => setShowContactModal(false)}
+          className="fixed top-8 left-8 w-14 h-14 bg-white/80 backdrop-blur-xl rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg z-10 group border border-gray-200/50"
+        >
+          <ArrowRight className="text-gray-600 group-hover:text-[#0066ff] rotate-180" size={24} />
+        </button>
+
+        {/* Content */}
+        <div className="relative h-full overflow-y-auto">
+          <div className="min-h-full flex items-center justify-center px-4 py-20">
+            <div className="max-w-5xl w-full">
+              {/* Header */}
+              <div className="text-center mb-16">
+                <div 
+                  className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-200/50 mb-8 shadow-sm"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
+                    opacity: 0
+                  }}
+                >
+                  <Sparkles className="text-[#0066ff]" size={20} />
+                  <span className="text-[#0066ff] text-sm font-semibold">Neem contact op</span>
+                </div>
+                <h1 
+                  className="text-6xl md:text-7xl font-bold mb-6"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards',
+                    opacity: 0
+                  }}
+                >
+                  Laten we <span className="text-gradient">samen</span> starten
+                </h1>
+                <p 
+                  className="text-xl text-gray-600 max-w-2xl mx-auto"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards',
+                    opacity: 0
+                  }}
+                >
+                  Heb je vragen of wil je direct aan de slag? Neem contact met ons op en ontdek hoe Sendwise jouw verzendproces transformeert.
+                </p>
+              </div>
+
+              {/* Contact Cards */}
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                {/* Email Card */}
+                <a 
+                  href="mailto:info@sendwise.nl"
+                  className="group relative bg-white/60 backdrop-blur-xl rounded-3xl p-10 hover:bg-white transition-all duration-300 border border-gray-200/50 hover:border-[#0066ff]/50 hover:shadow-2xl overflow-hidden"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards',
+                    opacity: 0
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl">
+                      <Mail className="text-white" size={32} />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-3">Email ons</h3>
+                    <p className="text-gray-600 mb-4">
+                      Stuur ons een email en we reageren binnen 24 uur
+                    </p>
+                    <p className="text-[#0066ff] font-semibold text-lg group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
+                      info@sendwise.nl
+                      <ArrowRight size={20} />
+                    </p>
+                  </div>
+                </a>
+
+                {/* Phone Card */}
+                <a 
+                  href="tel:+31619156123"
+                  className="group relative bg-white/60 backdrop-blur-xl rounded-3xl p-10 hover:bg-white transition-all duration-300 border border-gray-200/50 hover:border-[#0066ff]/50 hover:shadow-2xl overflow-hidden"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+                    opacity: 0
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl">
+                      <Phone className="text-white" size={32} />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-3">Bel ons</h3>
+                    <p className="text-gray-600 mb-4">
+                      Direct persoonlijk contact met ons team
+                    </p>
+                    <p className="text-[#0066ff] font-semibold text-lg group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
+                      +31 6 19156123
+                      <ArrowRight size={20} />
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              {/* CTA Section */}
+              <div 
+                className="text-center pt-12 border-t border-gray-200/50"
+                style={{
+                  animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards',
+                  opacity: 0
+                }}
+              >
+                <p className="text-lg text-gray-600 mb-6">
+                  Direct aan de slag zonder contact?
+                </p>
+                <button className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-10 py-4 rounded-full hover:shadow-2xl transition-all hover:scale-105 font-semibold inline-flex items-center gap-3 text-lg shadow-xl">
+                  Start nu gratis
+                  <ArrowRight size={22} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 py-16">
@@ -1599,37 +1889,19 @@ export default function Home() {
                 className="h-10 w-auto mb-6 brightness-0 invert"
               />
               <p className="text-gray-400 max-w-md leading-relaxed mb-6">
-                Het slimste verzendplatform voor MKB in Nederland. Bespaar tijd, geld en verhoog de klanttevredenheid.
+                Het slimste verzendplatform voor webshops in Nederland. Bespaar tijd, geld en verhoog de klanttevredenheid.
               </p>
-              <div className="flex gap-4">
-                {['LinkedIn', 'Twitter', 'Instagram'].map((social) => (
-                  <a key={social} href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0066ff] transition-colors">
-                    <span className="sr-only">{social}</span>
-                    <div className="w-5 h-5 bg-white rounded-full"></div>
-                  </a>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-white mb-4 text-lg">Product</h4>
-              <ul className="space-y-3">
-                {['Features', 'Prijzen', 'Integraties', 'API Docs'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-white transition-colors">{item}</a>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-white mb-4 text-lg">Bedrijf</h4>
+              <h4 className="font-semibold text-white mb-4 text-lg">Informatie</h4>
               <ul className="space-y-3">
-                {['Over ons', 'Careers', 'Contact', 'Support'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-white transition-colors">{item}</a>
-                  </li>
-                ))}
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">Orders API</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">Helpcenter</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -1639,9 +1911,8 @@ export default function Home() {
               © 2025 Sendwise. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Cookies</a>
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Algemene Voorwaarden</a>
             </div>
           </div>
         </div>
