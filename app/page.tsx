@@ -258,16 +258,15 @@ export default function Home() {
                        style={{ transitionDelay: isSubscriptionVisible ? '2s' : '0s' }}></div>
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-400">
-                        SC
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5">
+                        <Image src="/sendcloud-logo.png" alt="Sendcloud" width={48} height={48} className="w-full h-full object-contain" />
                       </div>
                       <div>
                         <div className="font-bold text-lg text-gray-700">Sendcloud</div>
-                        <div className="text-sm text-gray-500">Verzendplatform</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-gray-700">€3.600</div>
+                      <div className="text-xl font-bold text-gray-700">€312 - €7.668</div>
                       <div className="text-sm text-gray-500">per jaar</div>
                     </div>
                   </div>
@@ -281,16 +280,15 @@ export default function Home() {
                        style={{ transitionDelay: isSubscriptionVisible ? '2.5s' : '0s' }}></div>
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-400">
-                        MP
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5">
+                        <Image src="/myparcel-logo.png" alt="MyParcel" width={48} height={48} className="w-full h-full object-contain" />
                       </div>
                       <div>
                         <div className="font-bold text-lg text-gray-700">MyParcel</div>
-                        <div className="text-sm text-gray-500">Verzendplatform</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-gray-700">€4.800</div>
+                      <div className="text-xl font-bold text-gray-700">€0 - €1.500</div>
                       <div className="text-sm text-gray-500">per jaar</div>
                     </div>
                   </div>
@@ -304,16 +302,37 @@ export default function Home() {
                        style={{ transitionDelay: isSubscriptionVisible ? '3s' : '0s' }}></div>
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-400">
-                        IN
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5">
+                        <Image src="/innosend-logo.png" alt="Innosend" width={48} height={48} className="w-full h-full object-contain" />
                       </div>
                       <div>
                         <div className="font-bold text-lg text-gray-700">Innosend</div>
-                        <div className="text-sm text-gray-500">Verzendplatform</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-gray-700">€4.800</div>
+                      <div className="text-xl font-bold text-gray-700">€0 - €1.800</div>
+                      <div className="text-sm text-gray-500">per jaar</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sendy */}
+                <div className={`relative rounded-2xl p-6 shadow-lg border border-gray-200 overflow-hidden transition-all duration-1000 ${isSubscriptionVisible ? 'animate-fade-in-up' : 'opacity-0'}`} 
+                     style={{ animationDelay: isSubscriptionVisible ? '2s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
+                  <div className="absolute inset-0 bg-white"></div>
+                  <div className={`absolute inset-0 bg-red-600/90 transition-opacity duration-[3000ms] ${isSubscriptionVisible ? 'opacity-100' : 'opacity-0'}`}
+                       style={{ transitionDelay: isSubscriptionVisible ? '3.5s' : '0s' }}></div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5">
+                        <Image src="/sendy-logo.png" alt="Sendy" width={48} height={48} className="w-full h-full object-contain" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-gray-700">Sendy</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xl font-bold text-gray-700">€0 - €2.280</div>
                       <div className="text-sm text-gray-500">per jaar</div>
                     </div>
                   </div>
@@ -321,12 +340,12 @@ export default function Home() {
 
                 {/* Sendwise - Winner */}
                 <div className={`relative rounded-2xl p-6 shadow-2xl border-2 border-blue-200 overflow-hidden transition-all duration-1000 ${isSubscriptionVisible ? 'animate-slide-in-left' : 'opacity-0'}`} 
-                     style={{ animationDelay: isSubscriptionVisible ? '4s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
+                     style={{ animationDelay: isSubscriptionVisible ? '4.5s' : '0s', animationFillMode: 'forwards', animationDuration: '1s' }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50"></div>
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-[#0066ff]/10 rounded-lg flex items-center justify-center">
-                        <Sparkles className="text-[#0066ff]" size={24} />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1.5">
+                        <Image src="/sendwise-icon.png" alt="Sendwise" width={48} height={48} className="w-full h-full object-contain" />
                       </div>
                       <div>
                         <div className="font-bold text-lg text-gray-900">Sendwise</div>
