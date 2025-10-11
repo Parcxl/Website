@@ -302,11 +302,8 @@ export default function Home() {
                 paddingRight: headerScrolled ? '3rem' : '1.5rem',
               }}
             >
-              <div className="flex justify-between md:justify-between items-center h-full max-w-7xl mx-auto w-full">
-                {/* Empty div for spacing on mobile */}
-                <div className="md:hidden w-14"></div>
-                
-                <div className="flex items-center group md:flex-initial flex-1 md:flex-none justify-center md:justify-start">
+              <div className="flex justify-center md:justify-between items-center h-full max-w-7xl mx-auto w-full">
+                <div className="flex items-center group">
                   <div className="relative">
                     {/* Glow effect behind logo */}
                     <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -324,9 +321,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="flex items-center">
-                  {/* Button hidden on mobile, shown on desktop */}
-                  <div className="hidden md:flex items-center">
+                <div className="hidden md:flex items-center">
                   <button 
                     className="relative bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-6 py-2.5 rounded-full font-medium overflow-hidden group/btn transition-all duration-300 hover:scale-105"
                     onMouseEnter={(e) => {
@@ -365,7 +360,6 @@ export default function Home() {
                       <ArrowRight className="group-hover/btn:translate-x-1 transition-transform" size={16} />
                     </span>
                   </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -457,19 +451,6 @@ export default function Home() {
                       strokeDasharray="16"
                       strokeDashoffset="16"
                     />
-                    {/* Mobile line */}
-                    <path
-                      d="M 150 100 Q 120 90 120 70"
-                      stroke="url(#heroLineGradient)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                      filter="url(#heroLineGlow)"
-                      className="animate-draw-hero-line md:hidden"
-                      strokeDasharray="12"
-                      strokeDashoffset="12"
-                    />
                   </svg>
                   
                   {/* Floating Cloud */}
@@ -505,8 +486,8 @@ export default function Home() {
                   <div 
                     className="absolute animate-float-cloud md:hidden"
                     style={{ 
-                      left: '40px', 
-                      top: '60px',
+                      left: '60px', 
+                      top: '80px',
                       zIndex: 30
                     }}
                   >
