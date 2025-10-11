@@ -2132,7 +2132,7 @@ export default function Home() {
                       opacity: 0
                     }}
                   >
-                    Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op om je account te activeren.
+                    Maak direct je account aan. Wij nemen binnen 24 uur contact op om tarieven te bespreken en je account te activeren.
                   </p>
 
                   {/* USP Points */}
@@ -2146,10 +2146,6 @@ export default function Home() {
                     <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
                       <CheckCircle2 className="text-green-500" size={18} />
                       <span className="text-sm font-medium text-gray-700">Geen abonnementskosten</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
-                      <CheckCircle2 className="text-green-500" size={18} />
-                      <span className="text-sm font-medium text-gray-700">Direct verzenden</span>
                     </div>
                     <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
                       <CheckCircle2 className="text-green-500" size={18} />
@@ -2208,26 +2204,22 @@ export default function Home() {
                         opacity: 0
                       }}
                     >
-                      Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op om je account te activeren.
+                      Maak direct je account aan. Wij nemen binnen 24 uur contact op om tarieven te bespreken en je account te activeren.
                     </p>
 
                     {/* USP Points */}
                     <div 
-                      className="flex flex-col gap-4"
+                      className="flex flex-wrap gap-4"
                       style={{
                         animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards',
                         opacity: 0
                       }}
                     >
-                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 w-fit">
+                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
                         <CheckCircle2 className="text-green-500" size={18} />
                         <span className="text-sm font-medium text-gray-700">Geen abonnementskosten</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 w-fit">
-                        <CheckCircle2 className="text-green-500" size={18} />
-                        <span className="text-sm font-medium text-gray-700">Direct verzenden</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 w-fit">
+                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
                         <CheckCircle2 className="text-green-500" size={18} />
                         <span className="text-sm font-medium text-gray-700">Beste tarieven</span>
                       </div>
