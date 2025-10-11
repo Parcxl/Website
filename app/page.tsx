@@ -20,6 +20,20 @@ export default function Home() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [signupStep, setSignupStep] = useState(1);
   const [footerMousePosition, setFooterMousePosition] = useState({ x: 50, y: 50 });
+  
+  // Form state
+  const [formData, setFormData] = useState({
+    bedrijfsnaam: '',
+    kvk: '',
+    website: '',
+    voornaam: '',
+    achternaam: '',
+    email: '',
+    telefoon: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Header scroll effect with smooth transition
   React.useEffect(() => {
@@ -69,12 +83,75 @@ export default function Home() {
     return () => window.removeEventListener('mousemove', handleFooterMouseMove);
   }, []);
 
-  // Reset signup step when modal is opened
+  // Reset signup step and form when modal is opened/closed
   React.useEffect(() => {
     if (showSignupModal) {
       setSignupStep(1);
+      setSubmitSuccess(false);
+      setSubmitError(null);
+    } else {
+      // Reset form when closing
+      setFormData({
+        bedrijfsnaam: '',
+        kvk: '',
+        website: '',
+        voornaam: '',
+        achternaam: '',
+        email: '',
+        telefoon: ''
+      });
     }
   }, [showSignupModal]);
+
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('https://app.sendwise.nl/api/accountaanvragen/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer parcxl-accountaanvragen-2025'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitSuccess(true);
+        // Reset form
+        setFormData({
+          bedrijfsnaam: '',
+          kvk: '',
+          website: '',
+          voornaam: '',
+          achternaam: '',
+          email: '',
+          telefoon: ''
+        });
+      } else {
+        setSubmitError(result.error || 'Er is een fout opgetreden. Probeer het opnieuw.');
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      setSubmitError('Er is een fout opgetreden. Controleer je internetverbinding en probeer het opnieuw.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Scroll observer for subscription section
   React.useEffect(() => {
@@ -2264,12 +2341,38 @@ export default function Home() {
                   opacity: 0
                 }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Account aanmaken</h2>
-                <p className="text-gray-600 mb-8">
-                  Maak je account aan en binnen 24 uur bespreken we de tarieven en activeren wij je account.
-                </p>
+                {/* Success Message */}
+                {submitSuccess ? (
+                  <div className="text-center py-12">
+                    <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="text-white" size={48} />
+                    </div>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Account aangemaakt!</h2>
+                    <p className="text-xl text-gray-600 mb-8">
+                      Bedankt voor je aanmelding. We nemen binnen 24 uur contact met je op om je verzendtarieven te bespreken en je account te activeren.
+                    </p>
+                    <button
+                      onClick={() => setShowSignupModal(false)}
+                      className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 font-semibold"
+                    >
+                      Sluiten
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6">Account aanmaken</h2>
+                    <p className="text-gray-600 mb-8">
+                      Maak je account aan en binnen 24 uur bespreken we de tarieven en activeren wij je account.
+                    </p>
 
-                {/* Progress Steps */}
+                    {/* Error Message */}
+                    {submitError && (
+                      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+                        <p className="text-red-600 text-sm">{submitError}</p>
+                      </div>
+                    )}
+
+                    {/* Progress Steps */}
                 <div className="flex items-center justify-center mb-12">
                   <div className="flex items-center gap-4">
                     {/* Step 1 */}
@@ -2313,7 +2416,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Step 1: Bedrijfsgegevens */}
                   {signupStep === 1 && (
                     <div>
@@ -2324,6 +2427,9 @@ export default function Home() {
                           </label>
                           <input
                             type="text"
+                            name="bedrijfsnaam"
+                            value={formData.bedrijfsnaam}
+                            onChange={handleInputChange}
                             required
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                             placeholder="Jouw Bedrijf B.V."
@@ -2335,6 +2441,9 @@ export default function Home() {
                           </label>
                           <input
                             type="text"
+                            name="kvk"
+                            value={formData.kvk}
+                            onChange={handleInputChange}
                             required
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                             placeholder="12345678"
@@ -2342,10 +2451,14 @@ export default function Home() {
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Website
+                            Website *
                           </label>
                           <input
                             type="url"
+                            name="website"
+                            value={formData.website}
+                            onChange={handleInputChange}
+                            required
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                             placeholder="https://jouwwebshop.nl"
                           />
@@ -2377,6 +2490,9 @@ export default function Home() {
                             </label>
                             <input
                               type="text"
+                              name="voornaam"
+                              value={formData.voornaam}
+                              onChange={handleInputChange}
                               required
                               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                               placeholder="Jan"
@@ -2388,6 +2504,9 @@ export default function Home() {
                             </label>
                             <input
                               type="text"
+                              name="achternaam"
+                              value={formData.achternaam}
+                              onChange={handleInputChange}
                               required
                               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                               placeholder="Jansen"
@@ -2400,6 +2519,9 @@ export default function Home() {
                           </label>
                           <input
                             type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
                             required
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                             placeholder="jan@jouwbedrijf.nl"
@@ -2411,6 +2533,9 @@ export default function Home() {
                           </label>
                           <input
                             type="tel"
+                            name="telefoon"
+                            value={formData.telefoon}
+                            onChange={handleInputChange}
                             required
                             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
                             placeholder="+31 6 12345678"
@@ -2423,17 +2548,19 @@ export default function Home() {
                         <button
                           type="button"
                           onClick={() => setSignupStep(1)}
-                          className="flex-1 bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold inline-flex items-center justify-center gap-3 text-lg"
+                          disabled={isSubmitting}
+                          className="flex-1 bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold inline-flex items-center justify-center gap-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <ArrowRight size={22} className="rotate-180" />
                           Vorige
                         </button>
                         <button
                           type="submit"
-                          className="flex-1 bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all hover:scale-[1.02] font-semibold inline-flex items-center justify-center gap-3 text-lg shadow-xl"
+                          disabled={isSubmitting}
+                          className="flex-1 bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all hover:scale-[1.02] font-semibold inline-flex items-center justify-center gap-3 text-lg shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
-                          Account aanmaken
-                          <ArrowRight size={22} />
+                          {isSubmitting ? 'Bezig met aanmaken...' : 'Account aanmaken'}
+                          {!isSubmitting && <ArrowRight size={22} />}
                         </button>
                       </div>
                       <p className="text-sm text-gray-500 text-center mt-4">
@@ -2442,6 +2569,8 @@ export default function Home() {
                     </div>
                   )}
                 </form>
+                  </>
+                )}
               </div>
 
               {/* Footer Note */}
