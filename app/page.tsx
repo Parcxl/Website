@@ -2157,20 +2157,19 @@ export default function Home() {
 
                 {/* Hero Image with rounded corners and overlay */}
                 <div 
-                  className="relative max-w-3xl mx-auto mb-12"
+                  className="relative max-w-3xl md:max-w-5xl mx-auto mb-12"
                   style={{
                     animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
                     opacity: 0
                   }}
                 >
                   <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
-                  <div className="relative">
+                  <div className="relative aspect-video md:aspect-[21/9]">
                     <Image
                       src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
                       alt="Sendwise Platform"
-                      width={800}
-                      height={450}
-                      className="rounded-3xl shadow-2xl border-4 border-white/50"
+                      fill
+                      className="rounded-3xl shadow-2xl border-4 border-white/50 object-cover"
                     />
                   </div>
                 </div>
