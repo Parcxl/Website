@@ -314,7 +314,7 @@ export default function Home() {
                       height={40}
                       className="relative transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
                       style={{
-                        height: headerScrolled ? '2rem' : '2.5rem',
+                        height: headerScrolled ? '1.5rem' : '2rem',
                         width: 'auto',
                       }}
                     />
@@ -486,8 +486,8 @@ export default function Home() {
                   <div 
                     className="absolute animate-float-cloud md:hidden"
                     style={{ 
-                      left: '60px', 
-                      top: '80px',
+                      left: '200px', 
+                      top: '40px',
                       zIndex: 30
                     }}
                   >
