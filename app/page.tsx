@@ -17,6 +17,7 @@ export default function Home() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showContactModal, setShowContactModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   const [footerMousePosition, setFooterMousePosition] = useState({ x: 50, y: 50 });
 
   // Header scroll effect with smooth transition
@@ -407,6 +408,7 @@ export default function Home() {
                 
                 <div className="hidden md:flex items-center">
                   <button 
+                    onClick={() => setShowSignupModal(true)}
                     className="relative bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-6 py-2.5 rounded-full font-medium overflow-hidden group/btn transition-all duration-300 hover:scale-105"
                     onMouseEnter={(e) => {
                       const btn = e.currentTarget;
@@ -480,7 +482,10 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <button className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold">
+                <button 
+                  onClick={() => setShowSignupModal(true)}
+                  className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold"
+                >
                   Direct starten
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                 </button>
@@ -1901,7 +1906,10 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold">
+            <button 
+              onClick={() => setShowSignupModal(true)}
+              className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold"
+            >
               Direct starten
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </button>
@@ -2063,6 +2071,308 @@ export default function Home() {
                   Start nu gratis
                   <ArrowRight size={22} />
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Signup/Account Aanvraag Page */}
+      <div 
+        className={`fixed inset-0 z-[100] bg-gradient-to-br from-blue-50 via-white to-indigo-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          showSignupModal ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        }`}
+      >
+        {/* Animated background blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-300/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-300/20 rounded-full blur-3xl animate-float-slow"></div>
+          <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-cyan-300/20 rounded-full blur-3xl animate-float-reverse"></div>
+        </div>
+
+        {/* Close button - Fixed top left */}
+        <button
+          onClick={() => setShowSignupModal(false)}
+          className="fixed top-8 left-8 w-14 h-14 bg-white/80 backdrop-blur-xl rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg z-10 group border border-gray-200/50"
+        >
+          <ArrowRight className="text-gray-600 group-hover:text-[#0066ff] rotate-180" size={24} />
+        </button>
+
+        {/* Content */}
+        <div className="relative h-full overflow-y-auto">
+          <div className="min-h-full flex items-center justify-center px-4 py-20">
+            <div className="max-w-6xl w-full">
+              {/* Header */}
+              <div className="text-center mb-12">
+                <div 
+                  className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-200/50 mb-8 shadow-sm"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
+                    opacity: 0
+                  }}
+                >
+                  <Sparkles className="text-[#0066ff]" size={20} />
+                  <span className="text-[#0066ff] text-sm font-semibold">Direct starten</span>
+                </div>
+                <h1 
+                  className="text-5xl md:text-6xl font-bold mb-6"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards',
+                    opacity: 0
+                  }}
+                >
+                  Start vandaag nog <span className="text-gradient">gratis</span>
+                </h1>
+                <p 
+                  className="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards',
+                    opacity: 0
+                  }}
+                >
+                  Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op om je account te activeren.
+                </p>
+
+                {/* USP Points */}
+                <div 
+                  className="flex flex-wrap justify-center gap-4 mb-12"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards',
+                    opacity: 0
+                  }}
+                >
+                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
+                    <CheckCircle2 className="text-green-500" size={18} />
+                    <span className="text-sm font-medium text-gray-700">Geen abonnementskosten</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
+                    <CheckCircle2 className="text-green-500" size={18} />
+                    <span className="text-sm font-medium text-gray-700">Direct verzenden</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
+                    <CheckCircle2 className="text-green-500" size={18} />
+                    <span className="text-sm font-medium text-gray-700">Beste tarieven</span>
+                  </div>
+                </div>
+
+                {/* Hero Image with rounded corners and overlay */}
+                <div 
+                  className="relative max-w-3xl mx-auto mb-12"
+                  style={{
+                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+                    opacity: 0
+                  }}
+                >
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
+                  <div className="relative">
+                    <Image
+                      src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
+                      alt="Sendwise Platform"
+                      width={800}
+                      height={450}
+                      className="rounded-3xl shadow-2xl border-4 border-white/50"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Account Request Form */}
+              <div 
+                className="max-w-3xl mx-auto bg-white/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/50 shadow-xl"
+                style={{
+                  animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards',
+                  opacity: 0
+                }}
+              >
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Accountaanvraag</h2>
+                <p className="text-gray-600 mb-8">
+                  Vul je gegevens in en we regelen de rest. Je ontvangt binnen 24 uur je inloggegevens.
+                </p>
+
+                <form className="space-y-6">
+                  {/* Bedrijfsgegevens */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Bedrijfsgegevens</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Bedrijfsnaam *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="Jouw Bedrijf B.V."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          KvK-nummer *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="12345678"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          BTW-nummer
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="NL123456789B01"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Website
+                        </label>
+                        <input
+                          type="url"
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="https://jouwwebshop.nl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contactpersoon */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Contactpersoon</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Voornaam *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="Jan"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Achternaam *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="Jansen"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          E-mailadres *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="jan@jouwbedrijf.nl"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Telefoonnummer *
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                          placeholder="+31 6 12345678"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Verzendvolume */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Verzendvolume</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Aantal pakketten per maand *
+                        </label>
+                        <select
+                          required
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                        >
+                          <option value="">Selecteer...</option>
+                          <option value="0-50">0 - 50 pakketten</option>
+                          <option value="51-200">51 - 200 pakketten</option>
+                          <option value="201-500">201 - 500 pakketten</option>
+                          <option value="501-1000">501 - 1.000 pakketten</option>
+                          <option value="1000+">1.000+ pakketten</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Voorkeur vervoerder
+                        </label>
+                        <select
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                        >
+                          <option value="">Geen voorkeur</option>
+                          <option value="postnl">PostNL</option>
+                          <option value="dhl">DHL</option>
+                          <option value="cirro">CIRRO</option>
+                          <option value="connect">Sendwise Connect</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Opmerkingen */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Opmerkingen of vragen
+                    </label>
+                    <textarea
+                      rows={4}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80 resize-none"
+                      placeholder="Vertel ons wat meer over je verzendbehoeften..."
+                    ></textarea>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-6">
+                    <button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all hover:scale-[1.02] font-semibold inline-flex items-center justify-center gap-3 text-lg shadow-xl"
+                    >
+                      Verstuur aanvraag
+                      <ArrowRight size={22} />
+                    </button>
+                    <p className="text-sm text-gray-500 text-center mt-4">
+                      We nemen binnen 24 uur contact met je op
+                    </p>
+                  </div>
+                </form>
+              </div>
+
+              {/* Footer Note */}
+              <div 
+                className="text-center mt-12"
+                style={{
+                  animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards',
+                  opacity: 0
+                }}
+              >
+                <p className="text-gray-600">
+                  Vragen? Neem direct contact op via{' '}
+                  <a href="mailto:info@sendwise.nl" className="text-[#0066ff] hover:underline font-semibold">
+                    info@sendwise.nl
+                  </a>{' '}
+                  of{' '}
+                  <a href="tel:+31619156123" className="text-[#0066ff] hover:underline font-semibold">
+                    +31 6 19156123
+                  </a>
+                </p>
               </div>
             </div>
           </div>
