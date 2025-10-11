@@ -58,7 +58,7 @@ export default function Helpcenter() {
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
+            <Link href="https://www.sendwise.nl" className="flex items-center">
               <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
@@ -68,7 +68,7 @@ export default function Helpcenter() {
               />
             </Link>
             <Link 
-              href="/"
+              href="https://www.sendwise.nl"
               className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium"
             >
               Terug naar website
@@ -242,7 +242,7 @@ export default function Helpcenter() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Link href="/">
+            <Link href="https://www.sendwise.nl">
               <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
