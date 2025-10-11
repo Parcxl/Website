@@ -410,3 +410,38 @@ h1, h2, h3, h4, h5, h6 {
 .package-box-delay-5 { animation-delay: 8s; }
 .package-box-delay-6 { animation-delay: 10s; }
 
+/* Hero Line Animation */
+@keyframes draw-hero-line {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-hero-line {
+  animation: draw-hero-line 2s ease-out 1s forwards;
+}
+
+/* Floating Cloud Animation */
+@keyframes float-cloud {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-8px) translateX(4px);
+  }
+  50% {
+    transform: translateY(-12px) translateX(0px);
+  }
+  75% {
+    transform: translateY(-8px) translateX(-4px);
+  }
+}
+
+.animate-float-cloud {
+  animation: float-cloud 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+

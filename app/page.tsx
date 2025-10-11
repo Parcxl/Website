@@ -419,14 +419,76 @@ export default function Home() {
             <div className="relative animate-slide-in-right">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-3xl blur-2xl"></div>
               <div className="relative bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-2xl">
-            <Image
+                <Image
                   src="/hero-image.png" 
                   alt="Sendwise Dashboard" 
                   width={600} 
                   height={400}
                   className="rounded-2xl shadow-lg"
                 />
-        </div>
+                
+                {/* Animated line from center to floating cloud */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {/* SVG Line */}
+                  <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 20 }}>
+                    <defs>
+                      <linearGradient id="heroLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#0066ff" stopOpacity="0.8" />
+                        <stop offset="50%" stopColor="#3b82f6" stopOpacity="1" />
+                        <stop offset="100%" stopColor="#0066ff" stopOpacity="0.8" />
+                      </linearGradient>
+                      <filter id="heroLineGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge> 
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <path
+                      d="M 300 200 Q 380 140 520 110"
+                      stroke="url(#heroLineGradient)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      fill="none"
+                      filter="url(#heroLineGlow)"
+                      className="animate-draw-hero-line"
+                      strokeDasharray="20"
+                      strokeDashoffset="20"
+                    />
+                  </svg>
+                  
+                  {/* Floating Cloud */}
+                  <div 
+                    className="absolute animate-float-cloud"
+                    style={{ 
+                      right: '-140px', 
+                      top: '70px',
+                      zIndex: 30
+                    }}
+                  >
+                    <div className="relative">
+                      {/* Cloud Background */}
+                      <div className="bg-white/90 backdrop-blur-md rounded-2xl px-4 py-3 shadow-xl border border-white/50">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                          <span className="text-sm font-semibold text-gray-800">133 orders</span>
+                        </div>
+                        <div className="text-xs text-gray-600 mt-1">verzonden</div>
+                      </div>
+                      
+                      {/* Cloud Tail */}
+                      <div 
+                        className="absolute bg-white/90 backdrop-blur-md w-3 h-3 transform rotate-45 -bottom-1 left-6 border-r border-b border-white/50"
+                        style={{ 
+                          clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)'
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
