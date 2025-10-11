@@ -2342,20 +2342,65 @@ export default function Home() {
               >
                 {/* Success Message */}
                 {submitSuccess ? (
-                  <div className="text-center py-12">
-                    <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle2 className="text-white" size={48} />
+                  <div className="text-center py-12 relative overflow-hidden">
+                    {/* Confetti Animation */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      {[...Array(50)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="confetti"
+                          style={{
+                            left: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 3}s`,
+                            animationDuration: `${3 + Math.random() * 2}s`,
+                            backgroundColor: ['#0066ff', '#00ff88', '#ff6b6b', '#ffd93d', '#6bcf7f', '#a29bfe'][Math.floor(Math.random() * 6)]
+                          }}
+                        />
+                      ))}
                     </div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Account aangemaakt!</h2>
-                    <p className="text-xl text-gray-600 mb-8">
-                      Bedankt voor je aanmelding. We nemen binnen 24 uur contact met je op om je verzendtarieven te bespreken en je account te activeren.
-                    </p>
-                    <button
-                      onClick={() => setShowSignupModal(false)}
-                      className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 font-semibold"
-                    >
-                      Sluiten
-                    </button>
+
+                    <div className="relative z-10">
+                      <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce-in shadow-2xl">
+                        <CheckCircle2 className="text-white" size={56} />
+                      </div>
+                      
+                      <div className="mb-4">
+                        <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2">
+                          Welkom bij <span className="text-gradient">Sendwise</span>! 🎉
+                        </h2>
+                      </div>
+
+                      <div className="max-w-2xl mx-auto mb-8">
+                        <p className="text-2xl text-gray-700 mb-4">
+                          Hey <span className="font-semibold text-[#0066ff]">{formData.voornaam}</span>,
+                        </p>
+                        <p className="text-xl text-gray-600 leading-relaxed">
+                          Binnen 24 uur nemen we contact met je op om jouw persoonlijke verzendtarieven door te spreken. 
+                          Dan maken we het samen officieel en kun je direct aan de slag! 🚀
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button
+                          onClick={() => setShowSignupModal(false)}
+                          className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-10 py-4 rounded-full hover:shadow-2xl transition-all shadow-xl hover:scale-105 font-semibold text-lg"
+                        >
+                          Naar website
+                        </button>
+                        <a
+                          href="https://helpcenter.sendwise.nl"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-white border-2 border-[#0066ff] text-[#0066ff] px-10 py-4 rounded-full hover:bg-[#0066ff] hover:text-white transition-all shadow-lg hover:scale-105 font-semibold text-lg"
+                        >
+                          Bekijk Helpcenter
+                        </a>
+                      </div>
+
+                      <p className="text-sm text-gray-500 mt-8">
+                        Je ontvangt een bevestiging op <span className="font-medium">{formData.email}</span>
+                      </p>
+                    </div>
                   </div>
                 ) : (
                   <>
