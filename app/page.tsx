@@ -170,10 +170,25 @@ export default function Home() {
 
   // 3D Perspective Scroll Effect for Software Screenshot
   React.useEffect(() => {
-    const screenshot = document.querySelector('.software-screenshot');
+    const screenshot = document.querySelector('.software-screenshot') as HTMLElement;
     if (!screenshot) return;
 
+    // Optimize element for hardware acceleration
+    screenshot.style.willChange = 'transform';
+    screenshot.style.backfaceVisibility = 'hidden';
+    screenshot.style.perspective = '1000px';
+    screenshot.style.transformStyle = 'preserve-3d';
+
+    let rafId: number | null = null;
+    let lastScrollTime = 0;
+    
     const handleScroll = () => {
+      const now = performance.now();
+      
+      // Throttle to 60fps max (16.67ms between frames)
+      if (now - lastScrollTime < 16.67) return;
+      lastScrollTime = now;
+      
       const rect = screenshot.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const elementCenter = rect.top + rect.height / 2;
@@ -185,92 +200,106 @@ export default function Home() {
       // Clamp between -1 and 1
       const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
       
-      // Calculate perspective transforms - original values
-      const rotateX = clampedProgress * 25; // Rotate up to 25deg
-      const rotateY = clampedProgress * 15; // Rotate up to 15deg
-      const translateY = clampedProgress * -30; // Move up/down
-      const scale = 1 - Math.abs(clampedProgress) * 0.1; // Scale down when off-center
+      // Calculate perspective transforms
+      const rotateX = clampedProgress * 25;
+      const rotateY = clampedProgress * 15;
+      const translateY = clampedProgress * -30;
+      const scale = 1 - Math.abs(clampedProgress) * 0.1;
       
-      // Apply transform - no transition for smooth real-time animation
-      (screenshot as HTMLElement).style.transition = 'none';
-      (screenshot as HTMLElement).style.transform = 
-        `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${translateY}px) scale(${scale})`;
-    };
-
-    // Use requestAnimationFrame for smoother mobile performance with higher frame rate
-    let ticking = false;
-    const smoothScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
+      // Cancel previous animation frame
+      if (rafId) {
+        cancelAnimationFrame(rafId);
       }
+      
+      // Apply transform in next frame for maximum smoothness
+      rafId = requestAnimationFrame(() => {
+        screenshot.style.transition = 'none';
+        screenshot.style.transform = 
+          `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+        rafId = null;
+      });
     };
 
-    // Throttle scroll events more aggressively on mobile for smoother performance
-    const isMobile = window.innerWidth < 768;
-    const scrollHandler = isMobile ? smoothScroll : handleScroll;
-    
-    window.addEventListener('scroll', scrollHandler, { passive: true });
+    // Use passive scroll listener with optimized throttling
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', scrollHandler);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   // 3D Perspective Scroll Effect for USP Cards
   React.useEffect(() => {
+    const cards = document.querySelectorAll('.usp-card') as NodeListOf<HTMLElement>;
+    if (!cards.length) return;
+
+    // Optimize all cards for hardware acceleration
+    cards.forEach(card => {
+      card.style.willChange = 'transform';
+      card.style.backfaceVisibility = 'hidden';
+      card.style.perspective = '1000px';
+      card.style.transformStyle = 'preserve-3d';
+    });
+
+    let rafId: number | null = null;
+    let lastScrollTime = 0;
+    
     const handleScroll = () => {
-      const cards = document.querySelectorAll('.usp-card');
-      if (!cards.length) return;
+      const now = performance.now();
+      
+      // Throttle to 60fps max (16.67ms between frames)
+      if (now - lastScrollTime < 16.67) return;
+      lastScrollTime = now;
 
       const windowHeight = window.innerHeight;
       const screenCenter = windowHeight / 2;
 
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        const elementCenter = rect.top + rect.height / 2;
-        
-        // Calculate scroll progress (-1 to 1, where 0 is center of screen)
-        const scrollProgress = (elementCenter - screenCenter) / (windowHeight / 2);
-        
-        // Clamp between -1 and 1
-        const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
-        
-        // Calculate perspective transforms - original values
-        const rotateX = clampedProgress * 25; // Rotate up to 25deg
-        const rotateY = (index - 1) * 10 + clampedProgress * 15; // Different angle per card
-        const translateY = clampedProgress * -30; // Move up/down
-        const scale = 1 - Math.abs(clampedProgress) * 0.08; // Scale effect
-        
-        // Apply transform with perspective - no transition for smooth real-time animation
-        (card as HTMLElement).style.transition = 'box-shadow 0.5s, border-color 0.5s';
-        (card as HTMLElement).style.transform = 
-          `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${translateY}px) scale(${scale})`;
+      // Cancel previous animation frame
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+
+      // Apply transforms in next frame for maximum smoothness
+      rafId = requestAnimationFrame(() => {
+        cards.forEach((card, index) => {
+          const rect = card.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height / 2;
+          
+          // Calculate scroll progress (-1 to 1, where 0 is center of screen)
+          const scrollProgress = (elementCenter - screenCenter) / (windowHeight / 2);
+          
+          // Clamp between -1 and 1
+          const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
+          
+          // Calculate perspective transforms
+          const rotateX = clampedProgress * 25;
+          const rotateY = (index - 1) * 10 + clampedProgress * 15;
+          const translateY = clampedProgress * -30;
+          const scale = 1 - Math.abs(clampedProgress) * 0.08;
+          
+          // Apply transform with hardware acceleration
+          card.style.transition = 'box-shadow 0.5s, border-color 0.5s';
+          card.style.transform = 
+            `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+        });
+        rafId = null;
       });
     };
 
-    // Use requestAnimationFrame for smooth 60fps updates with mobile optimization
-    let ticking = false;
-    const smoothScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    // Throttle scroll events more aggressively on mobile for smoother performance
-    const isMobile = window.innerWidth < 768;
-    const finalScrollHandler = isMobile ? smoothScroll : handleScroll;
-    
-    window.addEventListener('scroll', finalScrollHandler, { passive: true });
+    // Use passive scroll listener with optimized throttling
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', finalScrollHandler);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (
