@@ -119,11 +119,10 @@ export default function Home() {
     setSubmitError(null);
 
     try {
-      const response = await fetch('https://app.sendwise.nl/api/accountaanvragen/create', {
+      const response = await fetch('/api/accountaanvraag', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer parcxl-accountaanvragen-2025'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
