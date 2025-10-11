@@ -413,7 +413,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Line Animation */
 @keyframes draw-hero-line {
   0% {
-    stroke-dashoffset: 20;
+    stroke-dashoffset: 16;
   }
   100% {
     stroke-dashoffset: 0;
@@ -424,19 +424,33 @@ h1, h2, h3, h4, h5, h6 {
   animation: draw-hero-line 2s ease-out 1s forwards;
 }
 
+.animate-draw-hero-line-2 {
+  animation: draw-hero-line 2s ease-out 3s forwards;
+}
+
+@keyframes fade-in-delay {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 0.8s ease-out 4.5s forwards;
+  opacity: 0;
+}
+
 /* Floating Cloud Animation */
 @keyframes float-cloud {
   0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-8px) translateX(4px);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px) translateX(0px);
-  }
-  75% {
-    transform: translateY(-8px) translateX(-4px);
+    transform: translateY(-12px);
   }
 }
 

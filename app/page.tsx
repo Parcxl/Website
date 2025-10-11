@@ -398,7 +398,7 @@ export default function Home() {
               </h1>
               
               <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
-                Voordelig verzenden zonder maandlasten
+                Voordelig verzenden zonder maandlasten en kleine lettertjes
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -419,7 +419,7 @@ export default function Home() {
             <div className="relative animate-slide-in-right">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-3xl blur-2xl"></div>
               <div className="relative bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-2xl">
-                <Image
+            <Image
                   src="/hero-image.png" 
                   alt="Sendwise Dashboard" 
                   width={600} 
@@ -446,7 +446,7 @@ export default function Home() {
                       </filter>
                     </defs>
                     <path
-                      d="M 300 200 Q 220 160 120 140"
+                      d="M 300 200 Q 220 160 140 140"
                       stroke="url(#heroLineGradient)"
                       strokeWidth="3"
                       strokeLinecap="round"
@@ -454,8 +454,8 @@ export default function Home() {
                       fill="none"
                       filter="url(#heroLineGlow)"
                       className="animate-draw-hero-line"
-                      strokeDasharray="20"
-                      strokeDashoffset="20"
+                      strokeDasharray="16"
+                      strokeDashoffset="16"
                     />
                   </svg>
                   
@@ -463,7 +463,7 @@ export default function Home() {
                   <div 
                     className="absolute animate-float-cloud"
                     style={{ 
-                      left: '-140px', 
+                      left: '70px', 
                       top: '110px',
                       zIndex: 30
                     }}
@@ -474,7 +474,7 @@ export default function Home() {
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                           <span className="text-sm font-semibold text-gray-800">133 orders</span>
-                        </div>
+        </div>
                         <div className="text-xs text-gray-600 mt-1">verzonden</div>
                       </div>
                       
@@ -487,6 +487,7 @@ export default function Home() {
                       ></div>
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>
