@@ -2164,7 +2164,7 @@ export default function Home() {
                   }}
                 >
                   <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
-                  <div className="relative aspect-video md:aspect-[21/9]">
+                  <div className="relative aspect-video md:aspect-[21/10.35]">
                     <Image
                       src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
                       alt="Sendwise Platform"
