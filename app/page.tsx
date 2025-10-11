@@ -2133,8 +2133,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex gap-6 text-sm">
-                <a href="#" className="text-gray-300 hover:text-[#0066ff] transition-colors">Privacy Policy</a>
-                <a href="#" className="text-gray-300 hover:text-[#0066ff] transition-colors">Algemene Voorwaarden</a>
+                <Link href="/privacy" className="text-gray-300 hover:text-[#0066ff] transition-colors">Privacy Policy</Link>
+                <Link href="/algemene-voorwaarden" className="text-gray-300 hover:text-[#0066ff] transition-colors">Algemene Voorwaarden</Link>
               </div>
             </div>
           </div>
