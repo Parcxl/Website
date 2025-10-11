@@ -2101,76 +2101,157 @@ export default function Home() {
         {/* Content */}
         <div className="relative h-full overflow-y-auto">
           <div className="min-h-full flex items-center justify-center px-4 py-20">
-            <div className="max-w-6xl w-full">
-              {/* Header */}
-              <div className="text-center mb-12">
-                <div 
-                  className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-200/50 mb-8 shadow-sm"
-                  style={{
-                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
-                    opacity: 0
-                  }}
-                >
-                  <Sparkles className="text-[#0066ff]" size={20} />
-                  <span className="text-[#0066ff] text-sm font-semibold">Direct starten</span>
-                </div>
-                <h1 
-                  className="text-5xl md:text-6xl font-bold mb-6"
-                  style={{
-                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards',
-                    opacity: 0
-                  }}
-                >
-                  Start vandaag nog <span className="text-gradient">gratis</span>
-                </h1>
-                <p 
-                  className="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
-                  style={{
-                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards',
-                    opacity: 0
-                  }}
-                >
-                  Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op om je account te activeren.
-                </p>
+            <div className="max-w-7xl w-full">
+              {/* Header - Two Column Layout on Desktop */}
+              <div className="mb-12">
+                {/* Mobile: Stacked Layout */}
+                <div className="md:hidden text-center mb-12">
+                  <div 
+                    className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-200/50 mb-8 shadow-sm"
+                    style={{
+                      animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
+                      opacity: 0
+                    }}
+                  >
+                    <Sparkles className="text-[#0066ff]" size={20} />
+                    <span className="text-[#0066ff] text-sm font-semibold">Direct starten</span>
+                  </div>
+                  <h1 
+                    className="text-5xl font-bold mb-6"
+                    style={{
+                      animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards',
+                      opacity: 0
+                    }}
+                  >
+                    Start vandaag nog <span className="text-gradient">gratis</span>
+                  </h1>
+                  <p 
+                    className="text-xl text-gray-600 mb-8"
+                    style={{
+                      animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards',
+                      opacity: 0
+                    }}
+                  >
+                    Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op om je account te activeren.
+                  </p>
 
-                {/* USP Points */}
-                <div 
-                  className="flex flex-wrap justify-center gap-4 mb-12"
-                  style={{
-                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards',
-                    opacity: 0
-                  }}
-                >
-                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
-                    <CheckCircle2 className="text-green-500" size={18} />
-                    <span className="text-sm font-medium text-gray-700">Geen abonnementskosten</span>
+                  {/* USP Points */}
+                  <div 
+                    className="flex flex-wrap justify-center gap-4 mb-8"
+                    style={{
+                      animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards',
+                      opacity: 0
+                    }}
+                  >
+                    <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
+                      <CheckCircle2 className="text-green-500" size={18} />
+                      <span className="text-sm font-medium text-gray-700">Geen abonnementskosten</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
+                      <CheckCircle2 className="text-green-500" size={18} />
+                      <span className="text-sm font-medium text-gray-700">Direct verzenden</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
+                      <CheckCircle2 className="text-green-500" size={18} />
+                      <span className="text-sm font-medium text-gray-700">Beste tarieven</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
-                    <CheckCircle2 className="text-green-500" size={18} />
-                    <span className="text-sm font-medium text-gray-700">Direct verzenden</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50">
-                    <CheckCircle2 className="text-green-500" size={18} />
-                    <span className="text-sm font-medium text-gray-700">Beste tarieven</span>
+
+                  {/* Hero Image */}
+                  <div 
+                    className="relative"
+                    style={{
+                      animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+                      opacity: 0
+                    }}
+                  >
+                    <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
+                    <div className="relative">
+                      <Image
+                        src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
+                        alt="Sendwise Platform"
+                        width={800}
+                        height={450}
+                        className="rounded-3xl shadow-2xl border-4 border-white/50"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                {/* Hero Image with rounded corners and overlay */}
-                <div 
-                  className="relative max-w-3xl md:max-w-5xl mx-auto mb-12"
-                  style={{
-                    animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
-                    opacity: 0
-                  }}
-                >
-                  <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
-                  <div className="relative aspect-video md:aspect-[21/10.35]">
-                    <Image
-                      src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
-                      alt="Sendwise Platform"
-                      fill
-                      className="rounded-3xl shadow-2xl border-4 border-white/50 object-cover"
-                    />
+                {/* Desktop: Two Column Layout */}
+                <div className="hidden md:grid md:grid-cols-2 gap-12 items-center">
+                  {/* Left Column: Text Content */}
+                  <div>
+                    <div 
+                      className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-200/50 mb-8 shadow-sm"
+                      style={{
+                        animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
+                        opacity: 0
+                      }}
+                    >
+                      <Sparkles className="text-[#0066ff]" size={20} />
+                      <span className="text-[#0066ff] text-sm font-semibold">Direct starten</span>
+                    </div>
+                    <h1 
+                      className="text-5xl lg:text-6xl font-bold mb-6"
+                      style={{
+                        animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards',
+                        opacity: 0
+                      }}
+                    >
+                      Start vandaag nog <span className="text-gradient">gratis</span>
+                    </h1>
+                    <p 
+                      className="text-xl text-gray-600 mb-8"
+                      style={{
+                        animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards',
+                        opacity: 0
+                      }}
+                    >
+                      Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op om je account te activeren.
+                    </p>
+
+                    {/* USP Points */}
+                    <div 
+                      className="flex flex-col gap-4"
+                      style={{
+                        animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards',
+                        opacity: 0
+                      }}
+                    >
+                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 w-fit">
+                        <CheckCircle2 className="text-green-500" size={18} />
+                        <span className="text-sm font-medium text-gray-700">Geen abonnementskosten</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 w-fit">
+                        <CheckCircle2 className="text-green-500" size={18} />
+                        <span className="text-sm font-medium text-gray-700">Direct verzenden</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 w-fit">
+                        <CheckCircle2 className="text-green-500" size={18} />
+                        <span className="text-sm font-medium text-gray-700">Beste tarieven</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Hero Image */}
+                  <div 
+                    className="relative"
+                    style={{
+                      animation: 'slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+                      opacity: 0
+                    }}
+                  >
+                    <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
+                    <div className="relative">
+                      <Image
+                        src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
+                        alt="Sendwise Platform"
+                        width={800}
+                        height={450}
+                        className="rounded-3xl shadow-2xl border-4 border-white/50 w-full h-auto"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
