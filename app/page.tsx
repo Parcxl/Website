@@ -453,15 +453,28 @@ export default function Home() {
                       strokeLinejoin="round"
                       fill="none"
                       filter="url(#heroLineGlow)"
-                      className="animate-draw-hero-line"
+                      className="animate-draw-hero-line hidden md:block"
                       strokeDasharray="16"
                       strokeDashoffset="16"
+                    />
+                    {/* Mobile line */}
+                    <path
+                      d="M 150 100 Q 100 80 60 70"
+                      stroke="url(#heroLineGradient)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      fill="none"
+                      filter="url(#heroLineGlow)"
+                      className="animate-draw-hero-line md:hidden"
+                      strokeDasharray="12"
+                      strokeDashoffset="12"
                     />
                   </svg>
                   
                   {/* Floating Cloud */}
                   <div 
-                    className="absolute animate-float-cloud"
+                    className="absolute animate-float-cloud hidden md:block"
                     style={{ 
                       left: '70px', 
                       top: '110px',
@@ -481,6 +494,35 @@ export default function Home() {
                       {/* Cloud Tail */}
                       <div 
                         className="absolute bg-white/90 backdrop-blur-md w-3 h-3 transform rotate-45 -bottom-1 right-6 border-l border-b border-white/50"
+                        style={{ 
+                          clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)'
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  
+                  {/* Mobile Floating Cloud */}
+                  <div 
+                    className="absolute animate-float-cloud md:hidden"
+                    style={{ 
+                      left: '40px', 
+                      top: '60px',
+                      zIndex: 30
+                    }}
+                  >
+                    <div className="relative">
+                      {/* Cloud Background */}
+                      <div className="bg-white/90 backdrop-blur-md rounded-2xl px-3 py-2 shadow-xl border border-white/50">
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                          <span className="text-xs font-semibold text-gray-800">133 orders</span>
+                        </div>
+                        <div className="text-[10px] text-gray-600 mt-0.5">verzonden</div>
+                      </div>
+                      
+                      {/* Cloud Tail */}
+                      <div 
+                        className="absolute bg-white/90 backdrop-blur-md w-2 h-2 transform rotate-45 -bottom-0.5 right-4 border-l border-b border-white/50"
                         style={{ 
                           clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)'
                         }}
