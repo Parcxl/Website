@@ -185,21 +185,36 @@ export default function Home() {
       // Clamp between -1 and 1
       const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
       
-      // Calculate perspective transforms
-      const rotateX = clampedProgress * 25; // Rotate up to 25deg
-      const rotateY = clampedProgress * 15; // Rotate up to 15deg
-      const translateY = clampedProgress * -30; // Move up/down
-      const scale = 1 - Math.abs(clampedProgress) * 0.1; // Scale down when off-center
+      // Calculate perspective transforms - smoother on mobile
+      const isMobile = window.innerWidth < 768;
+      const rotateX = clampedProgress * (isMobile ? 10 : 25); // Less rotation on mobile
+      const rotateY = clampedProgress * (isMobile ? 5 : 15); // Less rotation on mobile
+      const translateY = clampedProgress * (isMobile ? -10 : -30); // Less movement on mobile
+      const scale = 1 - Math.abs(clampedProgress) * (isMobile ? 0.03 : 0.1); // Less scale change on mobile
       
-      // Apply transform
+      // Apply transform with smoother transition on mobile
+      const transition = isMobile ? 'transform 0.3s ease-out' : 'none';
+      (screenshot as HTMLElement).style.transition = transition;
       (screenshot as HTMLElement).style.transform = 
         `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${translateY}px) scale(${scale})`;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Use requestAnimationFrame for smoother mobile performance
+    let ticking = false;
+    const smoothScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', smoothScroll, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', smoothScroll);
   }, []);
 
   // 3D Perspective Scroll Effect for USP Cards
@@ -210,6 +225,7 @@ export default function Home() {
 
       const windowHeight = window.innerHeight;
       const screenCenter = windowHeight / 2;
+      const isMobile = window.innerWidth < 768;
 
       cards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
@@ -221,16 +237,17 @@ export default function Home() {
         // Clamp between -1 and 1
         const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
         
-        // Calculate perspective transforms
-        const rotateX = clampedProgress * 25; // Rotate up to 25deg
-        const rotateY = (index - 1) * 10 + clampedProgress * 15; // Different angle per card
-        const translateY = clampedProgress * -30; // Move up/down
-        const scale = 1 - Math.abs(clampedProgress) * 0.08; // Scale effect
+        // Calculate perspective transforms - smoother on mobile
+        const rotateX = clampedProgress * (isMobile ? 10 : 25); // Less rotation on mobile
+        const rotateY = (index - 1) * (isMobile ? 5 : 10) + clampedProgress * (isMobile ? 5 : 15); // Less rotation on mobile
+        const translateY = clampedProgress * (isMobile ? -10 : -30); // Less movement on mobile
+        const scale = 1 - Math.abs(clampedProgress) * (isMobile ? 0.03 : 0.08); // Less scale change on mobile
         
-        // Apply transform with perspective - NO transition class interference
+        // Apply transform with smoother transition on mobile
+        const transition = isMobile ? 'transform 0.3s ease-out, box-shadow 0.5s, border-color 0.5s' : 'box-shadow 0.5s, border-color 0.5s';
+        (card as HTMLElement).style.transition = transition;
         (card as HTMLElement).style.transform = 
           `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${translateY}px) scale(${scale})`;
-        (card as HTMLElement).style.transition = 'box-shadow 0.5s, border-color 0.5s';
       });
     };
 
