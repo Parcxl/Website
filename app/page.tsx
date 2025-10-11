@@ -446,7 +446,7 @@ export default function Home() {
                       </filter>
                     </defs>
                     <path
-                      d="M 300 200 Q 380 140 520 110"
+                      d="M 300 200 Q 220 160 120 140"
                       stroke="url(#heroLineGradient)"
                       strokeWidth="3"
                       strokeLinecap="round"
@@ -463,8 +463,8 @@ export default function Home() {
                   <div 
                     className="absolute animate-float-cloud"
                     style={{ 
-                      right: '-140px', 
-                      top: '70px',
+                      left: '-140px', 
+                      top: '110px',
                       zIndex: 30
                     }}
                   >
@@ -480,9 +480,9 @@ export default function Home() {
                       
                       {/* Cloud Tail */}
                       <div 
-                        className="absolute bg-white/90 backdrop-blur-md w-3 h-3 transform rotate-45 -bottom-1 left-6 border-r border-b border-white/50"
+                        className="absolute bg-white/90 backdrop-blur-md w-3 h-3 transform rotate-45 -bottom-1 right-6 border-l border-b border-white/50"
                         style={{ 
-                          clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)'
+                          clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)'
                         }}
                       ></div>
                     </div>
