@@ -2122,9 +2122,16 @@ export default function Home() {
             </div>
 
             <div className="border-t border-gray-700/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                © 2025 Sendwise. All rights reserved.
-              </p>
+              <div className="flex flex-col md:flex-row items-center gap-4">
+                <p className="text-gray-400 text-sm">
+                  © 2025 Sendwise. All rights reserved.
+                </p>
+                <div className="hidden md:block w-px h-4 bg-gray-600"></div>
+                <div className="text-gray-400 text-sm">
+                  <p>KVK: 98390376</p>
+                  <p>Ondernemingsweg 66, 2404HN Alphen aan den Rijn</p>
+                </div>
+              </div>
               <div className="flex gap-6 text-sm">
                 <a href="#" className="text-gray-300 hover:text-[#0066ff] transition-colors">Privacy Policy</a>
                 <a href="#" className="text-gray-300 hover:text-[#0066ff] transition-colors">Algemene Voorwaarden</a>
