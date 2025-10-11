@@ -18,6 +18,7 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showContactModal, setShowContactModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [signupStep, setSignupStep] = useState(1);
   const [footerMousePosition, setFooterMousePosition] = useState({ x: 50, y: 50 });
 
   // Header scroll effect with smooth transition
@@ -67,6 +68,13 @@ export default function Home() {
     window.addEventListener('mousemove', handleFooterMouseMove);
     return () => window.removeEventListener('mousemove', handleFooterMouseMove);
   }, []);
+
+  // Reset signup step when modal is opened
+  React.useEffect(() => {
+    if (showSignupModal) {
+      setSignupStep(1);
+    }
+  }, [showSignupModal]);
 
   // Scroll observer for subscription section
   React.useEffect(() => {
@@ -2132,7 +2140,7 @@ export default function Home() {
                       opacity: 0
                     }}
                   >
-                    Maak direct je account aan. Wij nemen binnen 24 uur contact op om tarieven te bespreken en je account te activeren.
+                    Maak direct je account aan. Wij nemen binnen 24 uur contact op om je verzendtarieven te bespreken.
                   </p>
 
                   {/* USP Points */}
@@ -2204,7 +2212,7 @@ export default function Home() {
                         opacity: 0
                       }}
                     >
-                      Maak direct je account aan. Wij nemen binnen 24 uur contact op om tarieven te bespreken en je account te activeren.
+                      Maak direct je account aan. Wij nemen binnen 24 uur contact op om je verzendtarieven te bespreken.
                     </p>
 
                     {/* USP Points */}
@@ -2256,174 +2264,183 @@ export default function Home() {
                   opacity: 0
                 }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Accountaanvraag</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Account aanmaken</h2>
                 <p className="text-gray-600 mb-8">
-                  Vul je gegevens in en we regelen de rest. Je ontvangt binnen 24 uur je inloggegevens.
+                  Maak je account aan en binnen 24 uur bespreken we de tarieven en activeren wij je account.
                 </p>
 
+                {/* Progress Steps */}
+                <div className="flex items-center justify-center mb-12">
+                  <div className="flex items-center gap-4">
+                    {/* Step 1 */}
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                        signupStep === 1 
+                          ? 'bg-gradient-to-r from-[#0066ff] to-blue-600 text-white shadow-lg' 
+                          : signupStep > 1
+                          ? 'bg-green-500 text-white'
+                          : 'bg-gray-200 text-gray-500'
+                      }`}>
+                        {signupStep > 1 ? <CheckCircle2 size={20} /> : '1'}
+                      </div>
+                      <span className={`font-medium hidden sm:block ${
+                        signupStep === 1 ? 'text-[#0066ff]' : signupStep > 1 ? 'text-green-500' : 'text-gray-500'
+                      }`}>
+                        Bedrijfsgegevens
+                      </span>
+                    </div>
+
+                    {/* Divider */}
+                    <div className={`w-12 sm:w-20 h-0.5 ${
+                      signupStep > 1 ? 'bg-green-500' : 'bg-gray-200'
+                    }`}></div>
+
+                    {/* Step 2 */}
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                        signupStep === 2 
+                          ? 'bg-gradient-to-r from-[#0066ff] to-blue-600 text-white shadow-lg' 
+                          : 'bg-gray-200 text-gray-500'
+                      }`}>
+                        2
+                      </div>
+                      <span className={`font-medium hidden sm:block ${
+                        signupStep === 2 ? 'text-[#0066ff]' : 'text-gray-500'
+                      }`}>
+                        Contactpersoon
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
                 <form className="space-y-6">
-                  {/* Bedrijfsgegevens */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Bedrijfsgegevens</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Bedrijfsnaam *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="Jouw Bedrijf B.V."
-                        />
+                  {/* Step 1: Bedrijfsgegevens */}
+                  {signupStep === 1 && (
+                    <div>
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Bedrijfsnaam *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                            placeholder="Jouw Bedrijf B.V."
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            KvK-nummer *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                            placeholder="12345678"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Website
+                          </label>
+                          <input
+                            type="url"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                            placeholder="https://jouwwebshop.nl"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          KvK-nummer *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="12345678"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          BTW-nummer
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="NL123456789B01"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Website
-                        </label>
-                        <input
-                          type="url"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="https://jouwwebshop.nl"
-                        />
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Contactpersoon */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Contactpersoon</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Voornaam *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="Jan"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Achternaam *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="Jansen"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          E-mailadres *
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="jan@jouwbedrijf.nl"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Telefoonnummer *
-                        </label>
-                        <input
-                          type="tel"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                          placeholder="+31 6 12345678"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Verzendvolume */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Verzendvolume</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Aantal pakketten per maand *
-                        </label>
-                        <select
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                      {/* Navigation Button */}
+                      <div className="pt-6">
+                        <button
+                          type="button"
+                          onClick={() => setSignupStep(2)}
+                          className="w-full bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all hover:scale-[1.02] font-semibold inline-flex items-center justify-center gap-3 text-lg shadow-xl"
                         >
-                          <option value="">Selecteer...</option>
-                          <option value="0-50">0 - 50 pakketten</option>
-                          <option value="51-200">51 - 200 pakketten</option>
-                          <option value="201-500">201 - 500 pakketten</option>
-                          <option value="501-1000">501 - 1.000 pakketten</option>
-                          <option value="1000+">1.000+ pakketten</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Voorkeur vervoerder
-                        </label>
-                        <select
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
-                        >
-                          <option value="">Geen voorkeur</option>
-                          <option value="postnl">PostNL</option>
-                          <option value="dhl">DHL</option>
-                          <option value="cirro">CIRRO</option>
-                          <option value="connect">Sendwise Connect</option>
-                        </select>
+                          Volgende stap
+                          <ArrowRight size={22} />
+                        </button>
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Opmerkingen */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Opmerkingen of vragen
-                    </label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80 resize-none"
-                      placeholder="Vertel ons wat meer over je verzendbehoeften..."
-                    ></textarea>
-                  </div>
+                  {/* Step 2: Contactpersoon */}
+                  {signupStep === 2 && (
+                    <div>
+                      <div className="space-y-6">
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Voornaam *
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                              placeholder="Jan"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Achternaam *
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                              placeholder="Jansen"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            E-mailadres *
+                          </label>
+                          <input
+                            type="email"
+                            required
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                            placeholder="jan@jouwbedrijf.nl"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Telefoonnummer *
+                          </label>
+                          <input
+                            type="tel"
+                            required
+                            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 outline-none transition-all bg-white/80"
+                            placeholder="+31 6 12345678"
+                          />
+                        </div>
+                      </div>
 
-                  {/* Submit Button */}
-                  <div className="pt-6">
-                    <button
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all hover:scale-[1.02] font-semibold inline-flex items-center justify-center gap-3 text-lg shadow-xl"
-                    >
-                      Verstuur aanvraag
-                      <ArrowRight size={22} />
-                    </button>
-                    <p className="text-sm text-gray-500 text-center mt-4">
-                      We nemen binnen 24 uur contact met je op
-                    </p>
-                  </div>
+                      {/* Navigation Buttons */}
+                      <div className="pt-6 flex gap-4">
+                        <button
+                          type="button"
+                          onClick={() => setSignupStep(1)}
+                          className="flex-1 bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold inline-flex items-center justify-center gap-3 text-lg"
+                        >
+                          <ArrowRight size={22} className="rotate-180" />
+                          Vorige
+                        </button>
+                        <button
+                          type="submit"
+                          className="flex-1 bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all hover:scale-[1.02] font-semibold inline-flex items-center justify-center gap-3 text-lg shadow-xl"
+                        >
+                          Account aanmaken
+                          <ArrowRight size={22} />
+                        </button>
+                      </div>
+                      <p className="text-sm text-gray-500 text-center mt-4">
+                        We nemen binnen 24 uur contact op om tarieven te bespreken
+                      </p>
+                    </div>
+                  )}
                 </form>
               </div>
 
