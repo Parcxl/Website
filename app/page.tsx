@@ -486,8 +486,8 @@ export default function Home() {
                   <div 
                     className="absolute animate-float-cloud md:hidden"
                     style={{ 
-                      left: '200px', 
-                      top: '40px',
+                      left: '170px', 
+                      top: '50px',
                       zIndex: 30
                     }}
                   >
