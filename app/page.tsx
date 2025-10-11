@@ -185,21 +185,19 @@ export default function Home() {
       // Clamp between -1 and 1
       const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
       
-      // Calculate perspective transforms - smoother on mobile
-      const isMobile = window.innerWidth < 768;
-      const rotateX = clampedProgress * (isMobile ? 10 : 25); // Less rotation on mobile
-      const rotateY = clampedProgress * (isMobile ? 5 : 15); // Less rotation on mobile
-      const translateY = clampedProgress * (isMobile ? -10 : -30); // Less movement on mobile
-      const scale = 1 - Math.abs(clampedProgress) * (isMobile ? 0.03 : 0.1); // Less scale change on mobile
+      // Calculate perspective transforms - original values
+      const rotateX = clampedProgress * 25; // Rotate up to 25deg
+      const rotateY = clampedProgress * 15; // Rotate up to 15deg
+      const translateY = clampedProgress * -30; // Move up/down
+      const scale = 1 - Math.abs(clampedProgress) * 0.1; // Scale down when off-center
       
-      // Apply transform with smoother transition on mobile
-      const transition = isMobile ? 'transform 0.3s ease-out' : 'none';
-      (screenshot as HTMLElement).style.transition = transition;
+      // Apply transform - no transition for smooth real-time animation
+      (screenshot as HTMLElement).style.transition = 'none';
       (screenshot as HTMLElement).style.transform = 
         `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${translateY}px) scale(${scale})`;
     };
 
-    // Use requestAnimationFrame for smoother mobile performance
+    // Use requestAnimationFrame for smoother mobile performance with higher frame rate
     let ticking = false;
     const smoothScroll = () => {
       if (!ticking) {
@@ -211,10 +209,14 @@ export default function Home() {
       }
     };
 
-    window.addEventListener('scroll', smoothScroll, { passive: true });
+    // Throttle scroll events more aggressively on mobile for smoother performance
+    const isMobile = window.innerWidth < 768;
+    const scrollHandler = isMobile ? smoothScroll : handleScroll;
+    
+    window.addEventListener('scroll', scrollHandler, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', smoothScroll);
+    return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
   // 3D Perspective Scroll Effect for USP Cards
@@ -225,7 +227,6 @@ export default function Home() {
 
       const windowHeight = window.innerHeight;
       const screenCenter = windowHeight / 2;
-      const isMobile = window.innerWidth < 768;
 
       cards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
@@ -237,23 +238,22 @@ export default function Home() {
         // Clamp between -1 and 1
         const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
         
-        // Calculate perspective transforms - smoother on mobile
-        const rotateX = clampedProgress * (isMobile ? 10 : 25); // Less rotation on mobile
-        const rotateY = (index - 1) * (isMobile ? 5 : 10) + clampedProgress * (isMobile ? 5 : 15); // Less rotation on mobile
-        const translateY = clampedProgress * (isMobile ? -10 : -30); // Less movement on mobile
-        const scale = 1 - Math.abs(clampedProgress) * (isMobile ? 0.03 : 0.08); // Less scale change on mobile
+        // Calculate perspective transforms - original values
+        const rotateX = clampedProgress * 25; // Rotate up to 25deg
+        const rotateY = (index - 1) * 10 + clampedProgress * 15; // Different angle per card
+        const translateY = clampedProgress * -30; // Move up/down
+        const scale = 1 - Math.abs(clampedProgress) * 0.08; // Scale effect
         
-        // Apply transform with smoother transition on mobile
-        const transition = isMobile ? 'transform 0.3s ease-out, box-shadow 0.5s, border-color 0.5s' : 'box-shadow 0.5s, border-color 0.5s';
-        (card as HTMLElement).style.transition = transition;
+        // Apply transform with perspective - no transition for smooth real-time animation
+        (card as HTMLElement).style.transition = 'box-shadow 0.5s, border-color 0.5s';
         (card as HTMLElement).style.transform = 
           `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${translateY}px) scale(${scale})`;
       });
     };
 
-    // Use requestAnimationFrame for smooth 60fps updates
+    // Use requestAnimationFrame for smooth 60fps updates with mobile optimization
     let ticking = false;
-    const scrollHandler = () => {
+    const smoothScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           handleScroll();
@@ -263,10 +263,14 @@ export default function Home() {
       }
     };
 
-    window.addEventListener('scroll', scrollHandler, { passive: true });
+    // Throttle scroll events more aggressively on mobile for smoother performance
+    const isMobile = window.innerWidth < 768;
+    const finalScrollHandler = isMobile ? smoothScroll : handleScroll;
+    
+    window.addEventListener('scroll', finalScrollHandler, { passive: true });
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener('scroll', finalScrollHandler);
   }, []);
 
   return (
