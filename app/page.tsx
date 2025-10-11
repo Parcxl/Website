@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { 
   ArrowRight, Package, Zap, Shield, BarChart3, 
