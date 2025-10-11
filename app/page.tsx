@@ -459,7 +459,7 @@ export default function Home() {
                     />
                     {/* Mobile line */}
                     <path
-                      d="M 150 100 Q 120 90 80 70"
+                      d="M 150 100 Q 120 90 40 70"
                       stroke="url(#heroLineGradient)"
                       strokeWidth="2"
                       strokeLinecap="round"
