@@ -31,6 +31,10 @@ export default function Home() {
     email: '',
     telefoon: ''
   });
+  const [submittedData, setSubmittedData] = useState({
+    voornaam: '',
+    email: ''
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -130,6 +134,11 @@ export default function Home() {
       const result = await response.json();
 
       if (result.success) {
+        // Save submitted data before resetting form
+        setSubmittedData({
+          voornaam: formData.voornaam,
+          email: formData.email
+        });
         setSubmitSuccess(true);
         // Reset form
         setFormData({
@@ -2372,7 +2381,7 @@ export default function Home() {
 
                       <div className="max-w-2xl mx-auto mb-8">
                         <p className="text-2xl text-gray-700 mb-4">
-                          Hey <span className="font-semibold text-[#0066ff]">{formData.voornaam}</span>,
+                          Hey <span className="font-semibold text-[#0066ff]">{submittedData.voornaam}</span>,
                         </p>
                         <p className="text-xl text-gray-600 leading-relaxed">
                           Binnen 24 uur nemen we contact met je op om jouw persoonlijke verzendtarieven door te spreken. 
@@ -2398,7 +2407,7 @@ export default function Home() {
                       </div>
 
                       <p className="text-sm text-gray-500 mt-8">
-                        Je ontvangt een bevestiging op <span className="font-medium">{formData.email}</span>
+                        Je ontvangt een bevestiging op <span className="font-medium">{submittedData.email}</span>
                       </p>
                     </div>
                   </div>
