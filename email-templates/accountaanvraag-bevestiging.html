@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welkom bij Sendwise</title>
+    <style>
+        /* Email-safe styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            line-height: 1.6;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0 0 20px 0;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #4b5563;
+            margin: 0 0 30px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #0066ff;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0066ff;
+            margin: 0 0 15px 0;
+        }
+        
+        .info-item {
+            font-size: 14px;
+            color: #374151;
+            margin: 8px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            min-width: 140px;
+            color: #111827;
+        }
+        
+        .next-steps {
+            background-color: #f9fafb;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .next-steps-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0 0 15px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+        
+        .step-text {
+            font-size: 15px;
+            color: #374151;
+            padding-top: 3px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 30px 0;
+        }
+        
+        .contact-section {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #f9fafb;
+        }
+        
+        .contact-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0 0 15px 0;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            color: #4b5563;
+            margin: 8px 0;
+        }
+        
+        .contact-link {
+            color: #0066ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background-color: #1f2937;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: #9ca3af;
+            margin: 5px 0;
+        }
+        
+        .footer-links {
+            margin: 15px 0;
+        }
+        
+        .footer-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 10px;
+        }
+        
+        .highlight {
+            color: #0066ff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f3f4f6; padding: 20px 0;">
+        <tr>
+            <td align="center">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="email-container">
+                    <!-- Header -->
+                    <tr>
+                        <td class="header">
+                            <!-- Logo - Replace src with actual hosted logo URL -->
+                            <img src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/Sendwise%20blauw.png" alt="Sendwise" class="logo" style="max-width: 180px; height: auto; filter: brightness(0) invert(1);">
+                        </td>
+                    </tr>
+                    
+                    <!-- Main Content -->
+                    <tr>
+                        <td class="content">
+                            <h1 class="greeting">Welkom bij Sendwise, {{voornaam}}! 🎉</h1>
+                            
+                            <p class="message">
+                                Wat leuk dat je hebt gekozen voor Sendwise! We hebben je accountaanvraag in goede orde ontvangen en zijn super enthousiast om met je samen te werken.
+                            </p>
+                            
+                            <!-- Info Box -->
+                            <div class="info-box">
+                                <h2 class="info-box-title">Je gegevens</h2>
+                                <div class="info-item">
+                                    <span class="info-label">Bedrijfsnaam:</span>
+                                    <span>{{bedrijfsnaam}}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">KvK-nummer:</span>
+                                    <span>{{kvk}}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Website:</span>
+                                    <span>{{website}}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">E-mailadres:</span>
+                                    <span>{{email}}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Telefoonnummer:</span>
+                                    <span>{{telefoon}}</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Next Steps -->
+                            <div class="next-steps">
+                                <h2 class="next-steps-title">Wat gebeurt er nu?</h2>
+                                
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-text">
+                                        <strong>Binnen 24 uur</strong> nemen we contact met je op via e-mail of telefoon
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-text">
+                                        We bespreken samen jouw <strong>persoonlijke verzendtarieven</strong> op maat
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-text">
+                                        We <strong>activeren je account</strong> en je kunt direct aan de slag met verzenden
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="message">
+                                Heb je in de tussentijd vragen? Neem gerust contact met ons op. We helpen je graag verder!
+                            </p>
+                            
+                            <div style="text-align: center; margin: 30px 0;">
+                                <a href="https://helpcenter.sendwise.nl" class="cta-button" style="color: white; text-decoration: none;">
+                                    Bekijk ons Helpcenter
+                                </a>
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            <p class="message" style="font-size: 14px; color: #6b7280;">
+                                <strong>Waarom Sendwise?</strong><br>
+                                ✓ Geen abonnementskosten<br>
+                                ✓ Tarieven op maat<br>
+                                ✓ Koppeling met PostNL, DHL, CIRRO & Connect<br>
+                                ✓ Gebruiksvriendelijke software
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Contact Section -->
+                    <tr>
+                        <td class="contact-section">
+                            <h3 class="contact-title">Vragen of spoed?</h3>
+                            <p class="contact-info">
+                                📧 E-mail: <a href="mailto:info@sendwise.nl" class="contact-link">info@sendwise.nl</a>
+                            </p>
+                            <p class="contact-info">
+                                📞 Telefoon: <a href="tel:+31619156123" class="contact-link">+31 6 19156123</a>
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td class="footer">
+                            <p class="footer-text">
+                                <strong style="color: #d1d5db;">Sendwise</strong><br>
+                                Ondernemingsweg 66, 2404HN Alphen aan den Rijn<br>
+                                KVK: 98390376 | BTW: NL868472256B01
+                            </p>
+                            
+                            <div class="footer-links">
+                                <a href="https://www.sendwise.nl/privacy" class="footer-link">Privacy Policy</a>
+                                <a href="https://www.sendwise.nl/algemene-voorwaarden" class="footer-link">Algemene Voorwaarden</a>
+                            </div>
+                            
+                            <p class="footer-text" style="margin-top: 20px;">
+                                © 2025 Sendwise. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
