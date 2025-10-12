@@ -2256,7 +2256,7 @@ export default function Home() {
                   >
                     <div className="absolute -inset-4 bg-gradient-to-r from-[#0066ff]/20 to-blue-600/20 rounded-3xl blur-2xl"></div>
                     <div className="relative">
-                      <Image
+          <Image
                         src="https://wclkrgejvcuglowsrefl.supabase.co/storage/v1/object/public/Sendwise/foto%20sendwise.png"
                         alt="Sendwise Platform"
                         width={800}
@@ -2351,20 +2351,61 @@ export default function Home() {
               >
                 {/* Success Message */}
                 {submitSuccess ? (
-                  <div className="text-center py-12 relative">
-                    {/* Confetti Animation */}
-                    {[...Array(50)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="confetti"
-                        style={{
-                          left: `${Math.random() * 100}%`,
-                          animationDelay: `${Math.random() * 3}s`,
-                          animationDuration: `${3 + Math.random() * 2}s`,
-                          backgroundColor: ['#0066ff', '#00ff88', '#ff6b6b', '#ffd93d', '#6bcf7f', '#a29bfe'][Math.floor(Math.random() * 6)]
-                        }}
-                      />
-                    ))}
+                  <div className="text-center py-12 relative overflow-hidden">
+                    {/* Confetti Animation - Fixed positions to prevent re-render issues */}
+                    <div className="absolute inset-0 pointer-events-none select-none">
+                      {/* Pre-generated confetti with fixed values */}
+                      <div className="confetti confetti-1" />
+                      <div className="confetti confetti-2" />
+                      <div className="confetti confetti-3" />
+                      <div className="confetti confetti-4" />
+                      <div className="confetti confetti-5" />
+                      <div className="confetti confetti-6" />
+                      <div className="confetti confetti-7" />
+                      <div className="confetti confetti-8" />
+                      <div className="confetti confetti-9" />
+                      <div className="confetti confetti-10" />
+                      <div className="confetti confetti-11" />
+                      <div className="confetti confetti-12" />
+                      <div className="confetti confetti-13" />
+                      <div className="confetti confetti-14" />
+                      <div className="confetti confetti-15" />
+                      <div className="confetti confetti-16" />
+                      <div className="confetti confetti-17" />
+                      <div className="confetti confetti-18" />
+                      <div className="confetti confetti-19" />
+                      <div className="confetti confetti-20" />
+                      <div className="confetti confetti-21" />
+                      <div className="confetti confetti-22" />
+                      <div className="confetti confetti-23" />
+                      <div className="confetti confetti-24" />
+                      <div className="confetti confetti-25" />
+                      <div className="confetti confetti-26" />
+                      <div className="confetti confetti-27" />
+                      <div className="confetti confetti-28" />
+                      <div className="confetti confetti-29" />
+                      <div className="confetti confetti-30" />
+                      <div className="confetti confetti-31" />
+                      <div className="confetti confetti-32" />
+                      <div className="confetti confetti-33" />
+                      <div className="confetti confetti-34" />
+                      <div className="confetti confetti-35" />
+                      <div className="confetti confetti-36" />
+                      <div className="confetti confetti-37" />
+                      <div className="confetti confetti-38" />
+                      <div className="confetti confetti-39" />
+                      <div className="confetti confetti-40" />
+                      <div className="confetti confetti-41" />
+                      <div className="confetti confetti-42" />
+                      <div className="confetti confetti-43" />
+                      <div className="confetti confetti-44" />
+                      <div className="confetti confetti-45" />
+                      <div className="confetti confetti-46" />
+                      <div className="confetti confetti-47" />
+                      <div className="confetti confetti-48" />
+                      <div className="confetti confetti-49" />
+                      <div className="confetti confetti-50" />
+                    </div>
 
                     <div className="relative z-10">
                       <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce-in shadow-2xl">

@@ -42,31 +42,120 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
-/* Confetti Animation */
+/* Confetti Animation - Pure CSS, no JS interference */
 .confetti {
-  position: fixed;
+  position: absolute;
   width: 10px;
   height: 10px;
-  animation: confetti-fall linear infinite;
-  opacity: 0.8;
+  top: -20px;
   pointer-events: none !important;
   user-select: none;
   touch-action: none;
-  z-index: 9999;
 }
 
-@keyframes confetti-fall {
-  0% {
-    top: -10px;
-    transform: rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    top: 100vh;
-    transform: rotate(720deg);
-    opacity: 0;
-  }
-}
+/* Individual confetti pieces with fixed positions and colors */
+.confetti-1 { left: 5%; background: #0066ff; animation: fall-1 4s linear infinite; }
+.confetti-2 { left: 10%; background: #00ff88; animation: fall-2 3.5s linear infinite; }
+.confetti-3 { left: 15%; background: #ff6b6b; animation: fall-3 4.2s linear infinite; }
+.confetti-4 { left: 20%; background: #ffd93d; animation: fall-4 3.8s linear infinite; }
+.confetti-5 { left: 25%; background: #6bcf7f; animation: fall-5 4.5s linear infinite; }
+.confetti-6 { left: 30%; background: #a29bfe; animation: fall-6 3.3s linear infinite; }
+.confetti-7 { left: 35%; background: #0066ff; animation: fall-7 4.1s linear infinite; }
+.confetti-8 { left: 40%; background: #00ff88; animation: fall-8 3.9s linear infinite; }
+.confetti-9 { left: 45%; background: #ff6b6b; animation: fall-9 4.3s linear infinite; }
+.confetti-10 { left: 50%; background: #ffd93d; animation: fall-10 3.7s linear infinite; }
+.confetti-11 { left: 55%; background: #6bcf7f; animation: fall-11 4.4s linear infinite; }
+.confetti-12 { left: 60%; background: #a29bfe; animation: fall-12 3.6s linear infinite; }
+.confetti-13 { left: 65%; background: #0066ff; animation: fall-13 4.2s linear infinite; }
+.confetti-14 { left: 70%; background: #00ff88; animation: fall-14 3.8s linear infinite; }
+.confetti-15 { left: 75%; background: #ff6b6b; animation: fall-15 4.5s linear infinite; }
+.confetti-16 { left: 80%; background: #ffd93d; animation: fall-16 3.4s linear infinite; }
+.confetti-17 { left: 85%; background: #6bcf7f; animation: fall-17 4.1s linear infinite; }
+.confetti-18 { left: 90%; background: #a29bfe; animation: fall-18 3.9s linear infinite; }
+.confetti-19 { left: 95%; background: #0066ff; animation: fall-19 4.3s linear infinite; }
+.confetti-20 { left: 8%; background: #00ff88; animation: fall-20 3.7s linear infinite; }
+.confetti-21 { left: 13%; background: #ff6b6b; animation: fall-21 4.4s linear infinite; }
+.confetti-22 { left: 18%; background: #ffd93d; animation: fall-22 3.6s linear infinite; }
+.confetti-23 { left: 23%; background: #6bcf7f; animation: fall-23 4.2s linear infinite; }
+.confetti-24 { left: 28%; background: #a29bfe; animation: fall-24 3.8s linear infinite; }
+.confetti-25 { left: 33%; background: #0066ff; animation: fall-25 4.5s linear infinite; }
+.confetti-26 { left: 38%; background: #00ff88; animation: fall-26 3.5s linear infinite; }
+.confetti-27 { left: 43%; background: #ff6b6b; animation: fall-27 4.1s linear infinite; }
+.confetti-28 { left: 48%; background: #ffd93d; animation: fall-28 3.9s linear infinite; }
+.confetti-29 { left: 53%; background: #6bcf7f; animation: fall-29 4.3s linear infinite; }
+.confetti-30 { left: 58%; background: #a29bfe; animation: fall-30 3.7s linear infinite; }
+.confetti-31 { left: 63%; background: #0066ff; animation: fall-31 4.4s linear infinite; }
+.confetti-32 { left: 68%; background: #00ff88; animation: fall-32 3.6s linear infinite; }
+.confetti-33 { left: 73%; background: #ff6b6b; animation: fall-33 4.2s linear infinite; }
+.confetti-34 { left: 78%; background: #ffd93d; animation: fall-34 3.8s linear infinite; }
+.confetti-35 { left: 83%; background: #6bcf7f; animation: fall-35 4.5s linear infinite; }
+.confetti-36 { left: 88%; background: #a29bfe; animation: fall-36 3.4s linear infinite; }
+.confetti-37 { left: 93%; background: #0066ff; animation: fall-37 4.1s linear infinite; }
+.confetti-38 { left: 7%; background: #00ff88; animation: fall-38 3.9s linear infinite; }
+.confetti-39 { left: 12%; background: #ff6b6b; animation: fall-39 4.3s linear infinite; }
+.confetti-40 { left: 17%; background: #ffd93d; animation: fall-40 3.7s linear infinite; }
+.confetti-41 { left: 22%; background: #6bcf7f; animation: fall-41 4.4s linear infinite; }
+.confetti-42 { left: 27%; background: #a29bfe; animation: fall-42 3.6s linear infinite; }
+.confetti-43 { left: 32%; background: #0066ff; animation: fall-43 4.2s linear infinite; }
+.confetti-44 { left: 37%; background: #00ff88; animation: fall-44 3.8s linear infinite; }
+.confetti-45 { left: 42%; background: #ff6b6b; animation: fall-45 4.5s linear infinite; }
+.confetti-46 { left: 47%; background: #ffd93d; animation: fall-46 3.5s linear infinite; }
+.confetti-47 { left: 52%; background: #6bcf7f; animation: fall-47 4.1s linear infinite; }
+.confetti-48 { left: 57%; background: #a29bfe; animation: fall-48 3.9s linear infinite; }
+.confetti-49 { left: 62%; background: #0066ff; animation: fall-49 4.3s linear infinite; }
+.confetti-50 { left: 67%; background: #00ff88; animation: fall-50 3.7s linear infinite; }
+
+/* Keyframe animations - each slightly different to create natural effect */
+@keyframes fall-1 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+@keyframes fall-2 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(680deg); opacity: 0; } }
+@keyframes fall-3 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(740deg); opacity: 0; } }
+@keyframes fall-4 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(700deg); opacity: 0; } }
+@keyframes fall-5 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(760deg); opacity: 0; } }
+@keyframes fall-6 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(690deg); opacity: 0; } }
+@keyframes fall-7 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(730deg); opacity: 0; } }
+@keyframes fall-8 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(710deg); opacity: 0; } }
+@keyframes fall-9 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(750deg); opacity: 0; } }
+@keyframes fall-10 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(695deg); opacity: 0; } }
+@keyframes fall-11 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(735deg); opacity: 0; } }
+@keyframes fall-12 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(715deg); opacity: 0; } }
+@keyframes fall-13 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(745deg); opacity: 0; } }
+@keyframes fall-14 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(705deg); opacity: 0; } }
+@keyframes fall-15 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(755deg); opacity: 0; } }
+@keyframes fall-16 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(685deg); opacity: 0; } }
+@keyframes fall-17 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(725deg); opacity: 0; } }
+@keyframes fall-18 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(710deg); opacity: 0; } }
+@keyframes fall-19 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(750deg); opacity: 0; } }
+@keyframes fall-20 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(695deg); opacity: 0; } }
+@keyframes fall-21 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(735deg); opacity: 0; } }
+@keyframes fall-22 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(715deg); opacity: 0; } }
+@keyframes fall-23 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(745deg); opacity: 0; } }
+@keyframes fall-24 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(700deg); opacity: 0; } }
+@keyframes fall-25 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(760deg); opacity: 0; } }
+@keyframes fall-26 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(690deg); opacity: 0; } }
+@keyframes fall-27 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(730deg); opacity: 0; } }
+@keyframes fall-28 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(710deg); opacity: 0; } }
+@keyframes fall-29 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(750deg); opacity: 0; } }
+@keyframes fall-30 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(695deg); opacity: 0; } }
+@keyframes fall-31 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(735deg); opacity: 0; } }
+@keyframes fall-32 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(715deg); opacity: 0; } }
+@keyframes fall-33 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(740deg); opacity: 0; } }
+@keyframes fall-34 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(705deg); opacity: 0; } }
+@keyframes fall-35 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(755deg); opacity: 0; } }
+@keyframes fall-36 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(685deg); opacity: 0; } }
+@keyframes fall-37 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(725deg); opacity: 0; } }
+@keyframes fall-38 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(710deg); opacity: 0; } }
+@keyframes fall-39 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(745deg); opacity: 0; } }
+@keyframes fall-40 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(695deg); opacity: 0; } }
+@keyframes fall-41 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(735deg); opacity: 0; } }
+@keyframes fall-42 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(715deg); opacity: 0; } }
+@keyframes fall-43 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(740deg); opacity: 0; } }
+@keyframes fall-44 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(700deg); opacity: 0; } }
+@keyframes fall-45 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(760deg); opacity: 0; } }
+@keyframes fall-46 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(690deg); opacity: 0; } }
+@keyframes fall-47 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(730deg); opacity: 0; } }
+@keyframes fall-48 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(710deg); opacity: 0; } }
+@keyframes fall-49 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(745deg); opacity: 0; } }
+@keyframes fall-50 { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(705deg); opacity: 0; } }
 
 /* Bounce In Animation */
 @keyframes bounce-in {
