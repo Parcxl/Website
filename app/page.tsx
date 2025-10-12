@@ -2351,23 +2351,20 @@ export default function Home() {
               >
                 {/* Success Message */}
                 {submitSuccess ? (
-                  <div className="text-center py-12 relative overflow-hidden" style={{ pointerEvents: 'auto' }}>
+                  <div className="text-center py-12 relative">
                     {/* Confetti Animation */}
-                    <div className="absolute inset-0 pointer-events-none" style={{ pointerEvents: 'none' }}>
-                      {[...Array(50)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="confetti"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 3}s`,
-                            animationDuration: `${3 + Math.random() * 2}s`,
-                            backgroundColor: ['#0066ff', '#00ff88', '#ff6b6b', '#ffd93d', '#6bcf7f', '#a29bfe'][Math.floor(Math.random() * 6)],
-                            pointerEvents: 'none'
-                          }}
-                        />
-                      ))}
-                    </div>
+                    {[...Array(50)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="confetti"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          animationDelay: `${Math.random() * 3}s`,
+                          animationDuration: `${3 + Math.random() * 2}s`,
+                          backgroundColor: ['#0066ff', '#00ff88', '#ff6b6b', '#ffd93d', '#6bcf7f', '#a29bfe'][Math.floor(Math.random() * 6)]
+                        }}
+                      />
+                    ))}
 
                     <div className="relative z-10">
                       <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce-in shadow-2xl">
