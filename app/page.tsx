@@ -2351,9 +2351,9 @@ export default function Home() {
               >
                 {/* Success Message */}
                 {submitSuccess ? (
-                  <div className="text-center py-12 relative overflow-hidden">
+                  <div className="text-center py-12 relative overflow-hidden" style={{ pointerEvents: 'auto' }}>
                     {/* Confetti Animation */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute inset-0 pointer-events-none" style={{ pointerEvents: 'none' }}>
                       {[...Array(50)].map((_, i) => (
                         <div
                           key={i}
@@ -2362,7 +2362,8 @@ export default function Home() {
                             left: `${Math.random() * 100}%`,
                             animationDelay: `${Math.random() * 3}s`,
                             animationDuration: `${3 + Math.random() * 2}s`,
-                            backgroundColor: ['#0066ff', '#00ff88', '#ff6b6b', '#ffd93d', '#6bcf7f', '#a29bfe'][Math.floor(Math.random() * 6)]
+                            backgroundColor: ['#0066ff', '#00ff88', '#ff6b6b', '#ffd93d', '#6bcf7f', '#a29bfe'][Math.floor(Math.random() * 6)],
+                            pointerEvents: 'none'
                           }}
                         />
                       ))}
@@ -2375,7 +2376,7 @@ export default function Home() {
                       
                       <div className="mb-4">
                         <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2">
-                          Welkom bij <span className="text-gradient">Sendwise</span>! 🎉
+                          Welkom bij <span className="text-gradient">Sendwise</span>!
                         </h2>
                       </div>
 
@@ -2385,25 +2386,8 @@ export default function Home() {
                         </p>
                         <p className="text-xl text-gray-600 leading-relaxed">
                           Binnen 24 uur nemen we contact met je op om jouw persoonlijke verzendtarieven door te spreken. 
-                          Dan maken we het samen officieel en kun je direct aan de slag! 🚀
+                          Dan maken we het samen officieel en kun je direct aan de slag!
                         </p>
-                      </div>
-
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button
-                          onClick={() => setShowSignupModal(false)}
-                          className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-10 py-4 rounded-full hover:shadow-2xl transition-all shadow-xl hover:scale-105 font-semibold text-lg"
-                        >
-                          Naar website
-                        </button>
-                        <a
-                          href="https://helpcenter.sendwise.nl"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-white border-2 border-[#0066ff] text-[#0066ff] px-10 py-4 rounded-full hover:bg-[#0066ff] hover:text-white transition-all shadow-lg hover:scale-105 font-semibold text-lg"
-                        >
-                          Bekijk Helpcenter
-                        </a>
                       </div>
 
                       <p className="text-sm text-gray-500 mt-8">
