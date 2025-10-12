@@ -629,7 +629,7 @@ export default function Home() {
                       strokeLinejoin="round"
                       fill="none"
                       filter="url(#heroLineGlow)"
-                      className="animate-draw-hero-line hidden md:block"
+                      className="animate-draw-hero-line hidden"
                       strokeDasharray="16"
                       strokeDashoffset="16"
                     />
