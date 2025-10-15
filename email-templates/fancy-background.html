@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sendwise Fancy Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Base gradient layer - More intense colors */
+        .gradient-base {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.25) 0%,     /* Bright blue */
+                rgba(99, 102, 241, 0.20) 33%,    /* Indigo */
+                rgba(168, 85, 247, 0.25) 66%,    /* Purple */
+                rgba(236, 72, 153, 0.20) 100%    /* Pink */
+            );
+        }
+
+        /* Animated floating blobs - More vibrant */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .blob-1 {
+            top: 10%;
+            left: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.4) 0%, rgba(59, 130, 246, 0.3) 100%);
+            animation: float-1 25s infinite;
+        }
+
+        .blob-2 {
+            top: 33%;
+            right: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(192, 132, 252, 0.25) 100%);
+            animation: float-2 30s infinite;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            bottom: 20%;
+            left: 25%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(129, 140, 248, 0.3) 100%);
+            animation: float-3 28s infinite;
+            animation-delay: 4s;
+        }
+
+        .blob-4 {
+            top: 50%;
+            right: 33%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.35) 0%, rgba(244, 114, 182, 0.25) 100%);
+            animation: float-4 22s infinite;
+            animation-delay: 1s;
+        }
+
+        .blob-5 {
+            bottom: 10%;
+            right: 15%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.35) 0%, rgba(103, 232, 249, 0.25) 100%);
+            animation: float-5 26s infinite;
+            animation-delay: 3s;
+        }
+
+        /* Backdrop blur overlay */
+        .blur-overlay {
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        /* Content layer */
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .content-inner {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        /* Floating Animations */
+        @keyframes float-1 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(30px, -40px) rotate(120deg) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 30px) rotate(240deg) scale(0.95);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes float-2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(-40px, 30px) rotate(-120deg) scale(1.15);
+            }
+            66% {
+                transform: translate(25px, -25px) rotate(-240deg) scale(0.9);
+            }
+            100% {
+                transform: translate(0, 0) rotate(-360deg) scale(1);
+            }
+        }
+
+        @keyframes float-3 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(35px, 45px) rotate(100deg) scale(1.05);
+            }
+            66% {
+                transform: translate(-30px, -20px) rotate(200deg) scale(1.1);
+            }
+            100% {
+                transform: translate(0, 0) rotate(300deg) scale(1);
+            }
+        }
+
+        @keyframes float-4 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(-25px, -35px) rotate(-90deg) scale(1.08);
+            }
+            66% {
+                transform: translate(40px, 20px) rotate(-180deg) scale(0.92);
+            }
+            100% {
+                transform: translate(0, 0) rotate(-270deg) scale(1);
+            }
+        }
+
+        @keyframes float-5 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translate(20px, -30px) rotate(110deg) scale(1.12);
+            }
+            66% {
+                transform: translate(-35px, 25px) rotate(220deg) scale(0.88);
+            }
+            100% {
+                transform: translate(0, 0) rotate(330deg) scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .blob {
+                width: 250px !important;
+                height: 250px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <!-- Base gradient -->
+        <div class="gradient-base"></div>
+        
+        <!-- Animated blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <div class="blob blob-5"></div>
+        
+        <!-- Backdrop blur overlay -->
+        <div class="blur-overlay"></div>
+        
+        <!-- Example Content (vervang met je eigen content) -->
+        <div class="content">
+            <div class="content-inner">
+                <h1 class="title">Jouw Content Hier</h1>
+                <p class="subtitle">Dit is een voorbeeld van hoe je deze achtergrond kunt gebruiken</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
