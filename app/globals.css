@@ -630,67 +630,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes text-gradient-change {
   0% {
-    background: linear-gradient(to right, #ffffff, #f8fafc, #e2e8f0);
+    background: linear-gradient(to right, #ffffff, #e0f2fe, #e0f7fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
-  }
-  12.5% {
-    background: linear-gradient(to right, #f1f5f9, #e2e8f0, #cbd5e1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.5));
-  }
-  25% {
-    background: linear-gradient(to right, #e2e8f0, #cbd5e1, #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 20px rgba(148, 163, 184, 0.6));
-  }
-  37.5% {
-    background: linear-gradient(to right, #cbd5e1, #94a3b8, #64748b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 22px rgba(100, 116, 139, 0.7));
-  }
-  50% {
-    background: linear-gradient(to right, #94a3b8, #64748b, #475569);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 25px rgba(71, 85, 105, 0.8));
-  }
-  62.5% {
-    background: linear-gradient(to right, #64748b, #475569, #334155);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 28px rgba(51, 65, 85, 0.9));
-  }
-  75% {
-    background: linear-gradient(to right, #475569, #334155, #1e293b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 32px rgba(30, 41, 59, 1));
-  }
-  87.5% {
-    background: linear-gradient(to right, #334155, #1e293b, #0f172a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 35px rgba(15, 23, 42, 1));
   }
   100% {
     background: linear-gradient(135deg, #0066ff 0%, #00a3ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 40px rgba(0, 102, 255, 1));
   }
 }
 
@@ -706,7 +655,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-text-gradient {
-  animation: text-gradient-change 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: text-gradient-change 2s ease-in-out forwards;
   animation-delay: 6.5s;
 }
 
