@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/wp-content/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'hoi.sendwise.nl',
+        port: '',
+        pathname: '/wp-content/uploads/**',
+      },
     ],
   },
 };

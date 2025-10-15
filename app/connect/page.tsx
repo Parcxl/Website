@@ -200,6 +200,94 @@ export default function ConnectPage() {
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 animate-shimmer"></span>
               </span>
             </h1>
+
+            {/* Floating Icons Animation */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              {/* Icon 1 - Top */}
+              <div className="absolute animate-float-icon animate-float-icon-1" style={{
+                animationDelay: '9s',
+                top: '20%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)'
+              }}>
+                <Image
+                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/7.png"
+                  alt="Icon 1"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
+                  style={{ animationDelay: '9s' }}
+                />
+              </div>
+
+              {/* Icon 2 - Top Right */}
+              <div className="absolute animate-float-icon animate-float-icon-2" style={{
+                animationDelay: '9.5s',
+                top: '25%',
+                right: '15%',
+                transform: 'translate(50%, -50%)'
+              }}>
+                <Image
+                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/6.png"
+                  alt="Icon 2"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
+                  style={{ animationDelay: '9.5s' }}
+                />
+              </div>
+
+              {/* Icon 3 - Right */}
+              <div className="absolute animate-float-icon animate-float-icon-3" style={{
+                animationDelay: '10s',
+                right: '10%',
+                top: '50%',
+                transform: 'translate(50%, -50%)'
+              }}>
+                <Image
+                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/8.png"
+                  alt="Icon 3"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
+                  style={{ animationDelay: '10s' }}
+                />
+              </div>
+
+              {/* Icon 4 - Bottom Right */}
+              <div className="absolute animate-float-icon animate-float-icon-4" style={{
+                animationDelay: '10.5s',
+                bottom: '25%',
+                right: '15%',
+                transform: 'translate(50%, 50%)'
+              }}>
+                <Image
+                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/9.png"
+                  alt="Icon 4"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
+                  style={{ animationDelay: '10.5s' }}
+                />
+              </div>
+
+              {/* Icon 5 - Bottom Left */}
+              <div className="absolute animate-float-icon animate-float-icon-5" style={{
+                animationDelay: '11s',
+                bottom: '25%',
+                left: '15%',
+                transform: 'translate(-50%, 50%)'
+              }}>
+                <Image
+                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/10.png"
+                  alt="Icon 5"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
+                  style={{ animationDelay: '11s' }}
+                />
+              </div>
+            </div>
           </div>
         </section>
 
