@@ -617,18 +617,14 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@keyframes shadow-transform {
+@keyframes shadow-fade-out {
   0% {
-    background: linear-gradient(135deg, #3b82f6, #06b6d4, #6366f1);
     opacity: 0.6;
-    filter: blur(24px);
-    transform: translate(0, 0);
+    transform: scale(1);
   }
   100% {
-    background: #000000;
-    opacity: 0.8;
-    filter: blur(8px);
-    transform: translate(12px, 12px);
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
 
@@ -647,19 +643,19 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Animation Classes */
+/* Animation Classes with Slow Timing */
 .animate-connect-shrink {
-  animation: connect-shrink 1s ease-out forwards;
+  animation: connect-shrink 2s ease-out forwards;
   animation-delay: 2s;
 }
 
-.animate-shadow-transform {
-  animation: shadow-transform 1.5s ease-out forwards;
-  animation-delay: 3.5s;
+.animate-shadow-fade-out {
+  animation: shadow-fade-out 2s ease-out forwards;
+  animation-delay: 4s;
 }
 
 .animate-text-gradient {
-  animation: text-gradient-change 1.5s ease-out forwards;
-  animation-delay: 5s;
+  animation: text-gradient-change 2.5s ease-out forwards;
+  animation-delay: 6s;
 }
 
