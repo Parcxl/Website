@@ -161,37 +161,45 @@ export default function ConnectPage() {
       {/* Main Content */}
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute w-96 h-96 bg-blue-200/20 rounded-full blur-3xl top-1/4 left-1/4 animate-float"></div>
-            <div className="absolute w-80 h-80 bg-indigo-200/20 rounded-full blur-3xl bottom-1/4 right-1/4 animate-float-slow"></div>
-            <div className="absolute w-64 h-64 bg-cyan-200/20 rounded-full blur-3xl top-3/4 left-1/2 animate-float-reverse"></div>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Fancy Blue Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-cyan-100">
+            {/* Animated Background Elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute w-96 h-96 bg-blue-300/30 rounded-full blur-3xl top-1/4 left-1/4 animate-float"></div>
+              <div className="absolute w-80 h-80 bg-cyan-300/30 rounded-full blur-3xl bottom-1/4 right-1/4 animate-float-slow"></div>
+              <div className="absolute w-64 h-64 bg-indigo-300/30 rounded-full blur-3xl top-3/4 left-1/2 animate-float-reverse"></div>
+              <div className="absolute w-72 h-72 bg-sky-300/25 rounded-full blur-3xl top-1/2 right-1/4 animate-float"></div>
+              <div className="absolute w-56 h-56 bg-blue-400/20 rounded-full blur-3xl bottom-1/3 left-1/3 animate-float-slow"></div>
+            </div>
+            
+            {/* Additional Moving Elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute w-32 h-32 bg-blue-200/40 rounded-full blur-2xl top-1/6 left-1/6 animate-float" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute w-24 h-24 bg-cyan-200/40 rounded-full blur-2xl bottom-1/6 right-1/6 animate-float-reverse" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute w-40 h-40 bg-indigo-200/35 rounded-full blur-2xl top-2/3 right-1/3 animate-float-slow" style={{ animationDelay: '0.5s' }}></div>
+            </div>
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8">
-              Sendwise <span className="text-gradient">Connect</span>
+          {/* Backdrop Blur Layer */}
+          <div className="absolute inset-0 backdrop-blur-xl"></div>
+
+          {/* Main Content */}
+          <div className="relative z-10 flex items-center justify-center min-h-screen">
+            <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-white text-center leading-none select-none">
+              <span className="relative inline-block">
+                {/* Main Text */}
+                <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
+                  CONNECT
+                </span>
+                
+                {/* Glow Effect Behind */}
+                <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 blur-xl opacity-60 animate-pulse"></span>
+                
+                {/* Shimmer Effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 animate-shimmer"></span>
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              Koppel je verzendpartners direct aan je webshop met onze slimme Connect API
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/api/connect"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#0066ff] to-blue-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-300"
-              >
-                Bekijk API Documentatie
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-              <Link 
-                href="/"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#0066ff] text-[#0066ff] font-semibold rounded-full hover:bg-[#0066ff] hover:text-white transition-colors duration-300"
-              >
-                Terug naar Website
-              </Link>
-            </div>
           </div>
         </section>
 
