@@ -192,18 +192,17 @@ export default function ConnectPage() {
           >
             <defs>
               <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
-                <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
-                <stop offset="100%" stopColor="#818cf8" stopOpacity="0.9" />
+                <stop offset="0%" stopColor="#0066ff" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#00a3ff" stopOpacity="0.9" />
               </linearGradient>
             </defs>
             
-            {/* Curved road path that goes around CONNECT text */}
+            {/* Less curved road path that goes around CONNECT text */}
             <path
               d="M -5 70 
-                 C 15 60 25 65 35 75
-                 C 45 85 55 90 65 95
-                 C 75 100 85 105 105 110"
+                 C 20 65 30 70 40 75
+                 C 50 80 60 85 70 90
+                 C 80 95 90 100 105 105"
               stroke="url(#roadGradient)"
               strokeWidth="1"
               strokeLinecap="round"
