@@ -183,7 +183,7 @@ export default function ConnectPage() {
         {/* Centered Connect Image */}
         <div className="relative z-10 text-center">
           <img
-            src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/Schermafbeelding-2025-10-19-om-19.04.21.png"
+            src="/connect-image.png"
             alt="CONNECT"
             className="mx-auto max-w-4xl w-full h-auto"
             style={{ maxHeight: '60vh' }}
