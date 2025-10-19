@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap, Target, TrendingDown, Shield, Clock, Truck, Mail, BarChart3, CheckCircle } from "lucide-react";
 
 export default function ConnectPage() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
@@ -44,7 +44,7 @@ export default function ConnectPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Liquid Glass Navigation - Same as homepage */}
+      {/* Liquid Glass Navigation */}
       <nav className="fixed top-0 w-full z-50">
         <div 
           className="transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
@@ -162,176 +162,273 @@ export default function ConnectPage() {
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Fancy Blue Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-cyan-100">
-            {/* Animated Background Elements */}
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
             <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute w-96 h-96 bg-blue-300/30 rounded-full blur-3xl top-1/4 left-1/4 animate-float"></div>
-              <div className="absolute w-80 h-80 bg-cyan-300/30 rounded-full blur-3xl bottom-1/4 right-1/4 animate-float-slow"></div>
-              <div className="absolute w-64 h-64 bg-indigo-300/30 rounded-full blur-3xl top-3/4 left-1/2 animate-float-reverse"></div>
-              <div className="absolute w-72 h-72 bg-sky-300/25 rounded-full blur-3xl top-1/2 right-1/4 animate-float"></div>
-              <div className="absolute w-56 h-56 bg-blue-400/20 rounded-full blur-3xl bottom-1/3 left-1/3 animate-float-slow"></div>
-            </div>
-            
-            {/* Additional Moving Elements */}
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute w-32 h-32 bg-blue-200/40 rounded-full blur-2xl top-1/6 left-1/6 animate-float" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute w-24 h-24 bg-cyan-200/40 rounded-full blur-2xl bottom-1/6 right-1/6 animate-float-reverse" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute w-40 h-40 bg-indigo-200/35 rounded-full blur-2xl top-2/3 right-1/3 animate-float-slow" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl top-1/4 left-1/4 animate-float"></div>
+              <div className="absolute w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl bottom-1/4 right-1/4 animate-float-slow"></div>
+              <div className="absolute w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl top-3/4 left-1/2 animate-float-reverse"></div>
             </div>
           </div>
 
-          {/* Backdrop Blur Layer */}
-          <div className="absolute inset-0 backdrop-blur-xl"></div>
-
-          {/* Main Content */}
-          <div className="relative z-10 flex items-center justify-center min-h-screen">
-            <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-white text-center leading-none select-none">
-              <span className="relative inline-block animate-connect-shrink">
-                {/* Main Text with Animation */}
-                <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl animate-text-gradient">
-                  CONNECT
-                </span>
-                
-                {/* Glow Effect Behind with Animation */}
-                <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 blur-xl opacity-60 animate-pulse animate-shadow-fade-out"></span>
-                
-                {/* Shimmer Effect */}
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 animate-shimmer"></span>
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="mb-8">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-medium mb-6">
+                <Zap className="w-4 h-4 mr-2" />
+                Datagedreven Verzending
+              </span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+                Sendwise
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+                Connect
               </span>
             </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+              De slimste verzendmethode die automatisch de beste vervoerder kiest op basis van 
+              <span className="text-blue-300 font-semibold"> locatie, kosten en dekking</span>
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <button 
+                onClick={() => setShowSignupModal(true)}
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-full hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              >
+                Start met Connect
+                <ArrowRight className="ml-2" size={20} />
+              </button>
+              <Link 
+                href="#how-it-works"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+              >
+                Ontdek hoe het werkt
+              </Link>
+            </div>
 
-            {/* Floating Icons Animation */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              {/* Icon 1 - Top */}
-              <div className="absolute animate-float-icon animate-float-icon-1" style={{
-                animationDelay: '9s',
-                top: '20%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)'
-              }}>
-                <Image
-                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/7.png"
-                  alt="Icon 1"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
-                  style={{ animationDelay: '9s' }}
-                />
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">15%</div>
+                <div className="text-gray-400">Lagere verzendkosten</div>
               </div>
-
-              {/* Icon 2 - Top Right */}
-              <div className="absolute animate-float-icon animate-float-icon-2" style={{
-                animationDelay: '9.5s',
-                top: '25%',
-                right: '15%',
-                transform: 'translate(50%, -50%)'
-              }}>
-                <Image
-                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/6.png"
-                  alt="Icon 2"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
-                  style={{ animationDelay: '9.5s' }}
-                />
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">99.8%</div>
+                <div className="text-gray-400">Leveringsbetrouwbaarheid</div>
               </div>
-
-              {/* Icon 3 - Right */}
-              <div className="absolute animate-float-icon animate-float-icon-3" style={{
-                animationDelay: '10s',
-                right: '10%',
-                top: '50%',
-                transform: 'translate(50%, -50%)'
-              }}>
-                <Image
-                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/8.png"
-                  alt="Icon 3"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
-                  style={{ animationDelay: '10s' }}
-                />
-              </div>
-
-              {/* Icon 4 - Bottom Right */}
-              <div className="absolute animate-float-icon animate-float-icon-4" style={{
-                animationDelay: '10.5s',
-                bottom: '25%',
-                right: '15%',
-                transform: 'translate(50%, 50%)'
-              }}>
-                <Image
-                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/9.png"
-                  alt="Icon 4"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
-                  style={{ animationDelay: '10.5s' }}
-                />
-              </div>
-
-              {/* Icon 5 - Bottom Left */}
-              <div className="absolute animate-float-icon animate-float-icon-5" style={{
-                animationDelay: '11s',
-                bottom: '25%',
-                left: '15%',
-                transform: 'translate(-50%, 50%)'
-              }}>
-                <Image
-                  src="https://hoi.sendwise.nl/wp-content/uploads/2025/10/10.png"
-                  alt="Icon 5"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 md:w-20 md:h-20 opacity-0 animate-fade-in-icon"
-                  style={{ animationDelay: '11s' }}
-                />
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
+                <div className="text-gray-400">Automatische optimalisatie</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 bg-white">
+        {/* How It Works Section */}
+        <section id="how-it-works" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Waarom Sendwise Connect?
+                Hoe werkt Connect?
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Eenvoudige integratie met alle populaire verzendpartners en webshop platforms
+                Onze AI kiest automatisch de beste vervoerder voor elke zending
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#0066ff] to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white text-2xl font-bold">🚀</span>
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <BarChart3 className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Snelle Integratie</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Data Analyse</h3>
                 <p className="text-gray-600">
-                  Koppel je webshop in minder dan 5 minuten aan alle verzendpartners
+                  We analyseren locatie, bestemming, kosten en dekking van alle vervoerders
                 </p>
               </div>
 
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white text-2xl font-bold">💰</span>
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Target className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Beste Tarieven</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Beste Keuze</h3>
                 <p className="text-gray-600">
-                  Altijd de scherpste verzendtarieven zonder abonnementskosten
+                  Onze AI selecteert automatisch de meest efficiënte en voordelige optie
                 </p>
               </div>
 
-              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-violet-50 hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white text-2xl font-bold">🔧</span>
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Truck className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Eenvoudig Beheer</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Automatische Verzending</h3>
                 <p className="text-gray-600">
-                  Overzichtelijk dashboard voor al je verzendingen en statistieken
+                  Je zending wordt automatisch bij de gekozen vervoerder aangemeld
                 </p>
+              </div>
+            </div>
+
+            {/* Visual Flow */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8">
+              <div className="flex flex-col md:flex-row items-center justify-between">
+                <div className="text-center mb-8 md:mb-0">
+                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">1</span>
+                  </div>
+                  <h4 className="font-semibold text-gray-900">Zending Aanmaken</h4>
+                  <p className="text-gray-600 text-sm">Upload je zending</p>
+                </div>
+                
+                <div className="hidden md:block w-16 h-0.5 bg-blue-300"></div>
+                
+                <div className="text-center mb-8 md:mb-0">
+                  <div className="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">2</span>
+                  </div>
+                  <h4 className="font-semibold text-gray-900">AI Analyse</h4>
+                  <p className="text-gray-600 text-sm">Beste vervoerder kiezen</p>
+                </div>
+                
+                <div className="hidden md:block w-16 h-0.5 bg-blue-300"></div>
+                
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">3</span>
+                  </div>
+                  <h4 className="font-semibold text-gray-900">Verzending</h4>
+                  <p className="text-gray-600 text-sm">Automatisch verzenden</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Voordelen van Connect
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Exclusieve functies en de laagste tarieven voor Connect gebruikers
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mb-6">
+                  <Truck className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Pickup Service</h3>
+                <p className="text-gray-600">
+                  Automatische ophaling van je pakketten op kantoor of thuis
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Branded Tracking</h3>
+                <p className="text-gray-600">
+                  Klanten volgen hun pakket via jouw eigen tracking pagina
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-violet-600 rounded-lg flex items-center justify-center mb-6">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Branded Emails</h3>
+                <p className="text-gray-600">
+                  Klanten ontvangen updates in jouw huisstijl
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center mb-6">
+                  <TrendingDown className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Laagste Tarieven</h3>
+                <p className="text-gray-600">
+                  Tot 40% goedkoper dan standaard verzendtarieven
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Efficiency Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                  Efficiënter Verzenden
+                </h2>
+                <p className="text-xl text-gray-600 mb-8">
+                  Connect voorkomt dubbele verzendingen en kiest altijd de meest directe route
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <CheckCircle className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Directe Levering</h3>
+                      <p className="text-gray-600">
+                        Zendingen naar buurlanden gaan direct naar de bestemming, geen tussenstops
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <CheckCircle className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Kostenoptimalisatie</h3>
+                      <p className="text-gray-600">
+                        Automatische keuze tussen bedrijf of particulier tarieven
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <CheckCircle className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Dekkingsanalyse</h3>
+                      <p className="text-gray-600">
+                        Altijd de vervoerder met de beste dekking voor jouw bestemming
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8">
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Clock className="w-12 h-12 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Tijdsbesparing</h3>
+                  <p className="text-gray-600 mb-6">
+                    Geen handmatige keuze meer tussen vervoerders. Connect doet het automatisch.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 text-center">
+                    <div>
+                      <div className="text-3xl font-bold text-blue-600">-60%</div>
+                      <div className="text-sm text-gray-600">Tijd per zending</div>
+                    </div>
+                    <div>
+                      <div className="text-3xl font-bold text-green-600">+25%</div>
+                      <div className="text-sm text-gray-600">Verzendvolume</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -341,17 +438,17 @@ export default function ConnectPage() {
         <section className="py-20 bg-gradient-to-br from-[#0066ff] to-blue-600 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Klaar om te connecten?
+              Start vandaag met Connect
             </h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Start vandaag nog en ervaar hoe eenvoudig verzenden kan zijn
+              Sluit je aan bij honderden bedrijven die al profiteren van intelligente verzending
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={() => setShowSignupModal(true)}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0066ff] font-semibold rounded-full hover:scale-105 transition-transform duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0066ff] font-semibold rounded-full hover:scale-105 transition-transform duration-300 shadow-xl"
               >
-                Direct starten
+                Gratis proberen
                 <ArrowRight className="ml-2" size={20} />
               </button>
               <Link 
