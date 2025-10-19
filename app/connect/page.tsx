@@ -9,6 +9,7 @@ export default function ConnectPage() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   // Header scroll effect with smooth transition
   React.useEffect(() => {
@@ -40,6 +41,15 @@ export default function ConnectPage() {
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Show overlay after 2 seconds
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowOverlay(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -183,15 +193,17 @@ export default function ConnectPage() {
         </div>
 
         {/* Overlay that appears 2 seconds after page load */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div 
-            className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-indigo-500/10 opacity-0 transition-opacity duration-1000"
-            style={{ 
-              zIndex: 1,
-              animation: 'fadeInOverlay 1s ease-in-out 2s forwards'
-            }}
-          ></div>
-        </div>
+        {showOverlay && (
+          <div className="absolute inset-0 pointer-events-none">
+            <div 
+              className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-indigo-500/10 opacity-0 transition-opacity duration-1000"
+              style={{ 
+                zIndex: 1,
+                opacity: showOverlay ? 1 : 0
+              }}
+            ></div>
+          </div>
+        )}
       </section>
 
       {/* Features Section */}
