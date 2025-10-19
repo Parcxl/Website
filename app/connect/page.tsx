@@ -175,7 +175,7 @@ export default function ConnectPage() {
           <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold leading-none select-none">
             <span className="relative inline-block">
               {/* Main Text - Final blue color */}
-              <span className="relative z-10 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-2xl">
+              <span className="relative z-10 text-gradient drop-shadow-2xl">
                 CONNECT
               </span>
             </span>
