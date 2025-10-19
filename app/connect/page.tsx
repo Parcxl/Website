@@ -158,8 +158,8 @@ export default function ConnectPage() {
         </div>
       </nav>
 
-      {/* Hero Section with Animated Background */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-100/60 via-cyan-50/60 to-indigo-100/60">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100/60 via-cyan-50/60 to-indigo-100/60">
         {/* Animated Background Blobs */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300/50 rounded-full blur-3xl animate-float"></div>
@@ -170,70 +170,22 @@ export default function ConnectPage() {
         {/* Backdrop blur overlay */}
         <div className="absolute inset-0 bg-white/40 backdrop-blur-md -z-10"></div>
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200/50 shadow-sm">
-                <Sparkles className="text-[#0066ff]" size={18} />
-                <span className="text-[#0066ff] text-sm font-semibold">Datagedreven Verzending</span>
-              </div>
+        {/* Centered Connect Text */}
+        <div className="relative z-10 text-center">
+          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-white leading-none select-none">
+            <span className="relative inline-block animate-connect-shrink">
+              {/* Main Text with Animation */}
+              <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl animate-text-gradient">
+                CONNECT
+              </span>
               
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                Sendwise <span className="text-gradient">Connect</span>
-              </h1>
+              {/* Glow Effect Behind with Animation */}
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 blur-xl opacity-60 animate-pulse animate-shadow-fade-out"></span>
               
-              <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
-                De slimste verzendmethode die automatisch de beste vervoerder kiest op basis van locatie, kosten en dekking
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button 
-                  onClick={() => setShowSignupModal(true)}
-                  className="bg-gradient-to-r from-[#0066ff] to-blue-600 text-white px-8 py-3.5 rounded-full hover:shadow-2xl transition-all shadow-lg hover:scale-105 flex items-center justify-center group font-semibold"
-                >
-                  Start met Connect
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                </button>
-                <button 
-                  onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-white/80 backdrop-blur-xl border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-full hover:border-[#0066ff] hover:text-[#0066ff] transition-all font-semibold shadow-lg"
-                >
-                  Ontdek voordelen
-                </button>
-              </div>
-
-            </div>
-
-            <div className="relative animate-slide-in-right">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-3xl blur-2xl"></div>
-              <div className="relative bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-2xl">
-                <div className="text-center space-y-6">
-                  <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto">
-                    <Zap className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">AI-Powered</h3>
-                  <p className="text-gray-600">
-                    Automatische keuze van de beste vervoerder voor elke zending
-                  </p>
-                  
-                  <div className="grid grid-cols-3 gap-4 mt-8">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">15%</div>
-                      <div className="text-xs text-gray-500">Lagere kosten</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-600">99.8%</div>
-                      <div className="text-xs text-gray-500">Betrouwbaar</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-600">24/7</div>
-                      <div className="text-xs text-gray-500">Automatisch</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              {/* Shimmer Effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 animate-shimmer"></span>
+            </span>
+          </h1>
         </div>
       </section>
 
