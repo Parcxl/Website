@@ -188,7 +188,7 @@ export default function ConnectPage() {
           </h1>
         </div>
 
-        {/* Road Line - Natural curved path from left middle to bottom middle */}
+        {/* Road Line - Curved path around CONNECT text */}
         <div className="absolute inset-0 pointer-events-none">
           <svg 
             className="w-full h-full" 
@@ -198,20 +198,20 @@ export default function ConnectPage() {
           >
             <defs>
               <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
-                <stop offset="50%" stopColor="#3b82f6" stopOpacity="1" />
-                <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.9" />
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#1d4ed8" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#1e40af" stopOpacity="0.8" />
               </linearGradient>
             </defs>
             
-            {/* Natural curved road path */}
+            {/* Curved road path that goes around CONNECT text */}
             <path
-              d="M 5 50 
-                 C 20 45 30 55 40 60
-                 C 50 65 60 70 70 75
-                 C 80 80 90 85 95 90"
+              d="M -5 45 
+                 C 15 35 25 40 35 50
+                 C 45 60 55 65 65 70
+                 C 75 75 85 80 105 85"
               stroke="url(#roadGradient)"
-              strokeWidth="3"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
