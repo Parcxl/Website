@@ -188,7 +188,7 @@ export default function ConnectPage() {
           </h1>
         </div>
 
-        {/* Road Line - From left middle to bottom middle */}
+        {/* Road Line - Natural curved path from left middle to bottom middle */}
         <div className="absolute inset-0 pointer-events-none">
           <svg 
             className="w-full h-full" 
@@ -198,33 +198,23 @@ export default function ConnectPage() {
           >
             <defs>
               <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#1d4ed8" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#1e40af" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
+                <stop offset="50%" stopColor="#3b82f6" stopOpacity="1" />
+                <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.9" />
               </linearGradient>
-              <filter id="roadGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
             </defs>
             
-            {/* Road Path - From left middle to bottom middle */}
+            {/* Natural curved road path */}
             <path
-              d="M 0 50 
-                 Q 25 60 50 70
-                 Q 75 80 100 90"
+              d="M 5 50 
+                 C 20 45 30 55 40 60
+                 C 50 65 60 70 70 75
+                 C 80 80 90 85 95 90"
               stroke="url(#roadGradient)"
-              strokeWidth="2"
+              strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
-              filter="url(#roadGlow)"
-              className="animate-road-draw"
-              strokeDasharray="3"
-              strokeDashoffset="3"
             />
           </svg>
         </div>
