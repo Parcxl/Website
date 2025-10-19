@@ -182,7 +182,7 @@ export default function ConnectPage() {
           </h1>
         </div>
 
-        {/* Road Line - Curved path around CONNECT text */}
+        {/* Multiple Roads leading to CONNECT */}
         <div className="absolute inset-0 pointer-events-none">
           <svg 
             className="w-full h-full" 
@@ -197,12 +197,71 @@ export default function ConnectPage() {
               </linearGradient>
             </defs>
             
-            {/* Less curved road path that goes around CONNECT text */}
+            {/* Road from top left */}
             <path
-              d="M -5 70 
-                 C 20 65 30 70 40 75
-                 C 50 80 60 85 70 90
-                 C 80 95 90 100 105 105"
+              d="M 10 0 
+                 C 25 15 35 25 45 35
+                 C 50 40 50 45 50 50"
+              stroke="url(#roadGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            
+            {/* Road from top right */}
+            <path
+              d="M 90 0 
+                 C 75 15 65 25 55 35
+                 C 50 40 50 45 50 50"
+              stroke="url(#roadGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            
+            {/* Road from bottom left */}
+            <path
+              d="M 0 80 
+                 C 15 75 25 70 35 65
+                 C 45 60 50 55 50 50"
+              stroke="url(#roadGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            
+            {/* Road from bottom right */}
+            <path
+              d="M 100 80 
+                 C 85 75 75 70 65 65
+                 C 55 60 50 55 50 50"
+              stroke="url(#roadGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            
+            {/* Road from left side */}
+            <path
+              d="M 0 50 
+                 C 20 50 30 50 40 50
+                 C 45 50 50 50 50 50"
+              stroke="url(#roadGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            
+            {/* Road from right side */}
+            <path
+              d="M 100 50 
+                 C 80 50 70 50 60 50
+                 C 55 50 50 50 50 50"
               stroke="url(#roadGradient)"
               strokeWidth="1"
               strokeLinecap="round"
