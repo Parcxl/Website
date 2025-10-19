@@ -206,10 +206,10 @@ export default function ConnectPage() {
             
             {/* Curved road path that goes around CONNECT text */}
             <path
-              d="M -5 55 
-                 C 15 45 25 50 35 60
-                 C 45 70 55 75 65 80
-                 C 75 85 85 90 105 95"
+              d="M -5 70 
+                 C 15 60 25 65 35 75
+                 C 45 85 55 90 65 95
+                 C 75 100 85 105 105 110"
               stroke="url(#roadGradient)"
               strokeWidth="1"
               strokeLinecap="round"
