@@ -204,6 +204,36 @@ export default function ConnectPage() {
             ></div>
           </div>
         )}
+
+        {/* Road leading to the bottom left of the first N in CONNECT */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg 
+            className="w-full h-full" 
+            viewBox="0 0 100 100" 
+            preserveAspectRatio="none"
+            style={{ zIndex: 5 }}
+          >
+            <defs>
+              <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0066ff" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#00a3ff" stopOpacity="0.9" />
+              </linearGradient>
+            </defs>
+            
+            {/* Road path leading to bottom left of first N */}
+            <path
+              d="M 0 80 
+                 C 20 75 30 70 40 65
+                 C 50 60 55 55 60 50
+                 C 65 45 70 40 75 35"
+              stroke="url(#roadGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* Features Section */}
