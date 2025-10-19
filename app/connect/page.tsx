@@ -182,93 +182,15 @@ export default function ConnectPage() {
           </h1>
         </div>
 
-        {/* Multiple Roads leading to CONNECT */}
+        {/* Overlay that appears 2 seconds after page load */}
         <div className="absolute inset-0 pointer-events-none">
-          <svg 
-            className="w-full h-full" 
-            viewBox="0 0 100 100" 
-            preserveAspectRatio="none"
-            style={{ zIndex: 5 }}
-          >
-            <defs>
-              <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0066ff" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#00a3ff" stopOpacity="0.9" />
-              </linearGradient>
-            </defs>
-            
-            {/* Road from top left */}
-            <path
-              d="M 10 0 
-                 C 25 15 35 25 45 35
-                 C 50 40 50 45 50 50"
-              stroke="url(#roadGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            
-            {/* Road from top right */}
-            <path
-              d="M 90 0 
-                 C 75 15 65 25 55 35
-                 C 50 40 50 45 50 50"
-              stroke="url(#roadGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            
-            {/* Road from bottom left */}
-            <path
-              d="M 0 80 
-                 C 15 75 25 70 35 65
-                 C 45 60 50 55 50 50"
-              stroke="url(#roadGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            
-            {/* Road from bottom right */}
-            <path
-              d="M 100 80 
-                 C 85 75 75 70 65 65
-                 C 55 60 50 55 50 50"
-              stroke="url(#roadGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            
-            {/* Road from left side */}
-            <path
-              d="M 0 50 
-                 C 20 50 30 50 40 50
-                 C 45 50 50 50 50 50"
-              stroke="url(#roadGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            
-            {/* Road from right side */}
-            <path
-              d="M 100 50 
-                 C 80 50 70 50 60 50
-                 C 55 50 50 50 50 50"
-              stroke="url(#roadGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-indigo-500/10 opacity-0 transition-opacity duration-1000"
+            style={{ 
+              zIndex: 1,
+              animation: 'fadeInOverlay 1s ease-in-out 2s forwards'
+            }}
+          ></div>
         </div>
       </section>
 

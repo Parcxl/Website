@@ -42,6 +42,16 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
+/* Fade in overlay animation */
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Confetti Animation - Pure CSS, no JS interference */
 .confetti {
   position: absolute;
