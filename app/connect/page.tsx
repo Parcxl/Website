@@ -198,9 +198,9 @@ export default function ConnectPage() {
           >
             <defs>
               <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#1d4ed8" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#1e40af" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
+                <stop offset="50%" stopColor="#22d3ee" stopOpacity="1" />
+                <stop offset="100%" stopColor="#818cf8" stopOpacity="0.9" />
               </linearGradient>
             </defs>
             
@@ -211,7 +211,7 @@ export default function ConnectPage() {
                  C 45 60 55 65 65 70
                  C 75 75 85 80 105 85"
               stroke="url(#roadGradient)"
-              strokeWidth="1.5"
+              strokeWidth="1"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
