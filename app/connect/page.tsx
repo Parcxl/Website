@@ -173,17 +173,14 @@ export default function ConnectPage() {
         {/* Centered Connect Text */}
         <div className="relative z-10 text-center">
           <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-white leading-none select-none">
-            <span className="relative inline-block animate-connect-shrink">
-              {/* Main Text with Animation */}
-              <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl animate-text-gradient">
+            <span className="relative inline-block">
+              {/* Main Text */}
+              <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
                 CONNECT
               </span>
               
-              {/* Glow Effect Behind with Animation */}
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 blur-xl opacity-60 animate-pulse animate-shadow-fade-out"></span>
-              
-              {/* Shimmer Effect */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 animate-shimmer"></span>
+              {/* Glow Effect Behind */}
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 blur-xl opacity-60"></span>
             </span>
           </h1>
         </div>
