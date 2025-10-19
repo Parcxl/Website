@@ -172,7 +172,7 @@ export default function ConnectPage() {
 
         {/* Centered Connect Text */}
         <div className="relative z-10 text-center">
-          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold leading-none select-none">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-none select-none">
             <span className="relative inline-block">
               {/* Main Text - Final blue color */}
               <span className="relative z-10 text-gradient drop-shadow-2xl">
