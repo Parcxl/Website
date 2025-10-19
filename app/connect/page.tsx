@@ -172,15 +172,12 @@ export default function ConnectPage() {
 
         {/* Centered Connect Text */}
         <div className="relative z-10 text-center">
-          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-white leading-none select-none">
+          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold leading-none select-none">
             <span className="relative inline-block">
-              {/* Main Text */}
-              <span className="relative z-10 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
+              {/* Main Text - Final blue color */}
+              <span className="relative z-10 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-2xl">
                 CONNECT
               </span>
-              
-              {/* Glow Effect Behind */}
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 blur-xl opacity-60"></span>
             </span>
           </h1>
         </div>
