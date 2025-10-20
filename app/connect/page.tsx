@@ -23,7 +23,7 @@ export default function ConnectPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  const [submittedData, setSubmittedData] = useState({});
+  const [submittedData, setSubmittedData] = useState<{voornaam?: string; email?: string}>({});
   const [showOverlay, setShowOverlay] = useState(false);
   const [logoTransforms, setLogoTransforms] = useState({
     topLeft: { rotateX: 0, rotateY: 0, translateZ: 0 },
@@ -204,7 +204,10 @@ export default function ConnectPage() {
         throw new Error('Er is iets misgegaan bij het aanmaken van je account');
       }
 
-      setSubmittedData(formData);
+      setSubmittedData({
+        voornaam: formData.voornaam,
+        email: formData.email
+      });
       setSubmitSuccess(true);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : 'Er is iets misgegaan');
@@ -1337,7 +1340,7 @@ export default function ConnectPage() {
 
                         <div className="max-w-2xl mx-auto mb-8">
                           <p className="text-2xl text-gray-700 mb-4">
-                            Hey <span className="font-semibold text-[#0066ff]">{submittedData.voornaam}</span>,
+                            Hey <span className="font-semibold text-[#0066ff]">{submittedData.voornaam || 'daar'}</span>,
                           </p>
                           <p className="text-xl text-gray-600 leading-relaxed">
                             Binnen 24 uur nemen we contact met je op om jouw persoonlijke verzendtarieven door te spreken. 
@@ -1346,7 +1349,7 @@ export default function ConnectPage() {
                         </div>
 
                         <p className="text-sm text-gray-500 mt-8">
-                          Je ontvangt een bevestiging op <span className="font-medium">{submittedData.email}</span>
+                          Je ontvangt een bevestiging op <span className="font-medium">{submittedData.email || 'jouw e-mailadres'}</span>
                         </p>
                       </div>
                     </div>
