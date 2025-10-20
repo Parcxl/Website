@@ -771,6 +771,51 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Gradient animation for Connect text */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animated background gradient */
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-bg {
+  background-size: 200% 200%;
+  animation: gradient-bg 8s ease infinite;
+}
+
+/* Partner carousel animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
 .animate-float-icon {
   animation: float-icon 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
@@ -797,5 +842,75 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-in-icon {
   animation: fade-in-icon 0.8s ease-out forwards;
+}
+
+/* Pulse animation for data particles */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+/* Move to center animations using computed CSS variables --cx/--cy
+   Particles animate from fixed start positions to the exact icon center */
+@keyframes moveToCenterTL {
+  0% {
+    left: 10%;
+    top: 10%;
+    opacity: 1;
+  }
+  100% {
+    left: var(--cx);
+    top: var(--cy);
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes moveToCenterTR {
+  0% {
+    left: 90%;
+    top: 10%;
+    opacity: 1;
+  }
+  100% {
+    left: var(--cx);
+    top: var(--cy);
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes moveToCenterBL {
+  0% {
+    left: 10%;
+    top: 90%;
+    opacity: 1;
+  }
+  100% {
+    left: var(--cx);
+    top: var(--cy);
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes moveToCenterBR {
+  0% {
+    left: 90%;
+    top: 90%;
+    opacity: 1;
+  }
+  100% {
+    left: var(--cx);
+    top: var(--cy);
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
