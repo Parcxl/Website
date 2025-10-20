@@ -2,74 +2,84 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { Search, Book, MessageCircle, Mail, ArrowRight, ChevronDown, CheckCircle2 } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function Helpcenter() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
-
-  const categories = [
-    {
-      title: "Aan de slag",
-      icon: "🚀",
-      articles: [
-        "Account aanmaken",
-        "Eerste verzending aanmaken",
-        "Integratie koppelen",
-        "API key genereren"
-      ]
-    },
-    {
-      title: "Verzendingen",
-      icon: "📦",
-      articles: [
-        "Label printen",
-        "Track & Trace opvragen",
-        "Verzending annuleren",
-        "Retourzending aanmaken"
-      ]
-    },
-    {
-      title: "Integraties",
-      icon: "🔌",
-      articles: [
-        "WooCommerce installeren",
-        "Shopify verbinden",
-        "API documentatie",
-        "Webhooks instellen"
-      ]
-    },
-    {
-      title: "Facturatie",
-      icon: "💰",
-      articles: [
-        "Facturen inzien",
-        "Betaalmethode wijzigen",
-        "Tarieven bekijken",
-        "Credit aanvragen"
-      ]
-    }
-  ];
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Ultra Fancy Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+        {/* Multiple animated gradient layers */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/30 via-transparent to-cyan-900/30 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-pink-900/20 via-transparent to-blue-800/20 animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-800/25 via-transparent to-purple-800/25 animate-pulse" style={{animationDelay: '2s'}}></div>
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Large floating orbs */}
+          <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-1/4 right-10 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full blur-3xl animate-float-slow" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-br from-indigo-400/20 to-cyan-500/20 rounded-full blur-3xl animate-float-reverse" style={{animationDelay: '4s'}}></div>
+          <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-gradient-to-br from-pink-400/20 to-purple-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '6s'}}></div>
+          
+          {/* Medium floating orbs */}
+          <div className="absolute top-1/3 left-1/4 w-48 h-48 bg-gradient-to-br from-blue-300/15 to-indigo-400/15 rounded-full blur-2xl animate-float-slow" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-1/3 right-1/3 w-56 h-56 bg-gradient-to-br from-purple-300/15 to-pink-400/15 rounded-full blur-2xl animate-float" style={{animationDelay: '3s'}}></div>
+          
+          {/* Small floating particles */}
+          <div className="absolute top-20 left-1/2 w-32 h-32 bg-gradient-to-br from-cyan-300/10 to-blue-400/10 rounded-full blur-xl animate-float" style={{animationDelay: '5s'}}></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-br from-pink-300/10 to-purple-400/10 rounded-full blur-xl animate-float-slow" style={{animationDelay: '7s'}}></div>
+        </div>
+
+        {/* Animated grid pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            animation: 'grid-move 20s linear infinite'
+          }}></div>
+        </div>
+
+        {/* Floating sparkles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-white rounded-full opacity-60 animate-sparkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${2 + Math.random() * 3}s`
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+
       {/* Header */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100">
+      <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-xl z-50 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="https://www.sendwise.nl" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
                 width={140} 
                 height={40}
-                className="h-10 w-auto"
+                className="h-10 w-auto brightness-0 invert"
               />
             </Link>
             <Link 
-              href="https://www.sendwise.nl"
-              className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium"
+              href="/"
+              className="text-white/80 hover:text-white transition-colors font-medium"
             >
               Terug naar website
             </Link>
@@ -77,187 +87,92 @@ export default function Helpcenter() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Animated Background Blobs */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300/30 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute top-20 right-0 w-80 h-80 bg-indigo-300/30 rounded-full blur-3xl animate-float-slow"></div>
-          <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-cyan-300/30 rounded-full blur-3xl animate-float-reverse"></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200/50 shadow-sm mb-8">
-            <Book className="text-[#0066ff]" size={18} />
-            <span className="text-[#0066ff] text-sm font-semibold">Sendwise Helpcenter</span>
+      {/* Main Content - Centered Search */}
+      <main className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl w-full text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-full border border-white/20 shadow-lg mb-12">
+            <Sparkles className="text-white" size={20} />
+            <span className="text-white text-sm font-semibold">Sendwise Helpcenter</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Hoe kunnen we je <span className="text-gradient">helpen</span>?
+          {/* Main Title */}
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 text-white leading-tight">
+            Hoe kunnen we je <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">helpen</span>?
           </h1>
           
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Zoek in onze kennisbank, lees handleidingen of neem direct contact op met ons support team
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-white/80 mb-16 max-w-3xl mx-auto leading-relaxed">
+            Zoek in onze kennisbank, lees handleidingen of vind snel antwoord op je vraag
           </p>
 
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-              <input
-                type="text"
-                placeholder="Zoek naar artikelen, handleidingen of veelgestelde vragen..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-gray-200 focus:border-[#0066ff] focus:outline-none transition-colors bg-white/80 backdrop-blur-sm shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Actions */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="grid md:grid-cols-3 gap-6">
-          <a href="#categories" className="group bg-white/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 hover:border-[#0066ff]/50 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <Book className="text-white" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Kennisbank</h3>
-            <p className="text-gray-600 mb-4">Doorzoek onze uitgebreide collectie handleidingen en artikelen</p>
-            <div className="flex items-center text-[#0066ff] font-medium">
-              Bekijk artikelen
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-            </div>
-          </a>
-
-          <a href="https://api.sendwise.nl/docs/sendwise-orders" target="_blank" rel="noopener noreferrer" className="group bg-white/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 hover:border-[#0066ff]/50 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <MessageCircle className="text-white" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">API Documentatie</h3>
-            <p className="text-gray-600 mb-4">Technische documentatie voor ontwikkelaars en integraties</p>
-            <div className="flex items-center text-[#0066ff] font-medium">
-              Naar API docs
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-            </div>
-          </a>
-
-          <a href="mailto:info@sendwise.nl" className="group bg-white/60 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 hover:border-[#0066ff]/50 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <Mail className="text-white" size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Contact Support</h3>
-            <p className="text-gray-600 mb-4">Krijg persoonlijke hulp van ons support team</p>
-            <div className="flex items-center text-[#0066ff] font-medium">
-              Neem contact op
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-            </div>
-          </a>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section id="categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <h2 className="text-3xl font-bold text-center mb-4">Populaire categorieën</h2>
-        <p className="text-gray-600 text-center mb-12">Vind snel antwoord op je vraag</p>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {categories.map((category, index) => (
-            <div key={index} className="bg-white/60 backdrop-blur-xl rounded-2xl border border-gray-200/50 overflow-hidden">
-              <button
-                onClick={() => setOpenCategory(openCategory === index ? null : index)}
-                className="w-full p-6 flex items-center justify-between hover:bg-gray-50/50 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="text-4xl">{category.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900">{category.title}</h3>
-                </div>
-                <ChevronDown 
-                  className={`text-gray-400 transition-transform ${openCategory === index ? 'rotate-180' : ''}`} 
-                  size={24} 
-                />
-              </button>
+          {/* Central Search Bar */}
+          <div className="max-w-3xl mx-auto">
+            <div className={`relative transition-all duration-500 ${isSearchFocused ? 'scale-105' : 'scale-100'}`}>
+              {/* Search Bar Glow Effect */}
+              <div className={`absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 rounded-full blur-lg transition-opacity duration-500 ${isSearchFocused ? 'opacity-50' : 'opacity-20'}`}></div>
               
-              {openCategory === index && (
-                <div className="px-6 pb-6 space-y-3 animate-fade-in">
-                  {category.articles.map((article, articleIndex) => (
-                    <a
-                      key={articleIndex}
-                      href="#"
-                      className="flex items-center gap-3 text-gray-700 hover:text-[#0066ff] transition-colors group"
-                    >
-                      <CheckCircle2 className="text-[#0066ff] flex-shrink-0" size={18} />
-                      <span className="group-hover:translate-x-1 transition-transform">{article}</span>
-                    </a>
-                  ))}
+              {/* Search Bar Container */}
+              <div className="relative bg-white/10 backdrop-blur-2xl rounded-full border border-white/20 shadow-2xl overflow-hidden">
+                <div className="flex items-center">
+                  <Search className="absolute left-6 text-white/60" size={24} />
+                  <input
+                    type="text"
+                    placeholder="Zoek naar artikelen, handleidingen of veelgestelde vragen..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => setIsSearchFocused(true)}
+                    onBlur={() => setIsSearchFocused(false)}
+                    className="w-full pl-16 pr-6 py-6 bg-transparent text-white placeholder-white/60 text-lg focus:outline-none"
+                  />
                 </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="relative bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-3xl p-12 text-center overflow-hidden">
-          {/* Animated blobs */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float"></div>
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl animate-float-slow"></div>
-          </div>
-
-          <div className="relative">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Kun je het antwoord niet vinden?
-            </h2>
-            <p className="text-blue-100 text-lg mb-8">
-              Ons support team staat voor je klaar om je te helpen
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:info@sendwise.nl"
-                className="bg-white text-[#0066ff] px-8 py-4 rounded-full hover:shadow-2xl transition-all hover:scale-105 font-semibold inline-flex items-center justify-center gap-2"
-              >
-                <Mail size={20} />
-                Email ons
-              </a>
-              <a
-                href="tel:+31619156123"
-                className="bg-white/20 backdrop-blur-xl text-white border-2 border-white/30 px-8 py-4 rounded-full hover:bg-white/30 transition-all font-semibold"
-              >
-                Bel ons
-              </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 py-12 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-float-slow"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Link href="https://www.sendwise.nl">
-              <Image
-                src="/sendwise-logo.png" 
-                alt="Sendwise" 
-                width={140} 
-                height={40}
-                className="h-10 w-auto mx-auto mb-4 brightness-0 invert"
-              />
-            </Link>
-            <p className="text-gray-400 text-sm">
-              © 2025 Sendwise. All rights reserved.
-            </p>
+          {/* Search Suggestions */}
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            {[
+              'Account aanmaken',
+              'Verzendingen tracken',
+              'API integratie',
+              'Facturen bekijken',
+              'Tarieven opvragen'
+            ].map((suggestion, index) => (
+              <button
+                key={index}
+                onClick={() => setSearchQuery(suggestion)}
+                className="px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 text-white/80 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-105"
+              >
+                {suggestion}
+              </button>
+            ))}
           </div>
         </div>
-      </footer>
+      </main>
+
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40">
+        <Link
+          href="mailto:info@sendwise.nl"
+          className="group bg-white/10 backdrop-blur-xl rounded-full p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110"
+          title="Email Support"
+        >
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </Link>
+        
+        <Link
+          href="tel:+31619156123"
+          className="group bg-white/10 backdrop-blur-xl rounded-full p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110"
+          title="Bel Support"
+        >
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </Link>
+      </div>
     </div>
   );
 }
-
