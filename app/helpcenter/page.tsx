@@ -331,13 +331,15 @@ export default function Helpcenter() {
                     </div>
                     <div className="space-y-2">
                       {searchResults.map((result, index) => (
-                        <a
+                        <Link
                           key={result.id}
                           href={result.url}
                           target={result.url.includes('http') ? '_blank' : '_self'}
                           rel={result.url.includes('http') ? 'noopener noreferrer' : ''}
                           className="flex items-center gap-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-[#0066ff]/5 hover:to-blue-50/50 transition-all duration-300 group hover:shadow-md border border-transparent hover:border-[#0066ff]/20"
-                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => {
+                            resetSearch();
+                          }}
                         >
                           <div className="w-8 h-8 bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
                             {result.type === 'blog' && <Book size={16} className="text-white" />}
@@ -352,7 +354,7 @@ export default function Helpcenter() {
                             </h4>
                           </div>
                           <span className="text-xs text-gray-400 group-hover:text-[#0066ff] transition-colors">→</span>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
