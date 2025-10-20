@@ -950,3 +950,81 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Moving gradient animations */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+    opacity: 1;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.8;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-shift-reverse {
+  0% {
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+  50% {
+    background-position: 0% 50%;
+    opacity: 0.8;
+  }
+  100% {
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+}
+
+@keyframes gradient-shift-slow {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.4;
+  }
+  33% {
+    background-position: 50% 100%;
+    opacity: 0.7;
+  }
+  66% {
+    background-position: 100% 0%;
+    opacity: 0.5;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 0.4;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+.animate-gradient-shift-reverse {
+  background-size: 200% 200%;
+  animation: gradient-shift-reverse 10s ease-in-out infinite;
+}
+
+.animate-gradient-shift-slow {
+  background-size: 300% 300%;
+  animation: gradient-shift-slow 15s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 6s ease-in-out infinite;
+}
+
