@@ -216,7 +216,7 @@ export default function Helpcenter() {
           <div className="flex justify-between items-center h-16">
             <Link href="https://sendwise.nl" className="flex items-center">
               <img
-                src="/sendwise-logo-new.png?v=2" 
+                src="/sendwise-logo.png?v=3" 
                 alt="Sendwise" 
                 className="h-8 w-auto transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
               />
@@ -505,7 +505,7 @@ export default function Helpcenter() {
           <div className="text-center">
             <Link href="https://sendwise.nl">
               <Image
-                src="/sendwise-logo-new.png?v=2" 
+                src="/sendwise-logo.png?v=3" 
                 alt="Sendwise" 
                 width={140} 
                 height={40}
