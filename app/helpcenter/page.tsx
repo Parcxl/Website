@@ -20,7 +20,7 @@ export default function Helpcenter() {
       title: 'Verzendsoftware voor webshops - Hoe het werkt en waarom het loont',
       description: 'Ontdek hoe verzendsoftware je webshop efficiënter maakt, kosten bespaart en klanttevredenheid verhoogt.',
       type: 'blog',
-      url: '/blog/verzendsoftware-webshops',
+      url: 'https://sendwise.nl/blog/verzendsoftware-webshops',
       keywords: ['verzendsoftware', 'webshop', 'e-commerce', 'logistiek', 'automatisering', 'kosten besparen', 'verzending', 'labels', 'tracking']
     },
     {
@@ -28,7 +28,7 @@ export default function Helpcenter() {
       title: '5 slimme tips om je verzendproces als webshop te optimaliseren',
       description: 'Praktische tips om sneller, efficiënter en goedkoper te verzenden vanuit je webshop.',
       type: 'blog',
-      url: '/blog/verzendproces-optimaliseren',
+      url: 'https://sendwise.nl/blog/verzendproces-optimaliseren',
       keywords: ['verzendproces', 'optimaliseren', 'tips', 'webshop', 'efficiënt', 'bulklabels', 'transparante tarieven', 'verzendsoftware', 'logistiek']
     },
     {
@@ -36,7 +36,7 @@ export default function Helpcenter() {
       title: 'Waarom webshops kiezen voor Sendwise',
       description: 'Ontdek waarom Sendwise de ideale verzendpartner is voor webshops.',
       type: 'blog',
-      url: '/blog/waarom-sendwise',
+      url: 'https://sendwise.nl/blog/waarom-sendwise',
       keywords: ['waarom Sendwise', 'verzendpartner', 'webshop', 'efficiënt', 'voordelig', 'integratie', 'kostenbesparing', 'verzendsoftware', 'logistiek']
     },
     {
@@ -44,7 +44,7 @@ export default function Helpcenter() {
       title: 'Boost je webshop met Sendwise – sneller, slimmer en goedkoper verzenden',
       description: 'Verhoog je efficiëntie en klanttevredenheid met Sendwise.',
       type: 'blog',
-      url: '/blog/boost-webshop-sendwise',
+      url: 'https://sendwise.nl/blog/boost-webshop-sendwise',
       keywords: ['boost', 'webshop', 'Sendwise', 'slimmer', 'goedkoper', 'efficiëntie', 'klanttevredenheid', 'verzendsoftware', 'logistiek']
     }
   ];
@@ -214,7 +214,7 @@ export default function Helpcenter() {
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-[70] border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
+            <Link href="https://sendwise.nl" className="flex items-center">
               <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
@@ -225,13 +225,13 @@ export default function Helpcenter() {
             </Link>
             <div className="flex items-center gap-4">
               <Link 
-                href="/blog"
+                href="https://sendwise.nl/blog"
                 className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium"
               >
                 Blog
               </Link>
               <Link 
-                href="/"
+                href="https://sendwise.nl"
                 className="text-gray-600 hover:text-[#0066ff] transition-colors font-medium"
               >
                 Website
