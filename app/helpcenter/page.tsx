@@ -221,6 +221,7 @@ export default function Helpcenter() {
                 width={140} 
                 height={40}
                 className="h-10 w-auto"
+                priority
               />
             </Link>
             <div className="flex items-center gap-4">
@@ -505,13 +506,14 @@ export default function Helpcenter() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Link href="/">
+            <Link href="https://sendwise.nl">
               <Image
                 src="/sendwise-logo.png" 
                 alt="Sendwise" 
                 width={140} 
                 height={40}
                 className="h-10 w-auto mx-auto mb-4 brightness-0 invert"
+                priority
               />
             </Link>
             <p className="text-gray-400 text-sm">
