@@ -929,19 +929,6 @@ export default function BlogContent() {
               </div>
             </section>
 
-            {/* Conclusie */}
-            <section className="mb-12">
-              <div className="bg-gradient-to-br from-[#0066ff]/10 to-blue-600/20 rounded-2xl p-8 border border-[#0066ff]/20">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Conclusie</h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  Door Sendwise te verbinden met Goedgepickt, creëer je een krachtige combinatie die je orderverwerking en verzending volledig automatiseert. Dit bespaart niet alleen tijd, maar voorkomt ook fouten en zorgt voor een betere klantbeleving.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Volg de stappen in deze handleiding en je hebt binnen een paar minuten een werkende integratie tussen beide systemen. Heb je vragen of loop je ergens tegenaan? Neem gerust contact met ons op!
-                </p>
-              </div>
-            </section>
-
             {/* CTA */}
             <section className="bg-gradient-to-br from-[#0066ff] to-blue-600 rounded-3xl p-8 text-center text-white">
               <h3 className="text-2xl font-bold mb-4">Klaar om te starten?</h3>
