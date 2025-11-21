@@ -10,6 +10,16 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    id: 'sendwise-goedgepickt',
+    title: 'Sendwise met Goedgepickt verbinden: Complete handleiding',
+    excerpt: 'Leer hoe je Sendwise eenvoudig kunt verbinden met Goedgepickt voor geautomatiseerde orderverwerking en verzending.',
+    date: '2025-01-27',
+    readTime: '6 min',
+    author: 'Sendwise Team',
+    category: 'Integratie',
+    image: '/sendwise-logo.png'
+  },
+  {
     id: 'verzendsoftware-webshops',
     title: 'Zo werkt slimme verzendsoftware voor webshops – en waarom het loont',
     excerpt: 'Ontdek hoe verzendsoftware je webshop efficiënter maakt, kosten bespaart en klanttevredenheid verhoogt.',

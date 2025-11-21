@@ -16,6 +16,14 @@ export default function Helpcenter() {
   // Zoekbare content - alleen bestaande blogs en artikelen
   const searchableContent = [
     {
+      id: 'sendwise-goedgepickt',
+      title: 'Sendwise met Goedgepickt verbinden: Complete handleiding',
+      description: 'Leer hoe je Sendwise eenvoudig kunt verbinden met Goedgepickt voor geautomatiseerde orderverwerking en verzending.',
+      type: 'blog',
+      url: 'https://sendwise.nl/blog/sendwise-goedgepickt',
+      keywords: ['Sendwise', 'Goedgepickt', 'integratie', 'verbinden', 'koppelen', 'orderverwerking', 'verzending', 'API', 'handleiding', 'webshop', 'automatisering']
+    },
+    {
       id: 'verzendsoftware-blog',
       title: 'Verzendsoftware voor webshops - Hoe het werkt en waarom het loont',
       description: 'Ontdek hoe verzendsoftware je webshop efficiënter maakt, kosten bespaart en klanttevredenheid verhoogt.',
@@ -55,6 +63,7 @@ export default function Helpcenter() {
       icon: Book,
       description: "Doorzoek onze uitgebreide collectie handleidingen en artikelen",
       dropdown: [
+        "Sendwise met Goedgepickt verbinden: Complete handleiding",
         "Verzendsoftware voor webshops - Hoe het werkt en waarom het loont",
         "5 slimme tips om je verzendproces als webshop te optimaliseren",
         "Waarom webshops kiezen voor Sendwise",
@@ -426,6 +435,8 @@ export default function Helpcenter() {
                           href = item.split(': ')[1];
                           target = '_blank';
                           rel = 'noopener noreferrer';
+                        } else if (item.includes('Sendwise met Goedgepickt verbinden')) {
+                          href = '/blog/sendwise-goedgepickt';
                         } else if (item.includes('Verzendsoftware voor webshops')) {
                           href = '/blog/verzendsoftware-webshops';
                         }
