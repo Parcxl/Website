@@ -52,6 +52,70 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Bounce arrow animation */
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+}
+
+/* Bounce arrow diagonal animation */
+@keyframes bounce-arrow-diagonal {
+  0%, 100% {
+    transform: rotate(40deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(40deg) translate(-12px, 8px);
+  }
+}
+
+/* Pulse dot animation */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Slide up animation for toast */
+@keyframes slide-up {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+/* Slide out right animation for toast */
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.animate-slide-out-right {
+  animation: slide-out-right 0.4s ease-in;
+}
+
 /* Confetti Animation - Pure CSS, no JS interference */
 .confetti {
   position: absolute;
