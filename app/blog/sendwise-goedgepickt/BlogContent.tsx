@@ -39,10 +39,66 @@ export default function BlogContent() {
         <div className="max-w-none">
           {/* Article Header */}
           <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Sendwise met Goedgepickt verbinden: Complete handleiding
-            </h1>
-            
+            {/* Banner Image with Title and Logos */}
+            <div className="relative h-80 md:h-[500px] rounded-2xl overflow-hidden mb-8">
+              {/* Background Image with Overlay */}
+              <div className="absolute inset-0">
+                <Image
+                  src="/banner-goedgepickt.png"
+                  alt="Sendwise en Goedgepickt integratie"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                {/* Dark overlay for better contrast */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
+              </div>
+              
+              {/* Content Container */}
+              <div className="relative h-full flex flex-col items-center justify-center px-4">
+                {/* Title in Fancy Overlay */}
+                <div className="mb-8 md:mb-12">
+                  <div className="bg-white/95 backdrop-blur-xl rounded-3xl px-8 md:px-12 py-6 md:py-8 shadow-2xl border border-white/50">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 text-center leading-tight">
+                      Verbind Sendwise met Goedgepickt
+                    </h1>
+                  </div>
+                </div>
+                
+                {/* Logos Container */}
+                <div className="flex items-center gap-6 md:gap-10">
+                  {/* Goedgepickt Logo */}
+                  <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center rounded-2xl p-3 md:p-4 shadow-2xl">
+                    <Image
+                      src="/goedgepickt-logo.png"
+                      alt="Goedgepickt"
+                      width={140}
+                      height={140}
+                      className="w-auto h-auto max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                  
+                  {/* Plus Icon */}
+                  <div className="text-white">
+                    <div className="w-10 h-10 md:w-14 md:h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 shadow-lg">
+                      <span className="text-xl md:text-3xl font-bold">+</span>
+                    </div>
+                  </div>
+                  
+                  {/* Sendwise Logo */}
+                  <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center rounded-2xl p-3 md:p-4 shadow-2xl">
+                    <Image
+                      src="/sendwise-icon-blue.png"
+                      alt="Sendwise"
+                      width={140}
+                      height={140}
+                      className="w-auto h-auto max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Article Meta */}
             <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
               <div className="flex items-center gap-2">
@@ -58,68 +114,21 @@ export default function BlogContent() {
                 <span>6 min lezen</span>
               </div>
             </div>
-
-            {/* Banner Image with Logos */}
-            <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
-              {/* Background Image with Overlay */}
-              <div className="absolute inset-0">
-                <Image
-                  src="/banner-goedgepickt.png"
-                  alt="Sendwise en Goedgepickt integratie"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* Dark overlay for better contrast */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40"></div>
-              </div>
-              
-              {/* Logos Container */}
-              <div className="relative h-full flex items-center justify-center">
-                <div className="flex items-center gap-8 md:gap-12">
-                  {/* Goedgepickt Logo */}
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                    <Image
-                      src="/goedgepickt-logo.png"
-                      alt="Goedgepickt"
-                      width={120}
-                      height={120}
-                      className="w-auto h-auto max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  
-                  {/* Plus Icon */}
-                  <div className="text-white">
-                    <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
-                      <span className="text-2xl md:text-3xl font-bold">+</span>
-                    </div>
-                  </div>
-                  
-                  {/* Sendwise Logo */}
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                    <Image
-                      src="/sendwise-icon-blue.png"
-                      alt="Sendwise"
-                      width={120}
-                      height={120}
-                      className="w-auto h-auto max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </header>
 
           {/* Article Body */}
           <div className="prose prose-lg max-w-none">
             {/* Introductie */}
             <section className="mb-12">
-              <p className="text-xl text-gray-700 leading-relaxed mb-6">
-                Goedgepickt is een krachtig orderverwerkingssysteem dat veel webshops gebruiken voor het beheren van voorraad, orders en verzending. Door Sendwise te verbinden met Goedgepickt, kun je het beste van beide werelden combineren: geavanceerde orderverwerking en efficiënte verzending.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                In deze handleiding leggen we stap voor stap uit hoe je de integratie tussen Sendwise en Goedgepickt instelt, zodat je orders automatisch worden verwerkt en verzendlabels eenvoudig worden aangemaakt.
-              </p>
+              <div className="bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-purple-50/80 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-blue-100/50 shadow-lg">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Inleiding</h2>
+                <p className="text-xl text-gray-700 leading-relaxed mb-6">
+                  Goedgepickt is een krachtig orderverwerkingssysteem dat veel webshops gebruiken voor het beheren van voorraad, orders en verzending. Door Sendwise te verbinden met Goedgepickt, kun je het beste van beide werelden combineren: geavanceerde orderverwerking en efficiënte verzending.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  In deze handleiding leggen we stap voor stap uit hoe je de integratie tussen Sendwise en Goedgepickt instelt, zodat je orders automatisch worden verwerkt en verzendlabels eenvoudig worden aangemaakt.
+                </p>
+              </div>
             </section>
 
             {/* Voordelen */}
